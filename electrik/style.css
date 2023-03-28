@@ -1,0 +1,16 @@
+/*
+Theme Name: Electrik
+Description: Theme WP for Electrik
+*/
+
+.pagination-wrap .pagination ul.page-numbers{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.variations_form{
+    display: none;
+}
