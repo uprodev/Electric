@@ -196,6 +196,25 @@ jQuery(document).ready(function ($) {
 
   });
 
+  /* mob-menu*/
+  $(document).on('click', '.fancybox-login', function (e){
+    e.preventDefault();
+
+    $.fancybox.open( $('#menu-cabinet'), {
+      touch:false,
+      autoFocus:false,
+    });
+    setTimeout(function() {
+      $('body').addClass('is-active');
+      $('html').addClass('is-menu');
+      $('header').addClass('is-active');
+    }, 100);
+
+  });
+
+
+
+
   $(document).on('click', '.filter-btn a', function (e){
     e.preventDefault();
 
@@ -264,6 +283,16 @@ jQuery(document).ready(function ($) {
       autoFocus:false,
     });
   });
+
+  $(document).on('click', '.repair-ok', function (e){
+    $.fancybox.close();
+    $.fancybox.open( $('#repair-ok'), {
+      touch:false,
+      autoFocus:false,
+    });
+  });
+
+
 
 
   $(document).on('click', '.send-password', function (e){
@@ -515,7 +544,7 @@ jQuery(document).ready(function ($) {
     $('.catalog .left-filter .item').slideDown()
   });
 
-  //veiw product
+  //view product
   $(document).on('click','.catalog .view-item li a', function(e){
     e.preventDefault();
     let item = $(this).parent('li');
@@ -538,14 +567,15 @@ jQuery(document).ready(function ($) {
   });
 
   /*sort list*/
-  if(window.innerWidth < 576){
+/*  if(window.innerWidth < 576){
     $(document).on('click', '.catalog .sort-2 ul li ', function (e){
       $('.catalog .sort-2 ul').toggleClass('is-open')
       $('.catalog .sort-2 ul li').removeClass('is-active');
       $(this).addClass('is-active');
-      $(this).find('input').prop('checked');
+      $('.catalog .sort-2 ul li input').prop('checked', false);
+      $(this).find('input').prop('checked', true);
     });
-  };
+  };*/
 
 
   /*add product*/
@@ -679,6 +709,9 @@ jQuery(document).ready(function ($) {
     });
   });
 
+
+
+
   /*auto content*/
   if(window.innerWidth > 991 && $('.main').length > 0){
     $('.main').createTOC({
@@ -777,14 +810,16 @@ jQuery(document).ready(function ($) {
   });
 
   /*checkout*/
-  $('.select-step-1 input').change(function(){
+  $(document).on('click','.select-step-1 input',function(){
     $('.select-step-1 .select').toggleClass('is-active');
     let index = $('.select-step-1 .select.is-active').index() + 1;
     $('.wrap-hide-show-1 .select-item').hide()
     $(".wrap-hide-show-1 .select-item:nth-child(" + index + ")").show()
+
   });
 
-  $('.select-step-2 input').change(function(){
+  $(document).on('click','.select-step-2 input',function(){
+
     $('.select-step-2 .select').removeClass('is-active');
     $('.select-step-2 input:checked').closest('.select').addClass('is-active');
 
@@ -816,6 +851,114 @@ jQuery(document).ready(function ($) {
   $(document).on('click', '.is-complete h2', function (e){
     e.preventDefault();
     $(this).closest('.step').toggleClass('is-open')
+  });
+
+  /*cabinet login*/
+  $(document).on('click', '.cabinet-wrap.is-active>a', function (e){
+    e.preventDefault();
+    $(this).toggleClass('is-show');
+    if($(this).hasClass('is-show')){
+      $('.cabinet-list').slideDown();
+    }else{
+      $('.cabinet-list').slideUp();
+    }
+  });
+
+  if(window.innerWidth < 1200){
+    $(document).on('click', '.cabinet .aside .btn-tab a', function (e){
+      e.preventDefault();
+      $('.cabinet .aside').toggleClass('is-open');
+      if($('.cabinet .aside').hasClass('is-open')){
+        $('.cabinet .aside .item').slideDown();
+      }else{
+        $('.cabinet .aside .item').slideUp();
+      }
+    })
+  };
+
+ /* cabinet*/
+  $(document).on('click', '.cabinet .info-bottom-link a', function (e){
+    e.preventDefault();
+    $(this).toggleClass('is-open');
+    if($(this).hasClass('is-open')){
+      $(this).closest('.item-wrap').find('.item-open').slideDown();
+    }else{
+      $(this).closest('.item-wrap').find('.item-open').slideUp();
+    }
+  });
+  /* cabinet edit name*/
+  if(window.innerWidth > 575){
+    $(document).on('click', '.personal-data .input-wrap .btn-wrap a', function (e){
+      e.preventDefault();
+      let item = $(this).closest('.input-wrap');
+      $(this).closest('.input-wrap').removeClass('new').toggleClass('is-edit');
+
+      if(item.hasClass('is-edit')){
+        item.find('input').prop("disabled", false);
+      }else{
+        item.find('input').prop("disabled", true);
+      }
+    });
+  }else{
+
+  }
+
+
+  /*send code*/
+  $(document).on('click', '.send-code', function (e){
+    e.preventDefault();
+    $('.tel-number-popup').addClass('is-send');
+    console.log('send-code')
+  });
+
+  /*edit-company*/
+  if(window.innerWidth > 575){
+    $(document).on('click', '.btn-edit-company', function (e){
+      e.preventDefault();
+      $(this).closest('.info-company').addClass('is-edit-company')
+    });
+
+    $(document).on('click', '.btn-save-company', function (e){
+      e.preventDefault();
+      $(this).closest('.info-company').removeClass('is-edit-company')
+    });
+  }else{
+
+  }
+
+  /*checkout mobile step*/
+  $(document).on('click', '.fix-menu-checkbox .btn-next', function (e){
+    e.preventDefault();
+    let item = $(this).index() + 2;
+    $(this).removeClass('is-show');
+    $('.checkout-block .step').removeClass('is-open');
+    $(".fix-menu-checkbox .btn-red:nth-child(" + item + ")").addClass('is-show');
+    $(".checkout-block .step:nth-child(" + item + ")").addClass('is-open');
+    console.log(item)
+    if(item > 2){
+      $('.cart-block .aside').addClass('is-show');
+    }else{
+      $('.cart-block .aside').removeClass('is-show');
+    }
+  });
+
+
+  $(document).on('click', '.prev-step-1', function (e){
+    e.preventDefault();
+    $('.checkout-block .step').removeClass('is-open');
+    $('.checkout-block .step-1').addClass('is-open');
+
+    $(".fix-menu-checkbox .btn-red").removeClass('is-show');
+    $(".fix-menu-checkbox .btn-red:first-child").addClass('is-show');
+  });
+
+  $(document).on('click', '.prev-step-2', function (e){
+    e.preventDefault();
+    $('.checkout-block .step').removeClass('is-open');
+    $('.checkout-block .step-2').addClass('is-open');
+    $('.cart-block .aside').removeClass('is-show');
+    $(".fix-menu-checkbox .btn-red").removeClass('is-show');
+    $(".fix-menu-checkbox .btn-red:nth-child(2)").addClass('is-show');
   });
 
 });
