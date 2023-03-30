@@ -961,4 +961,6 @@ jQuery(document).ready(function ($) {
     $(".fix-menu-checkbox .btn-red:nth-child(2)").addClass('is-show');
   });
 
+
+
 });
