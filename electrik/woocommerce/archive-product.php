@@ -26,80 +26,177 @@ get_header( 'shop' );
  * @hooked woocommerce_breadcrumb - 20
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
-do_action( 'woocommerce_before_main_content' );
+//do_action( 'woocommerce_before_main_content' );
 
 ?>
-<header class="woocommerce-products-header">
-	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-	<?php endif; ?>
 
-	<?php
-	/**
-	 * Hook: woocommerce_archive_description.
-	 *
-	 * @hooked woocommerce_taxonomy_archive_description - 10
-	 * @hooked woocommerce_product_archive_description - 10
-	 */
-	do_action( 'woocommerce_archive_description' );
-	?>
-</header>
 <?php
-if ( woocommerce_product_loop() ) {
+get_template_part('parts/breadcrumbs');
+?>
 
-	/**
-	 * Hook: woocommerce_before_shop_loop.
-	 *
-	 * @hooked woocommerce_output_all_notices - 10
-	 * @hooked woocommerce_result_count - 20
-	 * @hooked woocommerce_catalog_ordering - 30
-	 */
-	do_action( 'woocommerce_before_shop_loop' );
 
-	woocommerce_product_loop_start();
+    <section class="catalog">
+        <div action="#" class="filter-form" >
+            <div class="content-width">
+                <div class="top">
+                    <h1><?php woocommerce_page_title(); ?> <img src="<?= get_template_directory_uri() ?>/img/icon-31.svg" alt=""></h1>
+                    <div class="find">
+                        <p><img src="<?= get_template_directory_uri() ?>/img/icon-32.svg" alt="">
+                            <span>
+                                <?= _n( 'Найден', 'Найдено', $wp_query->found_posts  ); ?>
 
-	if ( wc_get_loop_prop( 'total' ) ) {
-		while ( have_posts() ) {
-			the_post();
+                            </span><b class="total-find"><?= $wp_query->found_posts ?> <span><?= _n( 'товар', 'товаров', $wp_query->found_posts  ); ?></span></b></p>
+                    </div>
+                </div>
 
-			/**
-			 * Hook: woocommerce_shop_loop.
-			 */
-			do_action( 'woocommerce_shop_loop' );
+                <div class="catalog-content">
+                    <div class="left-filter">
+                        <div class="wrap">
 
-			wc_get_template_part( 'content', 'product' );
-		}
-	}
+                            <?= do_shortcode('[br_filters_group group_id=270]') ?>
 
-	woocommerce_product_loop_end();
 
-	/**
-	 * Hook: woocommerce_after_shop_loop.
-	 *
-	 * @hooked woocommerce_pagination - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop' );
-} else {
-	/**
-	 * Hook: woocommerce_no_products_found.
-	 *
-	 * @hooked wc_no_products_found - 10
-	 */
-	do_action( 'woocommerce_no_products_found' );
-}
 
-/**
- * Hook: woocommerce_after_main_content.
- *
- * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
- */
-do_action( 'woocommerce_after_main_content' );
+                            <div class="btn-wrap">
 
-/**
- * Hook: woocommerce_sidebar.
- *
- * @hooked woocommerce_get_sidebar - 10
- */
-do_action( 'woocommerce_sidebar' );
+                                <?= do_shortcode('[br_filter_single filter_id=358]') ?>
 
-get_footer( 'shop' );
+                            </div>
+                        </div>
+                        <div class="item-wrap">
+                            <div class="item item-white">
+                                <div class="bg">
+                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-1.jpg" alt="">
+                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-1-1.jpg" alt="" class="mob">
+                                </div>
+                                <h6>Поможем Вам собрать щиток</h6>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-border">Подробнее</a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="bg">
+                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-2.jpg" alt="">
+                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-2-1.jpg" alt="" class="mob">
+                                </div>
+                                <h6>Товар дня</h6>
+                                <p>Инструмент обжимной АСКО-УКРЕМ SN-06WF</p>
+                                <p class="cost">6 300₽</p>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-border-black">Купить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-content">
+                        <div class="sort-line">
+                            <div class="sort-1">
+                                <?= do_shortcode('[br_filter_single filter_id=273]') ?>
+
+                            </div>
+                            <div class="filter-btn">
+                                <a href="#" class="btn-border-black"><img src="<?= get_template_directory_uri() ?>/img/icon-34.svg" alt="">Фильтр</a>
+                            </div>
+                        </div>
+                        <div class="sort-line-2">
+
+
+
+                                <?php woocommerce_catalog_ordering() ?>
+
+
+
+                            <ul class="view-item">
+                                <li class="in-grid is-active"><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-35-1.svg" alt=""></a></li>
+                                <li class="in-line"><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-35-2.svg" alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="content-product product ">
+                            <div class="title-table">
+                                <div class="data data-1">
+                                    <p>Фото</p>
+                                </div>
+                                <div class="data data-2">
+                                    <p>Название товара</p>
+                                </div>
+                                <div class="data data-3">
+                                    <p>Цена без НДС</p>
+                                </div>
+                                <div class="data data-4">
+                                    <p>Цена с НДС</p>
+                                </div>
+                                <div class="data data-5">
+                                    <p>На складе</p>
+                                </div>
+                                <div class="data data-6">
+                                    <p>Упаковка</p>
+                                </div>
+                                <div class="data data-7">
+                                    <p>Заказ</p>
+                                </div>
+                            </div>
+                            <div class="wrap products-loop">
+                                <?php
+                                if ( wc_get_loop_prop( 'total' ) ) {
+                                    while ( have_posts() ) {
+                                        the_post();
+
+                                        /**
+                                         * Hook: woocommerce_shop_loop.
+                                         */
+                                        do_action( 'woocommerce_shop_loop' );
+
+                                        wc_get_template_part( 'content', 'product' );
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+
+                        <div class="pagination-wrap">
+                            <div class="pagination">
+                                <?php woocommerce_pagination() ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <section class="info-section">
+        <div class="content-width">
+            <h2>Полезная информация <img src="<?= get_template_directory_uri() ?>/img/icon-36.svg" alt=""></h2>
+            <div class="text-wrap">
+                <p>В нашем интернет-магазине можно найти провода для любых целей: монтаж стационарных и подвижных сетей в бытовых или промышленных помещениях, присоединение силовой техники, ремонт бытового оборудования и многое другое.</p>
+                <p>Кабель представляет собой токопроводящее изделие из нескольких изолированных друг от друга металлических проводников (жил). С их помощью подключается различная техника, а также электросети.</p>
+                <p>Монтаж осветительных сетей выполняется с помощью плоских проводов ПУНП и ПУГНП. Это бытовые изделия, предназначенные для проводки тока напряжением до 390 В и частотой 50 Гц. ПУГНП является гибким, поэтому допускает монтаж с сильными перегибами.</p>
+                <p>Использование в электротехнике. Он предназначен для подключения садовой техники и такого бытового оборудования, как микроволновые печи, стиральные машины, холодильники и т.п. Он круглый и имеет двойную изоляцию с заполнением пустот между жилами. Он устойчив к перегибам, истиранию и разрывам.</p>
+                <p>В нашем интернет-магазине можно найти провода для любых целей: монтаж стационарных и подвижных сетей в бытовых или промышленных помещениях, присоединение силовой техники, ремонт бытового оборудования и многое другое.</p>
+                <p>Кабель представляет собой токопроводящее изделие из нескольких изолированных друг от друга металлических проводников (жил). С их помощью подключается различная техника, а также электросети.</p>
+                <p>Монтаж осветительных сетей выполняется с помощью плоских проводов ПУНП и ПУГНП. Это бытовые изделия, предназначенные для проводки тока напряжением до 390 В и частотой 50 Гц. ПУГНП является гибким, поэтому допускает монтаж с сильными перегибами.</p>
+                <p>Использование в электротехнике. Он предназначен для подключения садовой техники и такого бытового оборудования, как микроволновые печи, стиральные машины, холодильники и т.п. Он круглый и имеет двойную изоляцию с заполнением пустот между жилами. Он устойчив к перегибам, истиранию и разрывам.</p>
+                <div class="show-text">
+                    <a href="#">
+                        <span>Показать весь текст</span>
+                        <span>Скрыть весь текст</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<?php
+
+get_footer();
+
+
+
+

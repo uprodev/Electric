@@ -25,7 +25,13 @@
                     <a href="#"><img src="<?= get_template_directory_uri();?>/img/find.svg" alt=""></a>
                 </div>
                 <div class="cabinet-wrap item-wrap">
-                    <a href="#login" class="fancybox"><img src="<?= get_template_directory_uri();?>/img/icon-1.svg" alt=""></a>
+                    <a
+                    <?php if (is_user_logged_in()) { ?>
+                        href="<?= get_permalink(11) ?>"
+                    <?php } else { ?>
+                        href="#login" class="fancybox"
+                    <?php } ?>
+                    ><img src="<?= get_template_directory_uri();?>/img/icon-1.svg" alt=""></a>
                 </div>
                 <div class="favorites-wrap item-wrap">
                     <a href="favorites.html"><img src="<?= get_template_directory_uri();?>/img/icon-2.svg" alt=""></a>
@@ -51,7 +57,7 @@
     <div class="catalog-line">
         <div class="content-width">
             <div class="left">
-                <a href="#">Каталог товаров <img src="img/icon-0.svg" alt=""></a>
+                <a href="#">Каталог товаров <img src="<?= get_template_directory_uri() ?>/img/icon-0.svg" alt=""></a>
                 <form action="<?= home_url( '/' ) ?>" class="form-search">
                     <label for="top-search-mob"></label>
                     <input type="text" name="s" id="top-search-mob" class="top-search">
@@ -81,12 +87,12 @@
             <nav class="site-menu">
                 <ul>
                     <li>
-                        <a href="#"><img src="img/icon-6-1.svg" alt=""><span>Кабель/провод</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-1.svg" alt=""><span>Кабель/провод</span></a>
                         <div class="sub-menu sub-menu-2x">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Кабель/провод <img src="img/icon-6-1.svg" alt=""></h3>
+                            <h3 class="title">Кабель/провод <img src="<?= get_template_directory_uri() ?>/img/icon-6-1.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -107,12 +113,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-2.svg" alt=""><span>Арматура для СИП</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-2.svg" alt=""><span>Арматура для СИП</span></a>
                         <div class="sub-menu sub-menu-2x">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Арматура для СИП <img src="img/icon-6-2.svg" alt=""></h3>
+                            <h3 class="title">Арматура для СИП <img src="<?= get_template_directory_uri() ?>/img/icon-6-2.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -133,12 +139,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-3.svg" alt=""><span>Модульная автоматика</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-3.svg" alt=""><span>Модульная автоматика</span></a>
                         <div class="sub-menu sub-menu-2x">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Модульная автоматика<img src="img/icon-6-3.svg" alt=""></h3>
+                            <h3 class="title">Модульная автоматика<img src="<?= get_template_directory_uri() ?>/img/icon-6-3.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -159,12 +165,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-4.svg" alt=""><span>Силовое оборудование</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-4.svg" alt=""><span>Силовое оборудование</span></a>
                         <div class="sub-menu">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Силовое оборудование<img src="img/icon-6-4.svg" alt=""></h3>
+                            <h3 class="title">Силовое оборудование<img src="<?= get_template_directory_uri() ?>/img/icon-6-4.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -179,12 +185,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-5.svg" alt=""><span>Управление и коммутация</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-5.svg" alt=""><span>Управление и коммутация</span></a>
                         <div class="sub-menu">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Управление и коммутация<img src="img/icon-6-5.svg" alt=""></h3>
+                            <h3 class="title">Управление и коммутация<img src="<?= get_template_directory_uri() ?>/img/icon-6-5.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -199,12 +205,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-6.svg" alt=""><span>Корпуса и аксессуары</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-6.svg" alt=""><span>Корпуса и аксессуары</span></a>
                         <div class="sub-menu">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Корпуса и аксессуары<img src="img/icon-6-6.svg" alt=""></h3>
+                            <h3 class="title">Корпуса и аксессуары<img src="<?= get_template_directory_uri() ?>/img/icon-6-6.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -219,12 +225,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-7.svg" alt=""><span>Электромонтажные изделия</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-7.svg" alt=""><span>Электромонтажные изделия</span></a>
                         <div class="sub-menu">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Электромонтажные изделия<img src="img/icon-6-7.svg" alt=""></h3>
+                            <h3 class="title">Электромонтажные изделия<img src="<?= get_template_directory_uri() ?>/img/icon-6-7.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -239,12 +245,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-8.svg" alt=""><span>Кабеленесущие системы</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-8.svg" alt=""><span>Кабеленесущие системы</span></a>
                         <div class="sub-menu">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Электромонтажные изделия<img src="img/icon-6-8.svg" alt=""></h3>
+                            <h3 class="title">Электромонтажные изделия<img src="<?= get_template_directory_uri() ?>/img/icon-6-8.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -259,12 +265,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-9.svg" alt=""><span>Счетчики и трансформаторы</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-9.svg" alt=""><span>Счетчики и трансформаторы</span></a>
                         <div class="sub-menu">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Счетчики и трансформаторы<img src="img/icon-6-9.svg" alt=""></h3>
+                            <h3 class="title">Счетчики и трансформаторы<img src="<?= get_template_directory_uri() ?>/img/icon-6-9.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -279,12 +285,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-10.svg" alt=""><span>Управление освещением</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-10.svg" alt=""><span>Управление освещением</span></a>
                         <div class="sub-menu">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Управление освещением<img src="img/icon-6-10.svg" alt=""></h3>
+                            <h3 class="title">Управление освещением<img src="<?= get_template_directory_uri() ?>/img/icon-6-10.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -299,12 +305,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"><img src="img/icon-6-11.svg" alt=""><span>Светильники и лампы</span></a>
+                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-11.svg" alt=""><span>Светильники и лампы</span></a>
                         <div class="sub-menu">
                             <div class="prev">
                                 <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
                             </div>
-                            <h3 class="title">Светильники и лампы<img src="img/icon-6-11.svg" alt=""></h3>
+                            <h3 class="title">Светильники и лампы<img src="<?= get_template_directory_uri() ?>/img/icon-6-11.svg" alt=""></h3>
                             <ul>
                                 <li><a href="#">Для электропроводки</a></li>
                                 <li><a href="#">Силовой</a></li>
@@ -334,11 +340,11 @@
 
         <nav class="mob-menu">
             <ul>
-                <li><a href="#"><img src="img/icon-24-1.svg" alt="">О нас</a></li>
-                <li><a href="#"><img src="img/icon-24-2.svg" alt="">Контакты</a></li>
-                <li><a href="#"><img src="img/icon-24-3.svg" alt="">Доставка</a></li>
-                <li><a href="#"><img src="img/icon-24-4.svg" alt="">Оплата</a></li>
-                <li class="last"><a href="#"><img src="img/icon-5.svg" alt="">Специальные предложения</a></li>
+                <li><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-24-1.svg" alt="">О нас</a></li>
+                <li><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-24-2.svg" alt="">Контакты</a></li>
+                <li><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-24-3.svg" alt="">Доставка</a></li>
+                <li><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-24-4.svg" alt="">Оплата</a></li>
+                <li class="last"><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-5.svg" alt="">Специальные предложения</a></li>
 
             </ul>
         </nav>
@@ -362,7 +368,7 @@
             <li class="is-active">
                 <a href="#">
                     <figure>
-                        <img src="img/icon-25-1.svg" alt="">
+                        <img src="<?= get_template_directory_uri() ?>/img/icon-25-1.svg" alt="">
                     </figure>
                     Главная
                 </a>
@@ -370,26 +376,26 @@
             </li>
             <li><a href="#">
                     <figure>
-                        <img src="img/icon-25-2.svg" alt="">
+                        <img src="<?= get_template_directory_uri() ?>/img/icon-25-2.svg" alt="">
                     </figure>
                     Каталог
                 </a></li>
             <li><a href="#">
                     <figure>
-                        <img src="img/icon-25-3.svg" alt="">
+                        <img src="<?= get_template_directory_uri() ?>/img/icon-25-3.svg" alt="">
                         <span>1</span>
                     </figure>
                     Корзина
                 </a></li>
             <li><a href="#">
                     <figure>
-                        <img src="img/icon-25-4.svg" alt="">
+                        <img src="<?= get_template_directory_uri() ?>/img/icon-25-4.svg" alt="">
                     </figure>
                     Избранное
                 </a></li>
             <li><a href="#login" class="fancybox">
                     <figure>
-                        <img src="img/icon-25-5.svg" alt="">
+                        <img src="<?= get_template_directory_uri() ?>/img/icon-25-5.svg" alt="">
                     </figure>
                     Кабинет
                 </a></li>

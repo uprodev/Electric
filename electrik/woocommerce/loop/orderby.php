@@ -16,16 +16,46 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 }
 
 ?>
+
+
 <form class="woocommerce-ordering" method="get">
-	<select name="orderby" class="orderby" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
-		<?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
-			<option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
-		<?php endforeach; ?>
-	</select>
-	<input type="hidden" name="paged" value="1" />
-	<?php wc_query_string_form_fields( null, array( 'orderby', 'submit', 'paged', 'product-page' ) ); ?>
+    <div class="sort-2">
+    <p >Сортировать по:</p>
+    <ul class="desk-filter">
+
+        <?php foreach ( $catalog_orderby_options as $id => $name ) :
+            $i++;
+
+            if ('menu_order' == $id)
+                continue;
+
+            ?>
+            <li class="<?= $orderby == $id ?: 'is-active' ?> ">
+                <input class="orderby0" type="radio" name="orderby0" id="sort-2-<?= $i ?>" value="<?php echo esc_attr( $id ); ?>" <?php checked( $orderby, $id ); ?>>
+                <label for="sort-2-<?= $i ?>"><?php echo esc_html( $name ); ?></label>
+            </li>
+        <?php endforeach; ?>
+
+    </ul>
+    <?php wc_query_string_form_fields( null, array( 'orderby', 'submit', 'paged', 'product-page' ) ); ?>
+
+
+    <div class="select-block-mob ">
+        <div class="nice-select0" tabindex="0">
+
+            <select name="orderby" class="orderby" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
+                <?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
+                    <option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
+                <?php endforeach; ?>
+            </select>
+
+        </div>
+    </div>
+
+    </div>
 </form>
+

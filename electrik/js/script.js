@@ -154,7 +154,7 @@ jQuery(document).ready(function ($) {
   });
 
   /*col product*/
-  $(".btn-count-plus").click(function () {
+  $(document).on('click', ".btn-count-plus", function () {
     var e = $(this).parent().find("input");
     return e.val(parseInt(e.val()) + 1), e.change(), !1
   }), $(".btn-count-minus").click(function () {
@@ -277,11 +277,11 @@ jQuery(document).ready(function ($) {
   });
 
   $(document).on('click', '.btn-reg', function (e){
-    $.fancybox.close();
-    $.fancybox.open( $('#send-ok'), {
-      touch:false,
-      autoFocus:false,
-    });
+    // $.fancybox.close();
+    // $.fancybox.open( $('#send-ok'), {
+    //   touch:false,
+    //   autoFocus:false,
+    // });
   });
 
   $(document).on('click', '.repair-ok', function (e){
@@ -306,11 +306,11 @@ jQuery(document).ready(function ($) {
 
   $(document).on('click', '.btn-send-password', function (e){
     console.log('send-password-ok')
-    $.fancybox.close();
-    $.fancybox.open( $('#send-ok-password'), {
-      touch:false,
-      autoFocus:false,
-    });
+    // $.fancybox.close();
+    // $.fancybox.open( $('#send-ok-password'), {
+    //   touch:false,
+    //   autoFocus:false,
+    // });
   });
 
   //RANGE
