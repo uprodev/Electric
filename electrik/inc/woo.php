@@ -47,3 +47,88 @@ function min_variation_price( $price, $product ) {
     return $price;
 
 }
+
+
+remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
+add_action('woocommerce_payment_placement', 'woocommerce_checkout_payment', 20);
+
+
+
+
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
+function custom_override_checkout_fields($fields)
+{
+
+    $fields['shipping']['shipping_city']['required'] = false;
+    $fields['shipping']['shipping_address_1']['required'] = false;
+    $fields['shipping']['shipping_postcode']['required'] = false;
+
+    unset($fields['shipping']['shipping_first_name']);
+    unset($fields['shipping']['shipping_last_name']);
+    unset($fields['shipping']['shipping_state']);
+    unset($fields['billing']['billing_last_name']);
+
+    unset($fields['billing']['billing_address_1']);
+    unset($fields['billing']['billing_address_2']);
+    unset($fields['billing']['billing_state']);
+    unset($fields['billing']['billing_postcode']);
+    unset($fields['billing']['billing_city']);
+
+
+//    $fields['billing']['billing_company']['placeholder'] = 'Business Name';
+//    $fields['billing']['billing_company']['label'] = 'Business Name';
+//    $fields['billing']['billing_first_name']['placeholder'] = 'First Name';
+//    $fields['shipping']['shipping_first_name']['placeholder'] = 'First Name';
+//    $fields['shipping']['shipping_last_name']['placeholder'] = 'Last Name';
+//    $fields['shipping']['shipping_company']['placeholder'] = 'Company Name';
+//    $fields['billing']['billing_last_name']['placeholder'] = 'Last Name';
+//    $fields['billing']['billing_email']['placeholder'] = 'Email Address ';
+//    $fields['billing']['billing_phone']['placeholder'] = 'Phone ';
+    return $fields;
+}
+
+
+add_filter( 'woocommerce_form_field' , 'elex_remove_checkout_optional_text', 10, 4 );
+function elex_remove_checkout_optional_text( $field, $key, $args, $value ) {
+    if( is_checkout() && ! is_wc_endpoint_url() ) {
+        $optional = '&nbsp;<span class="optional">(' . esc_html__( 'optional', 'woocommerce' ) . ')</span>';
+        $field = str_replace( $optional, '', $field );
+    }
+    return $field;
+}
+
+
+add_action( 'woocommerce_after_checkout_validation', 'custom_validation', 10, 2 );
+
+function custom_validation( $fields, $errors ){
+
+    $method = explode(':', WC()->session->get('chosen_shipping_methods')[0])[0];
+    $post_fields = [
+        'shipping_city' => '<b>Город доставки</b> является обязательным полем.',
+        'shipping_address_1' => '<b>Адрес доставки</b> является обязательным полем.',
+       // 'shipping_postcode' => '<b>Имя для выставления счета</b> является обязательным полем.',
+    ];
+
+
+    if ($method == 'flat_rate') {
+
+        foreach ($post_fields as $field => $error) {
+            if (!$_POST[$field])
+                $errors->add( 'validation',   $error );
+
+        }
+
+    }
+
+}
+
+
+add_action('woocommerce_checkout_process', 'my_custom_checkout_field_process');
+
+function my_custom_checkout_field_process() {
+    // Check if set, if its not set add an error.
+    if (  $_POST['payment_method'] == 'bacs' ) {
+
+    }
+        
+}

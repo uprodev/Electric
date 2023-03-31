@@ -2,20 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="704ff060-e78c-449b-84eb-50f99643ecc4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/css/jquery.fancybox.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/css/jquery.fancybox.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/css/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/css/normalize.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/css/responsive.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/css/responsive.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/css/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/css/styles.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electrik/inc/ajax-actions.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/inc/ajax-actions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electrik/inc/enqueue.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/inc/enqueue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/inc/extras.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/inc/extras.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/inc/woo.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/inc/woo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/js/ion.rangeSlider.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/js/ion.rangeSlider.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/js/jquery.dotdotdot.js" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/js/jquery.dotdotdot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/js/jquery.sticky.js" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/js/jquery.sticky.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electrik/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electrik/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electrik/templates/header-menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/templates/header-menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electrik/templates/popups.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/templates/popups.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/archive-product.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/archive-product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/sass/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/sass/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/cart/cart-empty.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/cart/cart-empty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/cart/cart-shipping.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/cart/cart-shipping.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electrik/woocommerce/cart/cart-totals.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/cart/cart-totals.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electrik/woocommerce/cart/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/cart/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/checkout/form-billing.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/checkout/form-billing.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electrik/woocommerce/checkout/form-checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/checkout/form-checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/loop/orderby.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/loop/orderby.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/loop/pagination.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/loop/pagination.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/checkout/form-shipping.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/checkout/form-shipping.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/checkout/payment-method.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/checkout/payment-method.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/checkout/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/checkout/payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electrik/woocommerce/checkout/review-order.php" beforeDir="false" afterPath="$PROJECT_DIR$/electrik/woocommerce/checkout/review-order.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,19 +43,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/archive-product.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="47" column="150" selection-start-line="47" selection-start-column="93" selection-end-line="47" selection-end-column="150" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/electrik/inc/ajax-actions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="232" selection-start-line="232" selection-end-line="232" />
+            <state relative-caret-position="613">
+              <caret line="256" column="13" selection-start-line="256" selection-start-column="13" selection-end-line="256" selection-end-column="13" />
               <folding>
                 <element signature="n#ajax_login#0;n#!!top" />
               </folding>
@@ -52,50 +55,66 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/cart.php">
+        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/form-checkout.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1225">
+              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#section#0;n#!!top" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/cart-empty.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/payment.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
-              <caret line="185" column="39" selection-start-line="185" selection-start-column="39" selection-end-line="185" selection-end-column="39" />
+              <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
               <folding>
-                <element signature="e#18970#19098#0#PHP" expanded="true" />
+                <element signature="e#805#836#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/form-shipping.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="53" column="129" selection-start-line="53" selection-start-column="129" selection-end-line="53" selection-end-column="129" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/form-billing.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/form-checkout.php">
+        <entry file="file://$PROJECT_DIR$/electrik/inc/woo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="375" selection-start-line="375" selection-end-line="375" />
+            <state relative-caret-position="647">
+              <caret line="130" column="41" selection-start-line="130" selection-start-column="41" selection-end-line="130" selection-end-column="41" />
               <folding>
-                <element signature="n#section#0;n#!!top" />
+                <element signature="e#0#6#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/electrik/html/checkout.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="753" column="18" lean-forward="true" selection-start-line="412" selection-start-column="8" selection-end-line="753" selection-end-column="18" />
-              <folding>
-                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/form-coupon.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="23" column="2" lean-forward="true" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -103,29 +122,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/electrik/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
+            <state relative-caret-position="537">
+              <caret line="835" lean-forward="true" selection-start-line="835" selection-end-line="835" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/cart-totals.php">
+        <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/payment-method.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="38" column="28" lean-forward="true" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/electrik/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="187" column="27" lean-forward="true" selection-start-line="187" selection-start-column="4" selection-end-line="187" selection-end-column="27" />
-              <folding>
-                <element signature="e#1635#2269#0" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
@@ -150,6 +157,8 @@
       <find>btn-count-plus</find>
       <find>_n</find>
       <find>src=&quot;img</find>
+      <find>select-step</find>
+      <find>wrap-hide-show-2</find>
     </findStrings>
     <replaceStrings>
       <replace>src=&quot;&lt;?= get_template_directory_uri() ?&gt;/img</replace>
@@ -168,13 +177,23 @@
         <option value="$PROJECT_DIR$/electrik/inc/enqueue.php" />
         <option value="$PROJECT_DIR$/electrik/templates/popups.php" />
         <option value="$PROJECT_DIR$/electrik/templates/header-menu.php" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/checkout/form-coupon.php" />
+        <option value="$PROJECT_DIR$/electrik/inc/extras.php" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/cart/cart.php" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/cart/cart-totals.php" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/cart/cart-shipping.php" />
         <option value="$PROJECT_DIR$/electrik/inc/ajax-actions.php" />
         <option value="$PROJECT_DIR$/electrik/js/main.js" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/checkout/review-order.php" />
+        <option value="/private/var/folders/pc/2b1pm9290lnd6pbrj6gpw_0m0000gn/T/fz3temp-2/footer.blade.php" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/checkout/payment-method.php" />
         <option value="$PROJECT_DIR$/electrik/js/script.js" />
-        <option value="$PROJECT_DIR$/electrik/woocommerce/cart/cart-totals.php" />
-        <option value="$PROJECT_DIR$/electrik/woocommerce/checkout/form-coupon.php" />
-        <option value="$PROJECT_DIR$/electrik/woocommerce/cart/cart.php" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/checkout/form-billing.php" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/checkout/payment.php" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/checkout/form-shipping.php" />
         <option value="$PROJECT_DIR$/electrik/woocommerce/checkout/form-checkout.php" />
+        <option value="$PROJECT_DIR$/electrik/woocommerce/cart/cart-empty.php" />
+        <option value="$PROJECT_DIR$/electrik/inc/woo.php" />
       </list>
     </option>
   </component>
@@ -205,7 +224,20 @@
               <item name="Electric" type="b2602c69:ProjectViewProjectNode" />
               <item name="Electric" type="462c0819:PsiDirectoryNode" />
               <item name="electrik" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Electric" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Electric" type="462c0819:PsiDirectoryNode" />
+              <item name="electrik" type="462c0819:PsiDirectoryNode" />
               <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Electric" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Electric" type="462c0819:PsiDirectoryNode" />
+              <item name="electrik" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Electric" type="b2602c69:ProjectViewProjectNode" />
@@ -265,12 +297,17 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/electrik" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/electrik" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -297,12 +334,12 @@
       <updated>1680016855770</updated>
       <workItem from="1680016857545" duration="327000" />
       <workItem from="1680074250852" duration="363000" />
-      <workItem from="1680079988601" duration="13947000" />
+      <workItem from="1680079988601" duration="26931000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15666000" />
+    <option name="totallyTimeSpent" value="28650000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -466,20 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/electrik/inc/woo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/electrik/inc/enqueue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/electrik/footer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-119" />
@@ -515,82 +538,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/electrik/html/cart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="595" column="18" lean-forward="true" selection-start-line="448" selection-start-column="8" selection-end-line="595" selection-end-column="18" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#nav#0;n#div#2;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/electrik/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="187" column="27" lean-forward="true" selection-start-line="187" selection-start-column="4" selection-end-line="187" selection-end-column="27" />
-          <folding>
-            <element signature="e#1635#2269#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/electrik/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/archive-product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="47" column="150" selection-start-line="47" selection-start-column="93" selection-end-line="47" selection-end-column="150" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/cart-totals.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="38" column="28" lean-forward="true" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/form-coupon.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="23" column="2" lean-forward="true" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/electrik/inc/ajax-actions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="232" selection-start-line="232" selection-end-line="232" />
-          <folding>
-            <element signature="n#ajax_login#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/cart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="185" column="39" selection-start-line="185" selection-start-column="39" selection-end-line="185" selection-end-column="39" />
-          <folding>
-            <element signature="e#18970#19098#0#PHP" expanded="true" />
-          </folding>
+          <caret line="23" column="2" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/electrik/html/checkout.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="531">
-          <caret line="753" column="18" lean-forward="true" selection-start-line="412" selection-start-column="8" selection-end-line="753" selection-end-column="18" />
+          <caret line="753" column="18" selection-start-line="412" selection-start-column="8" selection-end-line="753" selection-end-column="18" />
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
@@ -601,12 +559,188 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/css/aos.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/html/cart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="366" column="11" selection-start-line="366" selection-start-column="11" selection-end-line="366" selection-end-column="11" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#nav#0;n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/html/cart-null.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="468" column="18" selection-start-line="454" selection-start-column="8" selection-end-line="468" selection-end-column="18" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#section#0;n#main#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/inc/extras.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/shipping-calculator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-544" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/cart-totals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="54" column="13" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="54" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/cart-shipping.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="31" column="93" selection-start-line="31" selection-start-column="93" selection-end-line="31" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/cart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="197" column="28" selection-start-line="197" selection-start-column="28" selection-end-line="212" />
+          <folding>
+            <element signature="e#18970#19098#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/archive-product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="32" selection-start-line="32" selection-end-line="34" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/inc/enqueue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="222" column="22" selection-start-line="222" selection-start-column="22" selection-end-line="222" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/review-order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///private/var/folders/pc/2b1pm9290lnd6pbrj6gpw_0m0000gn/T/fz3temp-2/footer.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="75" column="19" lean-forward="true" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="835" lean-forward="true" selection-start-line="835" selection-end-line="835" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/payment-method.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/form-billing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+          <folding>
+            <element signature="e#805#836#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/form-shipping.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="53" column="129" selection-start-line="53" selection-start-column="129" selection-end-line="53" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/woocommerce/cart/cart-empty.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/electrik/woocommerce/checkout/form-checkout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="375" selection-start-line="375" selection-end-line="375" />
+        <state relative-caret-position="-1225">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
           <folding>
-            <element signature="n#section#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#section#0;n#!!top" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/inc/ajax-actions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="256" column="13" selection-start-line="256" selection-start-column="13" selection-end-line="256" selection-end-column="13" />
+          <folding>
+            <element signature="n#ajax_login#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electrik/inc/woo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="130" column="41" selection-start-line="130" selection-start-column="41" selection-end-line="130" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#6#0" expanded="true" />
           </folding>
         </state>
       </provider>

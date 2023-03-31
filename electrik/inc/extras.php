@@ -17,3 +17,15 @@ function my_navigation_template( $template, $class ){
 	</nav>
 	';
 }
+
+/* body_class */
+
+add_filter( 'body_class','my_class_names' );
+function my_class_names( $classes ) {
+
+    // добавим класс 'class-name' в массив классов $classes
+    if( is_checkout() || is_cart() )
+        $classes[] = 'hide-mob-header-footer';
+
+    return $classes;
+}

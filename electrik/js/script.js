@@ -154,7 +154,7 @@ jQuery(document).ready(function ($) {
   });
 
   /*col product*/
-  $(document).on('click', ".btn-count-plus", function () {
+  $(".btn-count-plus").click(function () {
     var e = $(this).parent().find("input");
     return e.val(parseInt(e.val()) + 1), e.change(), !1
   }), $(".btn-count-minus").click(function () {
@@ -277,11 +277,11 @@ jQuery(document).ready(function ($) {
   });
 
   $(document).on('click', '.btn-reg', function (e){
-    // $.fancybox.close();
-    // $.fancybox.open( $('#send-ok'), {
-    //   touch:false,
-    //   autoFocus:false,
-    // });
+    $.fancybox.close();
+    $.fancybox.open( $('#send-ok'), {
+      touch:false,
+      autoFocus:false,
+    });
   });
 
   $(document).on('click', '.repair-ok', function (e){
@@ -306,11 +306,11 @@ jQuery(document).ready(function ($) {
 
   $(document).on('click', '.btn-send-password', function (e){
     console.log('send-password-ok')
-    // $.fancybox.close();
-    // $.fancybox.open( $('#send-ok-password'), {
-    //   touch:false,
-    //   autoFocus:false,
-    // });
+    $.fancybox.close();
+    $.fancybox.open( $('#send-ok-password'), {
+      touch:false,
+      autoFocus:false,
+    });
   });
 
   //RANGE
@@ -818,14 +818,15 @@ jQuery(document).ready(function ($) {
 
   });
 
-  $(document).on('click','.select-step-2 input',function(){
+  $(document).on('change','.select-step-2 input',function(){
 
     $('.select-step-2 .select').removeClass('is-active');
     $('.select-step-2 input:checked').closest('.select').addClass('is-active');
 
     let index = $('.select-step-2 .select.is-active').index() + 1;
-    console.log(index)
-    if(index > 2){
+    var method = $(this).val()
+    console.log(method)
+    if(method == 'bacs'){
       $('.wrap-hide-show-2 .select-item').show()
     }else{
       $('.wrap-hide-show-2 .select-item').hide()

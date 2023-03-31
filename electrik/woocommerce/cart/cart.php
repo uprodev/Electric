@@ -19,10 +19,11 @@ defined( 'ABSPATH' ) || exit;
 
  ?>
 
+<?php
+get_template_part('parts/breadcrumbs');
+?>
 
 <section class="cart-block">
-
-
 
     <form action="#" class="form-icon woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
         <div class="content-width">
@@ -33,7 +34,7 @@ defined( 'ABSPATH' ) || exit;
             <div class="top">
                 <div class="title">
                     <h1>Корзина</h1>
-<!--                    <p>№ 13454646</p>-->
+ 
                 </div>
                 <div class="btn-wrap">
                     <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-68.svg" alt=""></a>
