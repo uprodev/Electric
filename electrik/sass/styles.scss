@@ -6834,6 +6834,118 @@ main{
 .is-sticky .catalog-line .content-width:after {
   opacity: 0;
 }
+
+.irs--flat .irs-handle, .irs--flat .irs-handle{
+  width: 10px;
+  height: 10px;
+  background: #C71E27;
+  top: 21px;
+  cursor: pointer;
+}
+.irs--flat .irs-handle i, .irs--flat .irs-handle i{
+  background: transparent!important;
+}
+
+
+.irs--flat .irs-from, .irs--flat .irs-single, .irs--flat .irs-to{
+  background-color: #C71E27;
+}
+
+.irs-from:after, .irs-to:after, .irs-single:after{
+  border-top-color: #C71E27;
+}
+
+.bapf_sfilter .bapf_hascolarr, .bapf_sfilter .bapf_hasdesc{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.bapf_sfilter .bapf_colaps_smb, .bapf_sfilter .bapf_desci{
+  font-size: 10px;
+  color: #AAAAAA;
+}
+
+body .bapf_sfilter ul li{
+  margin-bottom: 15px!important;
+  position: relative;
+}
+body .bapf_sfilter ul li input{
+  position: absolute!important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer!important;
+  opacity: 0;
+  z-index: 3;
+}
+body .bapf_sfilter ul li label{
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+}
+body .bapf_sfilter ul li label:after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  background: url(../img/icon-33.svg) no-repeat center;
+  background-size: cover;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+}
+body .bapf_sfilter ul li label:before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  border: 1px solid #DADADA;
+  width: 20px;
+  height: 20px;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body .bapf_sfilter ul li input:checked + label:before{
+  opacity: 0;
+}
+body .bapf_sfilter ul li input:checked + label:after{
+  opacity: 1;
+}
+
+.catalog .btn-wrap button{
+  width: 100%;
+}
+
+.catalog .btn-wrap .bapf_body{
+  width: 100%;
+}
+
+.product .product-item .cost ins{
+  color: #292929;
+  font-weight: 400!important;
+}
+
+.lmp_products_loading a, .lmp_load_more_button a{
+  width: 100%;
+  background: #fff!important;
+}
+
+.lmp_products_loading, .lmp_load_more_button{
+  margin-bottom: 20px;
+}
+
+body .lmp_load_more_button.br_lmp_button_settings .lmp_button:hover{
+  border-color: #292929!important;
+  background: #fff!important;
+  color: #292929!important;
+}
 /*--------------END-SITE-----------------------*/
 
 .product-inner .cost-wrap .cost{
