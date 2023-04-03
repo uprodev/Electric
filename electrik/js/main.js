@@ -16,7 +16,7 @@ jQuery(document).ready(function ($) {
         $('.add-to-cart').attr('data-variation_id', variation.variation_id);
 
 
-            $('.cost').html(variation.price_html);
+        $('.cost').html(variation.price_html);
 
 
     });
@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
      * order
      */
 
-    $(document).on('change',  '.desk-filter input', function(){
+    $(document).on('change', '.desk-filter input', function () {
         var val = $(this).val();
         $('.orderby').val(val).change()
 
@@ -47,10 +47,10 @@ jQuery(document).ready(function ($) {
      * login
      */
 
-    if($('.loginform').length)
+    if ($('.loginform').length)
         $('.loginform').validate({
 
-            submitHandler: function(form) {
+            submitHandler: function (form) {
 
                 var data = $('.loginform').serialize()
                 $.ajax({
@@ -58,7 +58,7 @@ jQuery(document).ready(function ($) {
                     data: data,
                     type: 'POST',
                     dataType: 'json',
-                    success:function(data){
+                    success: function (data) {
                         if (data) {
                             console.log(data)
 
@@ -73,10 +73,10 @@ jQuery(document).ready(function ($) {
             }
         });
 
-    if($('.registerform').length)
+    if ($('.registerform').length)
         $('.registerform').validate({
 
-            submitHandler: function(form) {
+            submitHandler: function (form) {
 
                 var data = $('.registerform').serialize()
                 $.ajax({
@@ -84,15 +84,15 @@ jQuery(document).ready(function ($) {
                     data: data,
                     type: 'POST',
                     dataType: 'json',
-                    success:function(data){
+                    success: function (data) {
                         if (data) {
                             console.log(data)
 
                             if (data.update) {
                                 $.fancybox.close();
-                                $.fancybox.open( $('#send-ok'), {
-                                    touch:false,
-                                    autoFocus:false,
+                                $.fancybox.open($('#send-ok'), {
+                                    touch: false,
+                                    autoFocus: false,
                                 });
                             }
 
@@ -107,10 +107,10 @@ jQuery(document).ready(function ($) {
         });
 
 
-    if($('.lostpasswordform').length)
+    if ($('.lostpasswordform').length)
         $('.lostpasswordform').validate({
 
-            submitHandler: function(form) {
+            submitHandler: function (form) {
 
                 var data = $('.lostpasswordform').serialize()
                 $.ajax({
@@ -118,16 +118,16 @@ jQuery(document).ready(function ($) {
                     data: data,
                     type: 'POST',
                     dataType: 'json',
-                    success:function(data){
+                    success: function (data) {
                         if (data) {
-                            console.log(data)
+
 
                             $('.result-reset').html(data.status)
 
                             $.fancybox.close();
-                            $.fancybox.open( $('#send-ok-password'), {
-                                touch:false,
-                                autoFocus:false,
+                            $.fancybox.open($('#send-ok-password'), {
+                                touch: false,
+                                autoFocus: false,
                             });
 
 
@@ -183,12 +183,10 @@ jQuery(document).ready(function ($) {
     });
 
 
-
-
     $(document).on('click', '.delete-items', function () {
 
         var item_hash = [];
-        $('.product-item.is-select').each(function(){
+        $('.product-item.is-select').each(function () {
 
             item_hash.push($(this).find('.delete-item a').attr('data-hash'));
 
@@ -209,6 +207,33 @@ jQuery(document).ready(function ($) {
 
 
     });
+
+
+
+    $(document).on('click', '[name="apply_coupon_chekout"]', function (e) {
+
+        e.preventDefault()
+
+        var coupon = $('#code').val();
+        $.ajax({
+            type: 'POST',
+            url: wc_add_to_cart_params.ajax_url,
+            data: {
+                action: 'apply_coupon',
+                coupon: coupon,
+            },
+            success: function (data) {
+                console.log(data)
+                $(document.body).trigger('update_checkout');
+
+            },
+        });
+
+
+
+    });
+
+
 
 
 

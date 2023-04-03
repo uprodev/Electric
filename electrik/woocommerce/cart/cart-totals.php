@@ -32,11 +32,20 @@ defined( 'ABSPATH' ) || exit;
         <?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
 
             <li class="red">
-                <p>Скидка <?php wc_cart_totals_coupon_label( $coupon ); ?></p>
+                <p><?php wc_cart_totals_coupon_label( $coupon ); ?></p>
                 <p><?php wc_cart_totals_coupon_html( $coupon ); ?></p>
             </li>
 
         <?php endforeach; ?>
+
+
+        <?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
+            <li>
+                <p><?php echo esc_html( $fee->name ); ?></p>
+                <p data-title="<?php echo esc_attr( $fee->name ); ?>"><?php wc_cart_totals_fee_html( $fee ); ?></p>
+            </li>
+        <?php endforeach; ?>
+
 
 
 

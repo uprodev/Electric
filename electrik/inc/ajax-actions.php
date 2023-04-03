@@ -5,7 +5,8 @@ $actions = [
     'ajax_login',
     'ajax_reset',
     'qty_cart',
-    'remove_item_from_cart'
+    'remove_item_from_cart',
+    'apply_coupon'
 ];
 foreach ($actions as $action) {
     add_action("wp_ajax_{$action}", $action);
@@ -238,6 +239,22 @@ function remove_item_from_cart()
     wp_send_json(
         [
             'count' => $count,
+        ]
+    );
+    die();
+}
+
+
+function apply_coupon()
+{
+    $coupon = $_POST['coupon'];
+
+    WC()->cart->apply_coupon( $coupon );
+
+
+    wp_send_json(
+        [
+            'coupon' => $coupon,
         ]
     );
     die();

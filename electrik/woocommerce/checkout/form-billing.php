@@ -17,32 +17,49 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$icons = [
+    'billing_first_name' => 'icon-46',
+    'billing_email' => 'icon-26-1',
+    'billing_phone' => 'icon-49',
+
+];
+
+
 ?>
-<div class="woocommerce-billing-fields">
-	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-		<h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
-
-	<?php else : ?>
-
-		<h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
-
-	<?php endif; ?>
 
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
-	<div class="woocommerce-billing-fields__field-wrapper">
-		<?php
-		$fields = $checkout->get_checkout_fields( 'billing' );
 
-		foreach ( $fields as $key => $field ) {
-			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-		}
-		?>
-	</div>
+
+        <?php
+        $fields = $checkout->get_checkout_fields( 'billing' );
+
+        foreach ( $fields as $key => $field ) {
+
+            if ($key == 'billing_country')
+                continue;
+            ?>
+
+            <div class="input-wrap input-wrap-50">
+
+                <?php
+                $field['placeholder'] =  $field['label'];
+                $field['label'] = '<img src="'.get_template_directory_uri().'/img/'.$icons[$key].'.svg" alt="">';
+                $field['class'] =  '';
+
+                woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
+            </div>
+            <?php
+        }
+        ?>
+
+
+
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
-</div>
+
 
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
 	<div class="woocommerce-account-fields">
@@ -72,3 +89,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
 	</div>
 <?php endif; ?>
+
+
+<input type="hidden" name="billing_country" id="billing_country" value="BY"   readonly="readonly">
+
