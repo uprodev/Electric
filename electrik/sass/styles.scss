@@ -6946,9 +6946,23 @@ body .lmp_load_more_button.br_lmp_button_settings .lmp_button:hover{
   background: #fff!important;
   color: #292929!important;
 }
+.cabinet .info-bottom-link a{
+  color: $red;
+}
+
+.is-open .site-menu-wrap .content-width{
+  -webkit-box-shadow: 0px -4px 70px rgba(0, 0, 0, 0.07);
+  box-shadow: 0px -4px 70px rgba(0, 0, 0, 0.07);
+  padding-bottom: 25px;
+}
+
+
+.cabinet .item-order, .cabinet .aside {
+  border: 2px solid #EEEEEE;
+}
 /*--------------END-SITE-----------------------*/
 
-/*.product-inner .cost-wrap .cost{
+.product-inner .cost-wrap .cost{
   flex-direction: row;
   flex-wrap: wrap;
   del{
@@ -6975,5 +6989,5 @@ body .lmp_load_more_button.br_lmp_button_settings .lmp_button:hover{
     line-height: 19px;
     color: #AAAAAA;
   }
-}*/
+}
 

@@ -1530,7 +1530,7 @@
   }
   .fix-menu .btn-wrap {
     display: flex;
-    padding: 5px 20px 20px;
+    padding: 0 20px 15px;
     margin-bottom: 20px;
     border-bottom: 1px solid #eee;
     justify-content: space-between;
@@ -2380,9 +2380,6 @@
     font-size: 13px;
     line-height: 15px;
   }
-  .catalog .top p span {
-    display: none;
-  }
   .catalog .top p img {
     display: none;
   }
@@ -2523,16 +2520,16 @@
     right: 0;
     left: -20px;
     content: "";
-    height: 1px;
+    height: 2px;
     background: #EEEEEE;
   }
   .catalog .content-product.product.is-line .product-item:before {
     position: absolute;
-    top: -1px;
+    top: -2px;
     right: -20px;
     left: 0;
     content: "";
-    height: 1px;
+    height: 2px;
     background: #EEEEEE;
   }
   .catalog .content-product .product-item:nth-child(2n) {
@@ -4076,6 +4073,63 @@
   }
   .checkout-block .step-1 {
     padding-bottom: 200px;
+  }
+  .catalog .sort-line-2 .select-block-mob .nice-select:after {
+    margin-top: -6px;
+  }
+  .article-block .mini-menu h2 {
+    padding-left: 15px;
+  }
+  .article-block .mini-menu ul {
+    margin-bottom: 0;
+  }
+  .checkout-block .select-step .select label {
+    border-width: 2px;
+    padding: 10px 8px;
+  }
+  .catalog .product.is-line .product-item .line-info {
+    top: 12px;
+  }
+  .catalog .left-filter .wrap .item a:hover {
+    color: #292929;
+  }
+  .cart-block .aside {
+    display: block;
+  }
+  .checkout-block .aside {
+    display: none;
+  }
+  .cart-block .aside .item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+  .cart-block .aside .item {
+    padding: 20px 0 0;
+    border: none;
+  }
+  .cart-block .aside .item .wrap .input-wrap {
+    display: none;
+  }
+  .cart-block .aside .item .wrap:before {
+    display: none;
+  }
+  .checkout-block .aside .item {
+    padding: 20px 15px;
+    border: 1px solid #eeeeee;
+  }
+  .checkout-block .aside .item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .checkout-block .aside .item .wrap .input-wrap {
+    display: block;
+  }
+  .checkout-block .aside .item .wrap {
+    padding-top: 0;
   }
 }
 @media (max-width: 359px) {
