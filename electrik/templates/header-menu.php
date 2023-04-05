@@ -34,14 +34,14 @@
                     ><img src="<?= get_template_directory_uri();?>/img/icon-1.svg" alt=""></a>
                 </div>
                 <div class="favorites-wrap item-wrap">
-                    <a href="favorites.html"><img src="<?= get_template_directory_uri();?>/img/icon-2.svg" alt=""></a>
+                    <a href="<?php the_permalink(429) ?>"><img src="<?= get_template_directory_uri();?>/img/icon-2.svg" alt=""></a>
                 </div>
                 <div class="card-wrap is-active item-wrap">
                     <a href="<?= wc_get_cart_url();?>">
                         <div class="icon-wrap">
                             <img src="<?= get_template_directory_uri();?>/img/icon-25-3.svg" alt="">
                         </div>
-                        <p>3 448₽</p>
+                        <p class="cart-header"><?= WC()->cart->get_cart_total() ?></p>
                     </a>
                 </div>
                 <div class="open-menu">
@@ -57,7 +57,7 @@
     <div class="catalog-line">
         <div class="content-width">
             <div class="left">
-                <a href="#">Каталог товаров <img src="<?= get_template_directory_uri() ?>/img/icon-0.svg" alt=""></a>
+                <a href="/shop">Каталог товаров <img src="<?= get_template_directory_uri() ?>/img/icon-0.svg" alt=""></a>
                 <form action="<?= home_url( '/' ) ?>" class="form-search">
                     <label for="top-search-mob"></label>
                     <input type="text" name="s" id="top-search-mob" class="top-search">
@@ -86,244 +86,49 @@
         <div class="content-width">
             <nav class="site-menu">
                 <ul>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-1.svg" alt=""><span>Кабель/провод</span></a>
-                        <div class="sub-menu sub-menu-2x">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Кабель/провод <img src="<?= get_template_directory_uri() ?>/img/icon-6-1.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
-                                <li><a href="#">Сигнальный и передачи данных</a></li>
-                                <li><a href="#">Для видеонаблюдения</a></li>
-                                <li><a href="#">Телефонный</a></li>
-                                <li><a href="#">Для обмоток трансформатора</a></li>
-                                <li><a href="#">Для сигнализации</a></li>
-                                <li><a href="#">С несущей жилой</a></li>
-                                <li><a href="#">Для подогрева труб и крыш</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-2.svg" alt=""><span>Арматура для СИП</span></a>
-                        <div class="sub-menu sub-menu-2x">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Арматура для СИП <img src="<?= get_template_directory_uri() ?>/img/icon-6-2.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
-                                <li><a href="#">Сигнальный и передачи данных</a></li>
-                                <li><a href="#">Для видеонаблюдения</a></li>
-                                <li><a href="#">Телефонный</a></li>
-                                <li><a href="#">Для обмоток трансформатора</a></li>
-                                <li><a href="#">Для сигнализации</a></li>
-                                <li><a href="#">С несущей жилой</a></li>
-                                <li><a href="#">Для подогрева труб и крыш</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-3.svg" alt=""><span>Модульная автоматика</span></a>
-                        <div class="sub-menu sub-menu-2x">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Модульная автоматика<img src="<?= get_template_directory_uri() ?>/img/icon-6-3.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
-                                <li><a href="#">Сигнальный и передачи данных</a></li>
-                                <li><a href="#">Для видеонаблюдения</a></li>
-                                <li><a href="#">Телефонный</a></li>
-                                <li><a href="#">Для обмоток трансформатора</a></li>
-                                <li><a href="#">Для сигнализации</a></li>
-                                <li><a href="#">С несущей жилой</a></li>
-                                <li><a href="#">Для подогрева труб и крыш</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-4.svg" alt=""><span>Силовое оборудование</span></a>
-                        <div class="sub-menu">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Силовое оборудование<img src="<?= get_template_directory_uri() ?>/img/icon-6-4.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
 
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-5.svg" alt=""><span>Управление и коммутация</span></a>
-                        <div class="sub-menu">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Управление и коммутация<img src="<?= get_template_directory_uri() ?>/img/icon-6-5.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
+                    <?php $terms = get_terms([
+                            'taxonomy' => 'product_cat',
+                            'hide_empty' => 0,
+                            'parent' => 0
+                    ]); ?>
 
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-6.svg" alt=""><span>Корпуса и аксессуары</span></a>
-                        <div class="sub-menu">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Корпуса и аксессуары<img src="<?= get_template_directory_uri() ?>/img/icon-6-6.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
+                    <?php foreach ($terms as $term) {
 
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-7.svg" alt=""><span>Электромонтажные изделия</span></a>
-                        <div class="sub-menu">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Электромонтажные изделия<img src="<?= get_template_directory_uri() ?>/img/icon-6-7.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
+                        $child = get_terms([
+                            'taxonomy' => 'product_cat',
+                            'hide_empty' => 0,
+                            'parent' => $term->term_id
+                        ]);
 
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-8.svg" alt=""><span>Кабеленесущие системы</span></a>
-                        <div class="sub-menu">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Электромонтажные изделия<img src="<?= get_template_directory_uri() ?>/img/icon-6-8.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
+                        $icon = get_field('icon', 'term_' . $term->term_id);
+                        $icon_url = $icon['url'];
+                        if (!$icon)
+                            $icon_url = get_template_directory_uri(). '/img/icon-6-1.svg';
+                        ?>
 
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-9.svg" alt=""><span>Счетчики и трансформаторы</span></a>
-                        <div class="sub-menu">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Счетчики и трансформаторы<img src="<?= get_template_directory_uri() ?>/img/icon-6-9.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
+                        <li>
+                        <a href="<?= get_term_link($term->term_id) ?>"><img width="20" src="<?= $icon_url ?>" alt=""><span><?= $term->name ?></span></a>
 
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-10.svg" alt=""><span>Управление освещением</span></a>
-                        <div class="sub-menu">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Управление освещением<img src="<?= get_template_directory_uri() ?>/img/icon-6-10.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
+                            <?php if ($child) { ?>
 
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-6-11.svg" alt=""><span>Светильники и лампы</span></a>
-                        <div class="sub-menu">
-                            <div class="prev">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Назад</a>
-                            </div>
-                            <h3 class="title">Светильники и лампы<img src="<?= get_template_directory_uri() ?>/img/icon-6-11.svg" alt=""></h3>
-                            <ul>
-                                <li><a href="#">Для электропроводки</a></li>
-                                <li><a href="#">Силовой</a></li>
-                                <li><a href="#">Для удлинителей</a></li>
-                                <li><a href="#">Для автомобилей</a></li>
-                                <li><a href="#">Монтажный</a></li>
-                                <li><a href="#">Для интернета</a></li>
-                                <li><a href="#">Для акустических систем</a></li>
-                                <li><a href="#">Для телевидения и антен</a></li>
+                                <div class="sub-menu sub-menu-2x">
+                                    <div class="prev">
+                                        <a href="<?= get_term_link($term->term_id) ?>"><i class="fas fa-chevron-left"></i>Назад</a>
+                                    </div>
+                                    <h3 class="title"><?= $term->name ?> <img width="20" src="<?= $icon_url ?>" alt=""></h3>
+                                    <ul>
+                                        <?php foreach ($child as $child_term) { ?>
+                                            <li><a href="<?= get_term_link($child_term->term_id) ?>"><?= $child_term->name ?></a></li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+                            <?php } ?>
 
-                            </ul>
-                        </div>
                     </li>
+
+                    <?php } ?>
+
                 </ul>
             </nav>
         </div>

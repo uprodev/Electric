@@ -19,87 +19,117 @@
 
 defined( 'ABSPATH' ) || exit;
 
-do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
+do_action( 'woocommerce_before_account_orders', $has_orders );
 
-<?php if ( $has_orders ) : ?>
+$user_id = get_current_user_id();
+$customer = new WC_Customer($user_id);
 
-	<table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
-		<thead>
-			<tr>
-				<?php foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) : ?>
-					<th class="woocommerce-orders-table__header woocommerce-orders-table__header-<?php echo esc_attr( $column_id ); ?>"><span class="nobr"><?php echo esc_html( $column_name ); ?></span></th>
-				<?php endforeach; ?>
-			</tr>
-		</thead>
+$type = $_GET['type'];
 
-		<tbody>
-			<?php
-			foreach ( $customer_orders->orders as $customer_order ) {
-				$order      = wc_get_order( $customer_order ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-				$item_count = $order->get_item_count() - $order->get_item_count_refunded();
-				?>
-				<tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-<?php echo esc_attr( $order->get_status() ); ?> order">
-					<?php foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) : ?>
-						<td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-<?php echo esc_attr( $column_id ); ?>" data-title="<?php echo esc_attr( $column_name ); ?>">
-							<?php if ( has_action( 'woocommerce_my_account_my_orders_column_' . $column_id ) ) : ?>
-								<?php do_action( 'woocommerce_my_account_my_orders_column_' . $column_id, $order ); ?>
 
-							<?php elseif ( 'order-number' === $column_id ) : ?>
-								<a href="<?php echo esc_url( $order->get_view_order_url() ); ?>">
-									<?php echo esc_html( _x( '#', 'hash before order number', 'woocommerce' ) . $order->get_order_number() ); ?>
-								</a>
+$args = array(
+    'customer_id' => $user_id,
+    'status' => $type == 'all' ? 'all' : ['processing', 'pending'],
+    'limit' => 60, // to retrieve _all_ orders by this user
+);
+$orders = wc_get_orders($args);
 
-							<?php elseif ( 'order-date' === $column_id ) : ?>
-								<time datetime="<?php echo esc_attr( $order->get_date_created()->date( 'c' ) ); ?>"><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></time>
+?>
 
-							<?php elseif ( 'order-status' === $column_id ) : ?>
-								<?php echo esc_html( wc_get_order_status_name( $order->get_status() ) ); ?>
 
-							<?php elseif ( 'order-total' === $column_id ) : ?>
-								<?php
-								/* translators: 1: formatted order total 2: total order items */
-								echo wp_kses_post( sprintf( _n( '%1$s for %2$s item', '%1$s for %2$s items', $item_count, 'woocommerce' ), $order->get_formatted_order_total(), $item_count ) );
-								?>
 
-							<?php elseif ( 'order-actions' === $column_id ) : ?>
-								<?php
-								$actions = wc_get_account_orders_actions( $order );
+<section class="cabinet cabinet-breadcrumb <?= $type == 'all' ? 'cabinet-all-orders' : '' ?> ">
+    <div class="content-width">
+        <div class="content">
+            <div class="breadcrumb-back">
+                <a href="#"><i class="fas fa-chevron-left"></i>Заказы</a>
+            </div>
+            <h2 class="tab-h1">Активные заказы</h2>
 
-								if ( ! empty( $actions ) ) {
-									foreach ( $actions as $key => $action ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-										echo '<a href="' . esc_url( $action['url'] ) . '" class="woocommerce-button' . esc_attr( $wp_button_class ) . ' button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
-									}
-								}
-								?>
-							<?php endif; ?>
-						</td>
-					<?php endforeach; ?>
-				</tr>
-				<?php
-			}
-			?>
-		</tbody>
-	</table>
+            <?php do_action( 'woocommerce_account_navigation' ); ?>
+            
+            <div class="cabinet-content">
+                <h1>Все заказы</h1>
 
-	<?php do_action( 'woocommerce_before_account_orders_pagination' ); ?>
+                <div class="wrap-content">
+                    <?php if ($orders) { ?>
+                        <?php foreach ($orders as $order) {
+                            $order_items = $order->get_items();
+                            $order_item = reset($order_items)->get_product();
+                            $img = get_the_post_thumbnail_url($order_item->get_id(), 'small');
+                            ?>
+                            <div class="item-order item-wrap">
+                        <div class="data data-1">
+                            <p><b>№<?= $order->get_id() ?></b></p>
+                            <p><?= wc_get_order_status_name($order->get_status());  ?></p>
+                        </div>
+                        <div class="data data-2">
+                            <p><span>Дата заказа/получения:</span> <?= $order->get_date_completed() ?></p>
+                            <p><?= $order->get_shipping_method() ?></p>
+                        </div>
+                        <div class="data data-3">
+                            <p><span>Сумма заказа:</span> <?= $order->get_formatted_order_total() ?></p>
 
-	<?php if ( 1 < $customer_orders->max_num_pages ) : ?>
-		<div class="woocommerce-pagination woocommerce-pagination--without-numbers woocommerce-Pagination">
-			<?php if ( 1 !== $current_page ) : ?>
-				<a class="woocommerce-button woocommerce-button--previous woocommerce-Button woocommerce-Button--previous button" href="<?php echo esc_url( wc_get_endpoint_url( 'orders', $current_page - 1 ) ); ?>"><?php esc_html_e( 'Previous', 'woocommerce' ); ?></a>
-			<?php endif; ?>
+                            <?php if ( $order->get_status() !== 'cancelled'   ) { ?>
+                                <?php if ( $order->is_paid()   ) { ?>
+                                    <div class="paid" >
+                                        <p><img src="<?= get_template_directory_uri() ?>/img/icon-85.svg" alt=""><?=  $order->get_payment_method() == 'cod' ? 'Оплата при получении' : 'Оплачен' ?></p>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="no-paid">
+                                        <p><img src="<?= get_template_directory_uri() ?>/img/icon-86.svg" alt="">Не оплачен</p>
+                                        <p><a href="<?= $order->get_checkout_payment_url() ?>">Оплатить</a></p>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
 
-			<?php if ( intval( $customer_orders->max_num_pages ) !== $current_page ) : ?>
-				<a class="woocommerce-button woocommerce-button--next woocommerce-Button woocommerce-Button--next button" href="<?php echo esc_url( wc_get_endpoint_url( 'orders', $current_page + 1 ) ); ?>"><?php esc_html_e( 'Next', 'woocommerce' ); ?></a>
-			<?php endif; ?>
-		</div>
-	<?php endif; ?>
+                        </div>
+                        <div class="data data-4">
+                            <figure>
+                                <a href="#">	<img src="<?= $img ?>" alt=""></a>
+                            </figure>
+                        </div>
+                        <div class="order-detail item-open">
 
-<?php else : ?>
-	<div class="woocommerce-message woocommerce-message--info woocommerce-Message woocommerce-Message--info woocommerce-info">
-		<a class="woocommerce-Button button" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>"><?php esc_html_e( 'Browse products', 'woocommerce' ); ?></a>
-		<?php esc_html_e( 'No order has been made yet.', 'woocommerce' ); ?>
-	</div>
-<?php endif; ?>
+                            <?php foreach ($order_items as $item) {
+                                $product = $item->get_product();
+
+                                ?>
+                                <div class="detail-item">
+                                    <div class="detail-data detail-data-1">
+                                        <figure>
+                                            <a href="<?= get_permalink($product->get_id()) ?>">
+                                                <img src="<?= get_the_post_thumbnail_url($product->get_id(), 'small') ?>" alt=""></a>
+                                        </figure>
+                                    </div>
+                                    <div class="detail-data detail-data-2">
+                                        <h6><a href="<?= get_permalink($product->get_id()) ?>"><?=  $item->get_name() ?></a></h6>
+                                        <p><?= wc_display_item_meta( $item );  ?></p>
+                                    </div>
+                                    <div class="detail-data detail-data-3">
+                                        <p><?= $item->get_quantity() ?> <?= get_field('unit', $item->get_id()) ?: 'шт.' ?></p>
+                                    </div>
+                                    <div class="detail-data detail-data-4">
+                                        <p><?= $order->get_formatted_line_subtotal( $item ) ?></p>
+                                    </div>
+
+                                </div>
+                            <?php } ?>
+
+                        </div>
+                        <div class="info-bottom-link">
+                            <a href="#"><span>Открыть заказ</span><span>Скрыть заказ</span><i class="fas fa-chevron-down"></i></a>
+                        </div>
+
+                    </div>
+                        <?php } ?>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
 
 <?php do_action( 'woocommerce_after_account_orders', $has_orders ); ?>

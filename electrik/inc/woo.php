@@ -106,7 +106,6 @@ function custom_validation( $fields, $errors ){
     $post_fields = [
         'shipping_city' => '<b>Город доставки</b> является обязательным полем.',
         'shipping_address_1' => '<b>Адрес доставки</b> является обязательным полем.',
-       // 'shipping_postcode' => '<b>Имя для выставления счета</b> является обязательным полем.',
     ];
 
 
@@ -128,7 +127,155 @@ add_action('woocommerce_checkout_process', 'my_custom_checkout_field_process');
 function my_custom_checkout_field_process() {
     // Check if set, if its not set add an error.
     if (  $_POST['payment_method'] == 'bacs' ) {
+        $bacs_meta = bacs_meta();
+
+        foreach ($bacs_meta as $key=>$item) {
+            if (!$_POST[$key]) {
+                wc_add_notice( "<b>$item</b> является обязательным полем.", 'error' );
+            }
+        }
 
     }
         
+}
+
+
+add_action( 'woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta' );
+
+function my_custom_checkout_field_update_order_meta( $order_id ) {
+    $bacs_meta = bacs_meta();
+
+    $user_id = get_current_user_id();
+    foreach ($bacs_meta as $key=>$item) {
+        if ( ! empty( $_POST[$key] ) ) {
+            update_post_meta( $order_id, $key, sanitize_text_field( $_POST[$key] ) );
+            if ($user_id > 0) {
+                update_field($key, sanitize_text_field( $_POST[$key] ), 'user_' .$user_id  );
+            }
+        }
+    }
+
+    if ( ! empty( $_POST['select-city'] ) )
+        update_post_meta( $order_id, 'select_city', sanitize_text_field( $_POST['select-city'] ) );
+
+
+}
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'my_custom_checkout_field_display_admin_order_meta', 10, 1 );
+
+
+function my_custom_checkout_field_display_admin_order_meta($order){
+    $bacs_meta = bacs_meta();
+    foreach ($bacs_meta as $key=>$item) {
+        echo '<p><strong>' . $item . ':</strong> ' . get_post_meta($order->id, $key, true) . '</p>';
+    }
+
+    echo '<p><strong>Самовывоз:</strong> ' . get_post_meta($order->id, 'select_city', true) . '</p>';
+}
+
+
+function bacs_meta() {
+
+    return [
+        'bank-1' => 'УНП',
+        'bank-2' => 'Юридическое название',
+        'bank-3' => 'Название банка',
+        'bank-4' => 'БИК',
+        'bank-5' => 'Номер расчетного счета IBAN',
+        'bank-6' => 'Юридический адрес',
+    ];
+}
+
+add_filter( 'woocommerce_bacs_process_payment_order_status','filter_bacs_process_payment_order_status_callback', 10, 2 );
+function filter_bacs_process_payment_order_status_callback( $status, $order ) {
+    return 'pending';
+}
+
+
+add_action('init', function() {
+    add_rewrite_endpoint('viewed', EP_ROOT | EP_PAGES);
+    add_rewrite_endpoint('cart', EP_ROOT | EP_PAGES);
+    add_rewrite_endpoint('repair', EP_ROOT | EP_PAGES);
+    add_rewrite_endpoint('repair-active', EP_ROOT | EP_PAGES);
+    add_rewrite_endpoint('service', EP_ROOT | EP_PAGES);
+
+
+});
+add_action('woocommerce_account_viewed_endpoint', function() {
+    $endpoint = [];  // Replace with function to return licenses for current logged in user
+
+    wc_get_template('myaccount/viewed.php', [
+        'viewed' => $endpoint
+    ]);
+});
+
+add_action('woocommerce_account_repair_endpoint', function() {
+    $endpoint = [];  // Replace with function to return licenses for current logged in user
+
+    wc_get_template('myaccount/repair.php', [
+        'repair' => $endpoint
+    ]);
+});
+
+
+add_action('woocommerce_account_repair-active_endpoint', function() {
+    $endpoint = [];  // Replace with function to return licenses for current logged in user
+
+    wc_get_template('myaccount/repair-active.php', [
+        'repair_active' => $endpoint
+    ]);
+});
+
+
+add_action('woocommerce_account_service_endpoint', function() {
+    $endpoint = [];  // Replace with function to return licenses for current logged in user
+
+    wc_get_template('myaccount/service.php', [
+        'service' => $endpoint
+    ]);
+});
+
+add_action('woocommerce_account_cart_endpoint', function() {
+    $endpoint = [];  // Replace with function to return licenses for current logged in user
+
+    wc_get_template('myaccount/cart.php', [
+        'cart' => $endpoint
+    ]);
+});
+
+
+
+add_filter( 'woocommerce_account_menu_items', function($items) {
+
+    $items['cart'] = 'Корзина';
+    $items['viewed'] = 'Просмотренные товары';
+    $items['repair'] = 'Ремонт и диагностика';
+    $items['service'] = 'Обмен и возврат';
+
+
+    return $items;
+});
+
+
+function add_points_widget_to_fragment( $fragments ) {
+    $fragments['.cart-header'] =  '<p class="cart-header">'.  WC()->cart->get_cart_total() . '</p>';
+    return $fragments;
+}
+add_filter('add_to_cart_fragments', 'add_points_widget_to_fragment');
+
+
+function is_favorite($product_id) {
+
+    if (is_user_logged_in() ) {
+        $fav = get_field('fav', 'user_'. get_current_user_id()) ? get_field('fav', 'user_'. get_current_user_id()) :[];
+    } else {
+        $fav =  $_COOKIE['fav'] ? $_COOKIE['fav'] : [];
+    }
+
+
+    if ($fav)
+        $fav = explode('|', $fav);
+
+    if (in_array($product_id, $fav))
+        return 'is-like';
 }

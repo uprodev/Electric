@@ -16,61 +16,148 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+$bacs_meta = bacs_meta();
+$user_id = get_current_user_id();
+$customer = new WC_Customer($user_id);
+
 
 do_action( 'woocommerce_before_edit_account_form' ); ?>
 
-<form class="woocommerce-EditAccountForm edit-account" action="" method="post" <?php do_action( 'woocommerce_edit_account_form_tag' ); ?> >
 
-	<?php do_action( 'woocommerce_edit_account_form_start' ); ?>
+<section class="cabinet cabinet-breadcrumb">
+    <div class="content-width">
+        <div class="content">
+            <div class="breadcrumb-back">
+                <a href="#"><i class="fas fa-chevron-left"></i>Личные данные</a>
+            </div>
+            <h2 class="tab-h1">Личные данные</h2>
+            <?php do_action( 'woocommerce_account_navigation' ); ?>
+            <div class="cabinet-content">
+                <h1>Личные данные</h1>
 
-	<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-		<label for="account_first_name"><?php esc_html_e( 'First name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_first_name" id="account_first_name" autocomplete="given-name" value="<?php echo esc_attr( $user->first_name ); ?>" />
-	</p>
-	<p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
-		<label for="account_last_name"><?php esc_html_e( 'Last name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_last_name" id="account_last_name" autocomplete="family-name" value="<?php echo esc_attr( $user->last_name ); ?>" />
-	</p>
-	<div class="clear"></div>
+                <div class="personal-data">
+                    <form action="#" class="personal-data-form" data-user_id="<?= $user_id ?>">
+                        <div class="input-wrap <?= $customer->get_billing_first_name() ?: 'new'?>">
+                            <label for="name"><img src="<?= get_template_directory_uri() ?>/img/icon-104-1.svg" alt=""></label>
+                            <div class="wrap">
+                                <input type="text" id="name" name="billing_first_name"   autocomplete="given-name" value="<?php echo esc_attr( $customer->get_billing_first_name() ); ?>" placeholder="Не заполнено" disabled>
+                                <div class="info">ФИО</div>
+                                <div class="btn-wrap">
+                                    <a href="cabinet-personal-data-mob-1.html">
+                                        <span class="add"><img src="<?= get_template_directory_uri() ?>/img/icon-105.svg" alt=""></span>
+                                        <span class="edit"><img src="<?= get_template_directory_uri() ?>/img/icon-106.svg" alt=""></span>
+                                        <span class="save"><img src="<?= get_template_directory_uri() ?>/img/icon-107.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-wrap <?= $customer->get_billing_email() ?: 'new'?>">
+                            <label for="email"><img src="<?= get_template_directory_uri() ?>/img/icon-104-2.svg" alt=""></label>
+                            <div class="wrap">
+                                <input type="email" id="email" name="billing_email  "   autocomplete="email" value="<?php echo esc_attr( $customer->get_billing_email()  ); ?>"placeholder="Не заполнено" disabled>
+                                <div class="info">Электронная почта</div>
+                                <div class="btn-wrap">
+                                    <a href="cabinet-personal-data-mob-2.html">
+                                        <span class="add"><img src="<?= get_template_directory_uri() ?>/img/icon-105.svg" alt=""></span>
+                                        <span class="edit"><img src="<?= get_template_directory_uri() ?>/img/icon-106.svg" alt=""></span>
+                                        <span class="save"><img src="<?= get_template_directory_uri() ?>/img/icon-107.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--когда номер подтвержден нужно добавить класс is-send-->
+                        <div class="input-wrap <?= $customer->get_billing_phone()  ?: 'new'?> input-wrap-tel">
+                            <label for="tel"><img src="<?= get_template_directory_uri() ?>/img/icon-104-3.svg" alt=""></label>
+                            <div class="wrap">
+                                <div class="wrap-tel">
+                                    <input type="text" id="tel" name="billing_phone" value="<?php echo esc_attr( $customer->get_billing_phone() ); ?>" placeholder="Не заполнено" disabled class="tel">
 
-	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-		<label for="account_display_name"><?php esc_html_e( 'Display name', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_display_name" id="account_display_name" value="<?php echo esc_attr( $user->display_name ); ?>" /> <span><em><?php esc_html_e( 'This will be how your name will be displayed in the account section and in reviews', 'woocommerce' ); ?></em></span>
-	</p>
-	<div class="clear"></div>
+                                </div>
+                                <div class="info">Номер телефона</div>
+                                <div class="btn-wrap">
+                                    <a href="cabinet-personal-data-mob-3.html">
+                                        <span class="add"><img src="<?= get_template_directory_uri() ?>/img/icon-105.svg" alt=""></span>
+                                        <span class="edit"><img src="<?= get_template_directory_uri() ?>/img/icon-106.svg" alt=""></span>
+                                        <span class="save"><img src="<?= get_template_directory_uri() ?>/img/icon-107.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-wrap input-wrap-password">
+                            <label for="password1"><img src="<?= get_template_directory_uri() ?>/img/icon-104-4.svg" alt=""></label>
+                            <div class="wrap">
+                                <div class="password-wrap">
 
-	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-		<label for="account_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" autocomplete="email" value="<?php echo esc_attr( $user->user_email ); ?>" />
-	</p>
+                                    <input type="password" id="password2" name="password2" placeholder="Новый пароль" disabled>
+                                    <label for="password3"></label>
+                                    <input type="password" id="password3" name="password3" placeholder="Повторите новый пароль" disabled>
+                                </div>
+                                <div class="wrap-info">
 
-	<fieldset>
-		<legend><?php esc_html_e( 'Password change', 'woocommerce' ); ?></legend>
+                                    <div class="info">Новый пароль</div>
+                                    <div class="info">Повторите новый пароль</div>
+                                </div>
 
-		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<label for="password_current"><?php esc_html_e( 'Current password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
-			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_current" id="password_current" autocomplete="off" />
-		</p>
-		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<label for="password_1"><?php esc_html_e( 'New password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
-			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_1" id="password_1" autocomplete="off" />
-		</p>
-		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-			<label for="password_2"><?php esc_html_e( 'Confirm new password', 'woocommerce' ); ?></label>
-			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_2" id="password_2" autocomplete="off" />
-		</p>
-	</fieldset>
-	<div class="clear"></div>
+                                <div class="btn-wrap">
+                                    <a href="cabinet-personal-data-mob-4.html">
+                                        <span class="add"><img src="<?= get_template_directory_uri() ?>/img/icon-105.svg" alt=""></span>
+                                        <span class="edit"><img src="<?= get_template_directory_uri() ?>/img/icon-106.svg" alt=""></span>
+                                        <span class="save save-pass"><img src="<?= get_template_directory_uri() ?>/img/icon-107.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-	<?php do_action( 'woocommerce_edit_account_form' ); ?>
+                        <div class="company">
+                            <h2>Моя компании</h2>
+                            <div class="item-company">
+                                <div class="info-company">
+                                    <div class="icon-wrap">
+                                        <img src="<?= get_template_directory_uri() ?>/img/icon-115.svg" alt="">
+                                    </div>
+                                    <ul class="characteristics">
+                                        <?php foreach ($bacs_meta as $key=>$item) { ?>
+                                        <li>
+                                            <p><span><?= $item ?></span></p>
+                                            <p><?= get_field($key, 'user_'. $user_id) ?></p>
+                                        </li>
+                                        <?php } ?>
 
-	<p>
-		<?php wp_nonce_field( 'save_account_details', 'save-account-details-nonce' ); ?>
-		<button type="submit" class="woocommerce-Button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="save_account_details" value="<?php esc_attr_e( 'Save changes', 'woocommerce' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
-		<input type="hidden" name="action" value="save_account_details" />
-	</p>
+                                    </ul>
+                                    <div class="edit-company">
+                                        <div class="form-icon">
 
-	<?php do_action( 'woocommerce_edit_account_form_end' ); ?>
-</form>
+
+                                            <?php foreach ($bacs_meta as $key=>$item) { ?>
+                                                <div class="input-wrap input-wrap-50 edit-company-fields">
+                                                    <label for="<?= $key ?>"><img src="<?= get_template_directory_uri() ?>/img/icon-113.svg" alt=""></label>
+                                                    <input type="text" value="<?= get_field($key, 'user_'. $user_id) ?>" name="<?= $key ?>" id="<?= $key ?>" placeholder="<?= $item ?>">
+                                                </div>
+                                            <?php } ?>
+
+                                        </div>
+                                    </div>
+                                    <div class="btn-company">
+                                        <a href="#"  class="btn-edit-company"><img src="<?= get_template_directory_uri() ?>/img/icon-116.svg" alt=""></a>
+                                        <button type="submit" class="btn-save-company"><img src="<?= get_template_directory_uri() ?>/img/icon-118.svg" alt=""></button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
 
 <?php do_action( 'woocommerce_after_edit_account_form' ); ?>

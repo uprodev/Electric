@@ -25,15 +25,20 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 $pcats = get_the_terms(get_the_ID(), 'product_cat');
 $cat = $pcats[0]->term_id;
+
+
+
 ?>
 <div class="product-item">
 
     <?php woocommerce_show_product_loop_sale_flash();?>
 
     <div class="like">
-        <a href="#">
+        <a class="add_to_fav <?= is_favorite($product->get_id()) ?>" data-liked="<?= is_favorite($product->get_id()) ?>" data-user_id="<?= get_current_user_id() ?>" data-product_id="<?= $product->get_id() ?>" href="#">
             <img src="<?= get_template_directory_uri();?>/img/icon-11-1.svg" alt="">
         </a>
+
+
     </div>
     <figure>
         <a href="<?php the_permalink();?>">

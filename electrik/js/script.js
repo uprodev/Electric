@@ -154,10 +154,10 @@ jQuery(document).ready(function ($) {
   });
 
   /*col product*/
-  $(".btn-count-plus").click(function () {
+  $(document).on('click', ".btn-count-plus", function () {
     var e = $(this).parent().find("input");
     return e.val(parseInt(e.val()) + 1), e.change(), !1
-  }), $(".btn-count-minus").click(function () {
+  }),  $(document).on('click', ".btn-count-minus", function () {
     var e = $(this).parent().find("input"), t = parseInt(e.val()) - 1;
     return t = t < 1 ? 1 : t, e.val(t), e.change(), !1
   });
@@ -277,19 +277,19 @@ jQuery(document).ready(function ($) {
   });
 
   $(document).on('click', '.btn-reg', function (e){
-    $.fancybox.close();
-    $.fancybox.open( $('#send-ok'), {
-      touch:false,
-      autoFocus:false,
-    });
+    // $.fancybox.close();
+    // $.fancybox.open( $('#send-ok'), {
+    //   touch:false,
+    //   autoFocus:false,
+    // });
   });
 
   $(document).on('click', '.repair-ok', function (e){
-    $.fancybox.close();
-    $.fancybox.open( $('#repair-ok'), {
-      touch:false,
-      autoFocus:false,
-    });
+    // $.fancybox.close();
+    // $.fancybox.open( $('#repair-ok'), {
+    //   touch:false,
+    //   autoFocus:false,
+    // });
   });
 
 

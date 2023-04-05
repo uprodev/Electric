@@ -19,6 +19,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+if (is_user_logged_in()) {
+    $user_id = get_current_user_id();
+    $viewed = trim(get_field('viewed', 'user_'.$user_id));
+    $viewed = !empty($viewed) ? json_decode($viewed, true) : [];
+
+    if (is_array($viewed)) {
+        if (count($viewed) > 29)
+            $viewed = array_slice($viewed, 0, 30);
+    }
+
+    $viewed[get_the_id()] = date('U');
+    $viewed = json_encode($viewed);
+
+
+    update_field('viewed', $viewed, 'user_'.$user_id);
+}
+
+
 get_header();
 
 get_template_part('parts/breadcrumbs');

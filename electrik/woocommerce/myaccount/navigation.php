@@ -19,17 +19,81 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
+$user_id = get_current_user_id();
+$customer = new WC_Customer($user_id);
+$args = array(
+    'customer_id' => $user_id,
+    'status' => ['processing', 'pending'],
+);
+$orders_active = count(wc_get_orders($args));
+
+
+$user_id = get_current_user_id();
+$customer = new WC_Customer($user_id);
+$args = array(
+    'customer_id' => $user_id,
+);
+$orders_all = count(wc_get_orders($args));
+
+$cart_count = WC()->cart->get_cart_contents_count();
+
+
 do_action( 'woocommerce_before_account_navigation' );
+
+
+global $wp;
+
+
+$var = array_keys($wp->query_vars);
 ?>
 
-<nav class="woocommerce-MyAccount-navigation">
-	<ul>
-		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
-			<li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">
-				<a href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
-			</li>
-		<?php endforeach; ?>
-	</ul>
-</nav>
+<div class="aside">
+    <div class="btn-tab">
+        <a href="#">Личный кабинет</a>
 
-<?php do_action( 'woocommerce_after_account_navigation' ); ?>
+    </div>
+    <div class="item ">
+        <h6><a href="/my-account/"><img src="<?= get_template_directory_uri() ?>/img/icon-83.svg" alt="">Личный кабинет</a></h6>
+    </div>
+    <div class="item  <?= in_array('orders', $var) ? 'is-current' : '' ?>">
+        <h6><a href="/my-account/orders/?type=all"><img src="<?= get_template_directory_uri() ?>/img/icon-81.svg" alt="">Заказы</a></h6>
+        <ul>
+            <li class="<?= in_array('orders', $var) && $_GET['active'] ? 'active' : '' ?>"><a href="/my-account/orders/?type=active">Активные заказы <span><?= $orders_active ?></span></a></li>
+            <li class="<?= in_array('orders', $var) && $_GET['all'] ? 'active' : '' ?>" ><a href="/my-account/orders/?type=all">Все заказы <span><?= $orders_all ?></span></a></li>
+        </ul>
+    </div>
+    <div class="item">
+        <h6><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-83.svg" alt="">Товары</a></h6>
+        <ul>
+            <li class="<?= in_array('cart', $var)   ? 'active' : '' ?>"><a href="/my-account/cart/">Корзина <span><?= $cart_count ?></span></a></li>
+            <li class="<?= in_array('favorites', $var)   ? 'active' : '' ?>"><a href="#">Избранное <span>5</span></a></li>
+            <li class="<?= in_array('viewed', $var)   ? 'active' : '' ?>"><a href="/my-account/viewed/">Просмотренные товары</a></li>
+        </ul>
+    </div>
+    <div class="item">
+        <h6><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-82.svg" alt="">Сервисное обслуживание</a></h6>
+        <ul>
+            <li class="<?= in_array('service', $var)   ? 'active' : '' ?>"><a href="/my-account/service/">Обмен и возврат</a></li>
+            <li class="<?= in_array('repair', $var)   ? 'active' : '' ?>"><a href="/my-account/repair/">Ремонт и диагностика</a></li>
+            <li class="<?= in_array('repair-active', $var)   ? 'active' : '' ?>"><a href="/my-account/repair-active/">Мои обращения <span>2</span></a></li>
+        </ul>
+    </div>
+    <div class="item">
+        <h6><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-1.svg" alt="">Профиль</a></h6>
+        <ul>
+            <li><a href="/my-account/edit-account/">Личные данные</a></li>
+            <li><a href="#">Отзывы <span>2</span></a></li>
+            <li class="out"><a href="<?= wc_logout_url() ?>">Выход</a></li>
+        </ul>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+

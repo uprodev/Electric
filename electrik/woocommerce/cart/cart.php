@@ -17,6 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
+
  ?>
 
 <?php
@@ -25,11 +26,14 @@ get_template_part('parts/breadcrumbs');
 
 <section class="cart-block">
 
-    <form action="#" class="form-icon woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+    <form   class="form-icon woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
         <div class="content-width">
             <?php
             do_action( 'woocommerce_before_cart' );
-            do_action( 'woocommerce_before_cart_table' ); ?>
+            do_action( 'woocommerce_before_cart_table' );
+
+
+            ?>
 
             <div class="top">
                 <div class="title">

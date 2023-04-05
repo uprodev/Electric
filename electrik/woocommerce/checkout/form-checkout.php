@@ -35,6 +35,8 @@ $method = explode(':', WC()->session->get('chosen_shipping_methods')[0])[0];
 
 <?php
 get_template_part('parts/breadcrumbs');
+
+
 ?>
 
 <section class="cart-block checkout-block">
@@ -158,7 +160,7 @@ get_template_part('parts/breadcrumbs');
                                 <?php do_action('woocommerce_payment_placement') ?>
 
                                 <div class="wrap-hide-show-2">
-                                    <div class="select-item">
+                                    <div class="select-item"  style="display:<?=  WC()->session->get('chosen_payment_method') === 'bacs' ? 'block' : 'none'; ?>">
                                         <h2>Реквизиты</h2>
                                         <div class="props-wrap">
                                             <div class="input-wrap input-wrap-50">
@@ -243,7 +245,7 @@ get_template_part('parts/breadcrumbs');
                             <ul class="delivery-info">
                                 <li>
                                     <p>Самовывоз</p>
-                                    <h6>Минск, ул. Лермонтова 12</h6>
+                                    <h6 class="shipping-point"></h6>
                                 </li>
                                 <li>
                                     <p>Дата</p>

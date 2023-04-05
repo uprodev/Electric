@@ -23,6 +23,9 @@ $formatted_destination    = isset( $formatted_destination ) ? $formatted_destina
 $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
+
+
+
 ?>
 <div class="select-step-1 select-step woocommerce-shipping-totals shipping">
     <?php if ( $available_methods ) : ?>
@@ -31,6 +34,14 @@ $calculator_text          = '';
 
             <div class="select select-1 <?= $method->id == $chosen_method ?  'is-active' : "" ?> ">
                     <?php
+
+                    $icon = $method->id == 'flat_rate' ? 4 : 3;
+                    $class = $method->id == 'flat_rate' ? 'when' : 'shipping-point';
+
+                    $pickups = get_field('pickup', 'options');
+                    $when = $method->id == 'flat_rate' ? 'завтра, после 11:00' : $pickups[0]['places'][0]['address'];
+
+
                     if ( 1 < count( $available_methods ) ) {
                         printf( '<input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />', $index, esc_attr( sanitize_title( $method->id ) ), esc_attr( $method->id ), checked( $method->id, $chosen_method, false ) ); // WPCS: XSS ok.
                     } else {
@@ -42,24 +53,15 @@ $calculator_text          = '';
 
                 <label for="shipping_method_<?= $index ?>_<?= esc_attr( sanitize_title( $method->id ) ) ?>">
                     <span class="icon-wrap">
-                        <img src="<?= get_template_directory_uri() ?>/img/icon-73.svg" alt="">
+                        <img src="<?= get_template_directory_uri() ?>/img/icon-7<?= $icon ?>.svg" alt="">
                     </span>
                     <span class="h6"><?= wc_cart_totals_shipping_method_label( $method ) ?></span>
-                    <span class="p">Минск, ул. Лермонтова 12</span>
+                    <span class="p <?= $class ?>"><?= $when ?></span>
                 </label>
             </div>
 
         <?php endforeach; ?>
 
-<!--        <div class="select select-2">-->
-<!--    <input type="radio" name="select-1" id="select-2">-->
-<!--    <label for="select-2">-->
-<!--											<span class="icon-wrap">-->
-<!--												<img src="--><?//= get_template_directory_uri() ?><!--/img/icon-74.svg" alt="">-->
-<!--											</span>-->
-<!--        <span class="h6">Доставка курьером</span>-->
-<!--        <span class="p">завтра, после 11:00</span>-->
-<!--    </label>-->
-<!--</div>-->
+
     <?php endif; ?>
 </div>

@@ -6,7 +6,11 @@ $actions = [
     'ajax_reset',
     'qty_cart',
     'remove_item_from_cart',
-    'apply_coupon'
+    'apply_coupon',
+    'order_viewed',
+    'save_personal_data',
+    'add_ticket',
+    'add_to_fav'
 ];
 foreach ($actions as $action) {
     add_action("wp_ajax_{$action}", $action);
@@ -258,4 +262,207 @@ function apply_coupon()
         ]
     );
     die();
+}
+
+
+function order_viewed()
+{
+
+
+    $user_id = $_GET['user_id'];
+    $orderby = $_GET['order'];
+    $viewed = get_field('viewed', 'user_'.$user_id);
+
+
+    if ($viewed)
+        $viewed = json_decode($viewed, true);
+
+    $post__in = array_keys($viewed);
+
+    if ( 'price' === $orderby ) {
+        $rlv_wc_order = 'asc';
+    }
+    if ( 'price-desc' === $orderby ) {
+        $rlv_wc_order = 'desc';
+    }
+
+    if ( in_array( $orderby, array( 'price', 'price-desc' ), true ) ) {
+        $orderby = 'meta_value_num';
+        $meta_key = '_price';
+    }
+
+    if ( 'date' === $orderby ) {
+        $orderby = 'post__in';
+    }
+    if ( 'popularity' === $orderby ) {
+
+        $orderby = 'meta_value_num';
+        $rlv_wc_order = 'desc';
+        $meta_key = 'total_sales';
+    }
+
+
+
+    $args = [
+        'post_type' => 'product',
+        'post__in' => $post__in,
+        'posts_per_page' => 30,
+        'orderby' => $orderby,
+        'order' => $rlv_wc_order,
+        'meta_key' => $meta_key
+
+    ];
+
+    $q = new WP_query($args);
+
+    ob_start();
+
+    if ($q->have_posts() ) {
+        while ($q->have_posts()) {
+            $q->the_post();
+            wc_get_template_part('content', 'product');
+        }
+    } else {
+        get_template_part( 'parts/account/empty', 'viewed' );
+    }
+
+
+
+    $html = ob_get_clean();
+
+    wp_send_json(
+        [
+            'result' => $html,
+            'found' => $q->found_posts
+        ]
+    );
+    die();
+}
+
+
+
+function save_personal_data()
+{
+
+//    print_r($_POST);
+//
+//    die();
+    $user_id = $_POST['user_id'];
+    $key = $_POST['field_name'];
+    $value = $_POST['field_value'];
+
+    $pass = $_POST['pass'];
+    $pass2 = $_POST['pass2'];
+    $pass3 = $_POST['pass3'];
+
+    $bank = $_POST['bank'];
+
+
+    if ($user_id > 0 && $key && $value) {
+
+        if ('billing_email' == $key) {
+            $fail = is_email($value);
+            $fail_message = 'Введите корректный E-mail';
+        }
+
+
+        update_user_meta($user_id, $key, sanitize_text_field( $value ));
+      //  update_field($key,  sanitize_text_field( $value ), 'user_' .$user_id  );
+    }
+
+    if ($user_id > 0 && $pass) {
+        if ($pass2 !== $pass3) {
+            $fail = true;
+            $fail_message = 'Пароли не совпадают';
+        } elseif (strlen($pass3) < 8) {
+            $fail = true;
+            $fail_message = 'Минимальная длина должна быть 8 симоволов ';
+        } else {
+            wp_update_user([
+                'ID' => $user_id,
+                'user_pass' => $pass3
+            ]);
+
+        }
+
+    }
+
+    if ($user_id > 0 && !empty($bank)) {
+
+        foreach ($bank as $key => $value) {
+            update_field($key,  sanitize_text_field( $value ), 'user_' . $user_id  );
+        }
+
+        $bacs_meta = bacs_meta();
+        ob_start(); ?>
+
+        <?php foreach ($bacs_meta as $key=>$item) { ?>
+            <li>
+                <p><span><?= $item ?></span></p>
+                <p><?= get_field($key, 'user_'. $user_id) ?></p>
+            </li>
+        <?php } ?>
+        <?php
+
+        $html = ob_get_clean();
+
+        wp_send_json(
+            [
+                'html' => $html,
+
+            ]
+        );
+
+        die();
+    }
+
+
+
+    wp_send_json(
+        [
+            'fail' => $fail,
+            'fail_message' => $fail_message,
+            'data' => $_POST
+        ]
+    );
+    die();
+}
+
+
+function add_ticket() {
+
+
+    check_ajax_referer( 'add_ticket', 'security' );
+
+    $post_id = wp_insert_post([
+        'post_type' => 'ticket',
+        'post_status' => 'publish',
+        'post_title' => $_POST['message'],
+        'post_author' => $_POST['user_id'],
+    ]);
+
+    update_field('status', 'В процессе', $post_id);
+    update_field('order_id', $_POST['order_id'], $post_id);
+
+
+    wp_send_json(
+        [
+            'post_id' => $post_id,
+
+        ]
+    );
+
+    wp_die();
+
+}
+
+
+function add_to_fav() {
+    $user_id = $_POST['user_id'];
+    $fav = $_POST['fav'];
+    update_field('fav',$fav, 'user_'.$user_id);
+
+    print_r($_POST);
+
+    wp_die();
 }
