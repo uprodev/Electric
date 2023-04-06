@@ -198,7 +198,7 @@ add_action('init', function() {
     add_rewrite_endpoint('repair', EP_ROOT | EP_PAGES);
     add_rewrite_endpoint('repair-active', EP_ROOT | EP_PAGES);
     add_rewrite_endpoint('service', EP_ROOT | EP_PAGES);
-
+    add_rewrite_endpoint('favorites', EP_ROOT | EP_PAGES);
 
 });
 add_action('woocommerce_account_viewed_endpoint', function() {
@@ -243,6 +243,14 @@ add_action('woocommerce_account_cart_endpoint', function() {
     ]);
 });
 
+add_action('woocommerce_account_favorites_endpoint', function() {
+    $endpoint = [];  // Replace with function to return licenses for current logged in user
+
+    wc_get_template('myaccount/favorites.php', [
+        'favorites' => $endpoint
+    ]);
+});
+
 
 
 add_filter( 'woocommerce_account_menu_items', function($items) {
@@ -251,7 +259,7 @@ add_filter( 'woocommerce_account_menu_items', function($items) {
     $items['viewed'] = 'Просмотренные товары';
     $items['repair'] = 'Ремонт и диагностика';
     $items['service'] = 'Обмен и возврат';
-
+    $items['favorites'] = 'Избранное';
 
     return $items;
 });
@@ -259,6 +267,11 @@ add_filter( 'woocommerce_account_menu_items', function($items) {
 
 function add_points_widget_to_fragment( $fragments ) {
     $fragments['.cart-header'] =  '<p class="cart-header">'.  WC()->cart->get_cart_total() . '</p>';
+
+    ob_start();
+    woocommerce_mini_cart();
+    $fragments['.mini-cart'] = ob_get_clean();
+
     return $fragments;
 }
 add_filter('add_to_cart_fragments', 'add_points_widget_to_fragment');
@@ -279,3 +292,83 @@ function is_favorite($product_id) {
     if (in_array($product_id, $fav))
         return 'is-like';
 }
+
+remove_action( 'set_comment_cookies', 'wp_set_comment_cookies' );
+
+
+function ask_percentage_sale(  $product ) {
+    $discount = 0;
+    if ( $product->get_type() == 'variable' ) {
+        $available_variations = $product->get_available_variations();
+        $maximumper = 0;
+        for ($i = 0; $i < count($available_variations); ++$i) {
+            $variation_id=$available_variations[$i]['variation_id'];
+            $variable_product1= new WC_Product_Variation( $variation_id );
+            $regular_price = $variable_product1->get_regular_price();
+            $sales_price = $variable_product1->get_sale_price();
+
+            if (!$sales_price)
+                continue;
+
+            if( $sales_price ) {
+                $percentage= round( ( ( $regular_price - $sales_price ) / $regular_price ) * 100 ) ;
+                if ($percentage > $maximumper) {
+                    $maximumper = $percentage;
+                }
+            }
+        }
+        if ($maximumper)
+            $text = '<li class="sale">' . $maximumper  . '%</li>';
+    } elseif ( $product->get_type() == 'simple' ) {
+        if (!$product->get_sale_price())
+            return;
+
+        $percentage = round( ( ( $product->get_regular_price() - $product->get_sale_price() ) / $product->get_regular_price() ) * 100 );
+        $text = '<li class="sale">' . $percentage . '%</li>';
+    }
+
+    return $text;
+}
+
+
+
+add_action( 'woocommerce_cart_calculate_fees', 'wpf_wc_add_cart_fees_by_product_meta' );
+
+function wpf_wc_add_cart_fees_by_product_meta( $cart ) {
+
+    $discount = get_field('discount', 'options');
+    $total = WC()->cart->get_cart_contents_total();
+    if ($discount) {
+        if ($discount['min'] <= $total) {
+            $fee = -round($total * ($discount['percent'] / 100));
+            $cart->add_fee( 'Скидка ' . $discount['percent'] . '%', $fee  );
+        }
+    }
+
+
+
+}
+
+
+
+add_filter( 'woocommerce_package_rates', 'custom_shipping_costs', 20, 2 );
+function custom_shipping_costs( $rates, $package ) {
+    // New shipping cost (can be calculated)
+
+    $free_shipping = get_field('free_shipping', 'options');
+    $total = WC()->cart->get_cart_contents_total();
+
+    if ($free_shipping <= $total) {
+        $new_cost = 0;
+        foreach( $rates as $rate_key => $rate ){
+
+            $rates[$rate_key]->cost = $new_cost;
+
+
+
+        }
+    }
+
+    return $rates;
+}
+

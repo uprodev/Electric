@@ -36,7 +36,7 @@ $sertifikaty = get_field('sertifikaty');
 $rating_count = $product->get_rating_count();
 $unrate = 5 - $rating_count;
 $review_count = $product->get_review_count();
-
+$average_rating =  $product->get_average_rating();
 $attributes = $product->get_attributes();
 
 $pcats = get_the_terms(get_the_ID(), 'product_cat');
@@ -68,6 +68,9 @@ if ($product->is_type( 'variable' )) {
     }
 }
 $sechenie = $product->get_attribute('pa_sechenie');
+
+
+$unit = get_field('_woo_uom_input');
 ?>
 
 <section class="product-inner">
@@ -77,12 +80,18 @@ $sechenie = $product->get_attribute('pa_sechenie');
                 <?php woocommerce_template_single_title();?>
                 <div class="stars-wrap">
                     <div class="wrap">
-                        <?php for ($i = 1; $i <= $rating_count; $i++):?>
-                            <img src="<?= get_template_directory_uri();?>/img/icon-37-1.svg" alt="">
-                        <?php endfor;?>
-                        <?php for ($i = 1; $i <= $unrate; $i++):?>
-                            <img src="<?= get_template_directory_uri();?>/img/icon-37-2.svg" alt="">
-                        <?php endfor;?>
+                        <?php
+                        foreach (range(1, 5) as $star) {
+                            $icon = '1';
+                            if ($star - $average_rating > 1)
+                                continue;
+
+                            if ($star - $average_rating < 1 && $star - $average_rating >= 0.5)
+                                $icon = '2';
+
+                            ?>
+                            <img src="<?= get_template_directory_uri(); ?>/img/icon-37-<?= $icon ?>.svg" alt="">
+                        <?php } ?>
                     </div>
                     <p><a href="#reviews"><?php printf( _n( '%s отзыв', '%s отзыва', $review_count, 'electrik' ), esc_html( $review_count )); ?></a></p>
                 </div>
@@ -192,10 +201,10 @@ $sechenie = $product->get_attribute('pa_sechenie');
                     <div class="cost-wrap">
                         <div class="cost">
                             <?php woocommerce_template_single_price();?>
-                            <p><span>1 <?= $cat==17? __('м/п', 'electrik'): __('шт.', 'electrik');?></span></p>
+                            <p><span>1 <?= $unit ? $unit : __('шт.', 'electrik');?></span></p>
                         </div>
                         <div class="like">
-                            <a href="#">
+                            <a href="#" class="add_to_fav <?= is_favorite($product->get_id()) ?>" data-liked="<?= is_favorite($product->get_id()) ?>" data-user_id="<?= get_current_user_id() ?>" data-product_id="<?= $product->get_id() ?>">
                                 <img src="<?= get_template_directory_uri();?>/img/icon-11-1.svg" alt="">
                             </a>
                         </div>
@@ -205,7 +214,7 @@ $sechenie = $product->get_attribute('pa_sechenie');
                         <p><img src="<?= get_template_directory_uri();?>/img/icon-38.svg" alt=""><?= $product->get_stock_quantity(); ?> <?= $cat==17? __('м/п', 'electrik'): __('шт.', 'electrik');?> <?= __('на складе', 'electrik');?></p>
                     </div>
                     <div class="btn-wrap">
-                        <a href="#add-product-cart" class="btn-border-red fancybox"><img src="<?= get_template_directory_uri();?>/img/icon-25-3.svg" alt=""><?= __('В корзину', 'electrik');?></a>
+                        <a href="#add-product-cart" data-variation_id=""  data-product_id="<?= the_id() ?>" class="btn-border-red fancybox add-to-cart"><img src="<?= get_template_directory_uri();?>/img/icon-25-3.svg" alt=""><?= __('В корзину', 'electrik');?></a>
                         <a href="#fast-shop" class="btn-red fancybox"><img src="<?= get_template_directory_uri();?>/img/icon-39.svg" alt=""><?= __('Быстрый заказ', 'electrik');?></a>
                     </div>
                     <div class="delivery">

@@ -21,7 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-<div class="review-item" id="li-comment-<?php comment_ID(); ?>">
+
+<div <?php comment_class('review-item comment'); ?> id="comment-<?php comment_ID(); ?>">
     <div class="head-reviews">
         <div class="name">
             <p><?php comment_author(); ?></p>
@@ -31,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         </div>
         <div class="date">
-            <p><?= esc_html( get_comment_date( 'j.d.Y', comment_ID() ) ); ?></p>
+            <p><?=  ( get_comment_date( 'j.m.Y'  ) ); ?></p>
         </div>
     </div>
     <div class="reviews-body">
@@ -39,44 +40,19 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php do_action( 'woocommerce_review_comment_text', $comment );?>
         </div>
         <div class="sub-line">
-            <p><a href="#">Ответить</a></p>
-            <div class="up-down">
-                <a href="#" class="down"><img src="img/icon-42-1.svg" alt=""></a>
-                <a href="#" class="up"><img src="img/icon-42-2.svg" alt=""></a>
-            </div>
+
+                <?= comment_reply_link( array_merge( $args, array(
+                    'depth'     => 1,
+                    'max_depth' => 2,
+                    'before'    => '<p class="reply">',
+                    'after'     => '</p>'
+                ) ) );  ?>
+
+<!--            <div class="up-down">-->
+<!--                <a href="#" class="down"><img src="img/icon-42-1.svg" alt=""></a>-->
+<!--                <a href="#" class="up"><img src="img/icon-42-2.svg" alt=""></a>-->
+<!--            </div>-->
         </div>
     </div>
 </div>
-
-	<div id="comment-<?php comment_ID(); ?>" class="comment_container">
-
-
-		<div class="comment-text">
-
-			<?php
-			/**
-			 * The woocommerce_review_before_comment_meta hook.
-			 *
-			 * @hooked woocommerce_review_display_rating - 10
-			 */
-			do_action( 'woocommerce_review_before_comment_meta', $comment );
-
-			/**
-			 * The woocommerce_review_meta hook.
-			 *
-			 * @hooked woocommerce_review_display_meta - 10
-			 */
-			do_action( 'woocommerce_review_meta', $comment );
-
-			//do_action( 'woocommerce_review_before_comment_text', $comment );
-
-			/**
-			 * The woocommerce_review_comment_text hook
-			 *
-			 * @hooked woocommerce_review_display_comment_text - 10
-			 */
-			//do_action( 'woocommerce_review_comment_text', $comment );
-
-			//do_action( 'woocommerce_review_after_comment_text', $comment );
-			?>
 

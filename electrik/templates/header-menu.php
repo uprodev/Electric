@@ -9,11 +9,13 @@
                 <p><?php the_field('nazvanie', 'options');?></p>
             </div>
             <div class="center">
-                <form action="<?php echo home_url( '/' ) ?>" class="form-search">
-                    <label for="top-search"></label>
-                    <input type="text" name="s" id="top-search" class="top-search">
-                    <button class="btn" type="submit"><img src="<?= get_template_directory_uri();?>/img/find.svg" alt=""></button>
-                </form>
+<!--                <form action="--><?php //echo home_url( '/' ) ?><!--" class="form-search">-->
+<!--                    <label for="top-search"></label>-->
+<!--                    <input type="text" name="s" id="top-search" class="top-search">-->
+<!--                    <button class="btn" type="submit"><img src="--><?//= get_template_directory_uri();?><!--/img/find.svg" alt=""></button>-->
+<!--                </form>-->
+                <?php echo do_shortcode('[fibosearch]'); ?>
+
             </div>
             <div class="right">
 
@@ -58,11 +60,9 @@
         <div class="content-width">
             <div class="left">
                 <a href="/shop">Каталог товаров <img src="<?= get_template_directory_uri() ?>/img/icon-0.svg" alt=""></a>
-                <form action="<?= home_url( '/' ) ?>" class="form-search">
-                    <label for="top-search-mob"></label>
-                    <input type="text" name="s" id="top-search-mob" class="top-search">
-                    <button class="btn" type="submit"><img src="<?= get_template_directory_uri();?>/img/find.svg" alt=""></button>
-                </form>
+                <div action="<?= home_url( '/' ) ?>" class="form-search">
+                    <?php echo do_shortcode('[fibosearch]'); ?>
+                </div>
             </div>
             <div class="right">
                 <div class="loc">

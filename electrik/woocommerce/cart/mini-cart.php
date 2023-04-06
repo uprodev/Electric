@@ -19,78 +19,226 @@
 
 defined( 'ABSPATH' ) || exit;
 
+
+
+
+
 do_action( 'woocommerce_before_mini_cart' ); ?>
 
-<?php if ( ! WC()->cart->is_empty() ) : ?>
 
-	<ul class="woocommerce-mini-cart cart_list product_list_widget <?php echo esc_attr( $args['list_class'] ); ?>">
-		<?php
+
+    <div class="popup-main catalog mini-cart">
+        <?php if ( ! WC()->cart->is_empty() ) : ?>
+        <h3>Товар добавлен в корзину</h3>
+
+        <?php
+        $cart_total = WC()->cart->get_cart_contents_total();
+        $cross_sells = WC()->cart->get_cross_sells();
+        $discount = get_field('discount', 'options');
+        $free_shipping = get_field('free_shipping', 'options');
+
+        if ($free_shipping) {
+            $free_shipping_left = $free_shipping - $cart_total;
+            $free_shipping_left_percent = $cart_total/$free_shipping * 100;
+        }
+        if ($discount['min']) {
+            $discount_left = $discount['min'] - $cart_total;
+            $discount_left_percent = $cart_total / $discount['min'] * 100;
+        }
 		do_action( 'woocommerce_before_mini_cart_contents' );
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 			$_product   = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 			$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
-
+            $product = new WC_Product($product_id);
 			if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
 				$product_name      = apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
 				$thumbnail         = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 				$product_price     = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 				$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 				?>
-				<li class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
-					<?php
-					echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-						'woocommerce_cart_item_remove_link',
-						sprintf(
-							'<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s">&times;</a>',
-							esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-							esc_attr__( 'Remove this item', 'woocommerce' ),
-							esc_attr( $product_id ),
-							esc_attr( $cart_item_key ),
-							esc_attr( $_product->get_sku() )
-						),
-						$cart_item_key
-					);
-					?>
-					<?php if ( empty( $product_permalink ) ) : ?>
-						<?php echo $thumbnail . wp_kses_post( $product_name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					<?php else : ?>
-						<a href="<?php echo esc_url( $product_permalink ); ?>">
-							<?php echo $thumbnail . wp_kses_post( $product_name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						</a>
-					<?php endif; ?>
-					<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</li>
-				<?php
-			}
-		}
 
-		do_action( 'woocommerce_mini_cart_contents' );
-		?>
-	</ul>
 
-	<p class="woocommerce-mini-cart__total total">
-		<?php
-		/**
-		 * Hook: woocommerce_widget_shopping_cart_total.
-		 *
-		 * @hooked woocommerce_widget_shopping_cart_subtotal - 10
-		 */
-		do_action( 'woocommerce_widget_shopping_cart_total' );
-		?>
-	</p>
+                <div class="product is-line product-cart woocommerce-cart-form">
+                    <div class="product-item">
+                        <div class="line-info">
+                            <ul>
+                                <li class="hot">
+                                    <img src="<?= get_template_directory_uri() ?>/img/icon-10.svg" alt="">
+                                </li>
+                                <?= ask_percentage_sale(  $product ) ?>
 
-	<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
+                            </ul>
+                        </div>
+                        <div class="like">
+                            <a href="#">
+                                <img src="<?= get_template_directory_uri() ?>/img/icon-11-1.svg" alt="">
+                            </a>
+                        </div>
+                        <figure>
+                            <?php if ( empty( $product_permalink ) ) : ?>
+                                <?php echo $thumbnail  ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                            <?php else : ?>
+                                <a href="<?php echo esc_url( $product_permalink ); ?>">
+                                    <?php echo $thumbnail  ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                                </a>
+                            <?php endif; ?>
+                        </figure>
+                        <div class="text-wrap">
+                            <div class="wrap-title">
+                                <h6><a href="<?php echo esc_url( $product_permalink ); ?>"><?= $product->get_title() ?></a></h6>
+                                <p><?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+                            </div>
 
-	<p class="woocommerce-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></p>
+                            <div class="cost-wrap">
+                                <div class="cost">
+                                    <p class="new"><?= $product->get_price() ?>₽</p>
+                                </div>
 
-	<?php do_action( 'woocommerce_widget_shopping_cart_after_buttons' ); ?>
+                                <div class="buy">
+                                    <div class="input-number ">
+                                        <div class="btn-count btn-count-minus"><img src="<?= get_template_directory_uri() ?>/img/minus.svg" alt=""></div>
+                                        <?php
+                                        if ( $_product->is_sold_individually() ) {
+                                            $min_quantity = 1;
+                                            $max_quantity = 1;
+                                        } else {
+                                            $min_quantity = 0;
+                                            $max_quantity = $_product->get_max_purchase_quantity();
+                                        }
 
-<?php else : ?>
+                                        $product_quantity = woocommerce_quantity_input(
+                                            array(
+                                                'input_name'   => "cart[{$cart_item_key}][qty]",
+                                                'input_value'  => $cart_item['quantity'],
+                                                'max_value'    => $max_quantity,
+                                                'min_value'    => $min_quantity,
+                                                'product_name' => $_product->get_name(),
+                                            ),
+                                            $_product,
+                                            false
+                                        );
 
-	<p class="woocommerce-mini-cart__empty-message"><?php esc_html_e( 'No products in the cart.', 'woocommerce' ); ?></p>
+                                        echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
+                                        ?>
+                                        <div class="btn-count btn-count-plus"><img src="<?= get_template_directory_uri() ?>/img/plus.svg" alt=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<?php endif; ?>
+                <?php
+            }
+        }
+
+        do_action( 'woocommerce_mini_cart_contents' );
+        ?>
+
+
+        <div class="cart-info">
+            <p><span>В корзине:</span><?= WC()->cart->get_cart_contents_count() ?> <?= _n( 'товар', 'товаров', WC()->cart->get_cart_contents_count()  ); ?></p>
+            <p><span>На сумму:</span><?= WC()->cart->get_cart_total() ?></p>
+        </div>
+        <div class="btn-wrap">
+            <a href="<?= wc_get_cart_url();?>" class="btn-red btn-big"><img src="<?= get_template_directory_uri() ?>/img/icon-25-3.svg" alt="">Перейти в корзину</a>
+        </div>
+        <div class="progress-wrap">
+
+            <?php if ($free_shipping) { ?>
+            <div class="progress-item">
+                <p>вам осталось <span><?= $free_shipping_left > 0 ? $free_shipping_left : 0 ?>₽</span> до бесплатной доставки</p>
+                <div class="wrap">
+                    <div class="progress-bg"></div>
+                    <div class="progress-line" style="width: <?= $free_shipping_left_percent <= 100 ? $free_shipping_left_percent : 100 ?>%;"></div>
+                </div>
+            </div>
+            <?php } ?>
+
+            <?php if ($discount['min']) { ?>
+            <div class="progress-item">
+                <p>вам осталось <span><?= $discount_left > 0 ? $discount_left : 0 ?>₽</span> до скидки <?= $discount['percent'] ?>%</p>
+                <div class="wrap">
+                    <div class="progress-bg"></div>
+                    <div class="progress-line" style="width: <?= $discount_left_percent <= 100 ? $discount_left_percent : 100 ?>%;"></div>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+        <div class="btn-wrap">
+            <a href="<?= wc_get_cart_url();?>" class="btn-border-black btn-big"><img src="<?= get_template_directory_uri() ?>/img/icon-48.svg" alt="">Перейти в корзину</a>
+        </div>
+
+        <?php if ( $cross_sells ) { ?>
+        <div class="favorite-block">
+            <h3>Вам также может пригодиться</h3>
+            <div class="product is-line product-cart product-add-cart">
+                <?php foreach ( $cross_sells as $cross_sell ) {
+                    $product = new WC_Product($cross_sell) ?>
+
+                    <div class="product-item">
+                    <div class="line-info">
+                        <ul>
+                            <li class="hot">
+                                <img src="<?= get_template_directory_uri() ?>/img/icon-10.svg" alt="">
+                            </li>
+                            <?= ask_percentage_sale(  $product ) ?>
+                        </ul>
+                    </div>
+                    <div class="like">
+                        <a href="#">
+                            <img src="<?= get_template_directory_uri() ?>/img/icon-11-1.svg" alt="">
+                        </a>
+                    </div>
+                    <figure>
+                        <a href="<?= $product->get_permalink() ?>">
+                            <?= $product->get_image() ?>
+                        </a>
+                    </figure>
+                    <div class="text-wrap">
+                        <div class="wrap-title">
+                            <h6><a href="<?= $product->get_permalink() ?>"><?= $product->get_title() ?></a></h6>
+
+                        </div>
+
+                        <div class="cost-wrap">
+                            <div class="cost">
+                                <p class="new"><?= $product->get_price() ?>₽</p>
+                            </div>
+
+                            <div class="buy">
+                                <div class="input-number ">
+                                    <div class="btn-count btn-count-minus"><img src="<?= get_template_directory_uri() ?>/img/minus.svg" alt=""></div>
+                                    <input type="text" name="count" value="1" class="form-control"/>
+                                    <div class="btn-count btn-count-plus"><img src="<?= get_template_directory_uri() ?>/img/plus.svg" alt=""></div>
+                                </div>
+                                <div class="card-product">
+                                    <a href="#" class="add-to-cart" data-qty="1" data-product_id="<?= $product->get_id() ?>" >
+                                        <img src="<?= get_template_directory_uri() ?>/img/icon-13.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php }?>
+            </div>
+        </div>
+        <?php } ?>
+
+        <?php else : ?>
+
+            <p class="woocommerce-mini-cart__empty-message"><?php esc_html_e( 'No products in the cart.', 'woocommerce' ); ?></p>
+
+        <?php endif; ?>
+
+
+    </div>
+
+
+
+
+
 
 <?php do_action( 'woocommerce_after_mini_cart' ); ?>

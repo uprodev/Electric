@@ -10,7 +10,9 @@ $actions = [
     'order_viewed',
     'save_personal_data',
     'add_ticket',
-    'add_to_fav'
+    'add_to_fav',
+    'add_to_cart'
+
 ];
 foreach ($actions as $action) {
     add_action("wp_ajax_{$action}", $action);
@@ -462,7 +464,33 @@ function add_to_fav() {
     $fav = $_POST['fav'];
     update_field('fav',$fav, 'user_'.$user_id);
 
-    print_r($_POST);
 
+    wp_die();
+}
+
+/**
+ * add_to_cart
+ */
+
+
+function add_to_cart()
+{
+
+    $product_id = (int)$_GET['product_id'];
+    $variation_id = (int)$_GET['variation_id'];
+    $qty = $_GET['qty'] > 0 ? (int)$_GET['qty'] : 1;
+    $added = WC()->cart->add_to_cart($product_id, $qty, $variation_id);
+
+    WC()->cart->calculate_totals();
+
+    $count = WC()->cart->get_cart_contents_count();
+
+    wp_send_json_success(
+        [
+            'count' => $count,
+        ]
+    );
+
+ //   WC_AJAX::get_refreshed_fragments();
     wp_die();
 }

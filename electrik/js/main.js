@@ -150,6 +150,18 @@ jQuery(document).ready(function ($) {
         var item_quantity = $(this).val();
         var currentVal = parseFloat(item_quantity);
 
+
+
+        $('.mini-cart').block({
+            message: null,
+            overlayCSS: {
+                background: '#fff',
+                opacity: 0.4
+            }
+        })
+
+
+
         $.ajax({
             type: 'POST',
             url: wc_add_to_cart_params.ajax_url,
@@ -160,6 +172,7 @@ jQuery(document).ready(function ($) {
             },
             success: function (data) {
                 $(document.body).trigger('wc_update_cart');
+                $( document.body ).trigger( 'wc_fragment_refresh' );
             },
         });
     });
@@ -405,9 +418,6 @@ jQuery(document).ready(function ($) {
 
     $(document).on('click', 'a.add_to_fav', function () {
 
-        console.log(globalFav)
-
-
         var user_id = $(this).attr('data-user_id');
         var product_id = $(this).attr('data-product_id');
         var liked = $(this).attr('data-liked');
@@ -438,10 +448,9 @@ jQuery(document).ready(function ($) {
         Cookies.set('fav', fav);
 
 
+        globalFav = fav
+        if (user_id > 0) {
 
-        if (user_id > 0)
-
-            globalFav = fav
             $.ajax({
                 type: 'POST',
                 url: wc_add_to_cart_params.ajax_url,
@@ -455,13 +464,41 @@ jQuery(document).ready(function ($) {
                 },
                 success: function (data) {
 
-
-
                 },
             });
+        }
     });
 
 
+    /* add to cart */
+
+    $(document).on('click', '.add-to-cart', function (e) {
+        e.preventDefault();
+
+        var product_id = $(this).attr('data-product_id');
+        var variation_id = $(this).attr('data-variation_id');
+        var qty = $(this).closest('.buy').find('input').val();
+        $('#add-product-cart').block({
+            message: null,
+            overlayCSS: {
+                background: '#fff',
+                opacity: 0.4
+            }
+        })
+        $.ajax({
+            url: wc_add_to_cart_params.ajax_url,
+            data: {
+                action: 'add_to_cart',
+                product_id: product_id,
+                variation_id: variation_id,
+                qty: qty
+            },
+            success: function (data) {
+                $( document.body ).trigger( 'wc_fragment_refresh' );
+                $('#add-product-cart').unblock()
+            },
+        });
+    });
 
 
 

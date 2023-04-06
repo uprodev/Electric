@@ -39,9 +39,11 @@ function add_scripts() {
 
     if (is_account_page() ) {
         wp_enqueue_script( 'cart',   '/wp-content/plugins/woocommerce/assets/js/frontend/cart.min.js', array('jquery'), false, true);
-
-
         wp_enqueue_script( 'wc-cart' );
+    }
+
+    if (is_product()){
+        wp_enqueue_script( 'comment-reply' );
     }
 
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array('jquery'), false, true);

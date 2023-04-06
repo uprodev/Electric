@@ -38,6 +38,11 @@ $orders_all = count(wc_get_orders($args));
 
 $cart_count = WC()->cart->get_cart_contents_count();
 
+$fav = get_field('fav', 'user_'.$user_id);
+if ($fav)
+    $post__in = explode('|', $fav);
+$post__in = array_filter($post__in);
+
 
 do_action( 'woocommerce_before_account_navigation' );
 
@@ -67,7 +72,7 @@ $var = array_keys($wp->query_vars);
         <h6><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-83.svg" alt="">Товары</a></h6>
         <ul>
             <li class="<?= in_array('cart', $var)   ? 'active' : '' ?>"><a href="/my-account/cart/">Корзина <span><?= $cart_count ?></span></a></li>
-            <li class="<?= in_array('favorites', $var)   ? 'active' : '' ?>"><a href="#">Избранное <span>5</span></a></li>
+            <li class="<?= in_array('favorites', $var)   ? 'active' : '' ?>"><a href="/my-account/favorites/">Избранное <span><?= count($post__in) ?></span></a></li>
             <li class="<?= in_array('viewed', $var)   ? 'active' : '' ?>"><a href="/my-account/viewed/">Просмотренные товары</a></li>
         </ul>
     </div>
