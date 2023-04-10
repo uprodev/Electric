@@ -247,9 +247,48 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', '[name="select-city"]', function (e) {
-        var val = $(this).val();
-        $('.shipping-point').html(val)
+        update_details()
+    });
+
+    $(document).on('change', '[name="shipping-date"]', function (e) {
+        update_details()
+    });
+
+    $(document).on('change', '[name="payment_method"]', function (e) {
+        update_details()
     })
+
+    $(document).on('change', '.shipping_method', function (e) {
+        update_details()
+    })
+
+
+    function update_details() {
+
+        var val = $('[name="select-city"]:checked').val();
+        $('.shipping-point_text').html(val)
+
+        var val = $('[name="shipping-date"] option:selected').val();
+        var val2 = $('[name="shipping-time"] option:selected').val();
+        $('.shipping-date_text').html(val + ", " + val2)
+
+        var val = $('[name="payment_method"]:checked').next('label').find('.h6').text();
+        $('.payment_method_text').html(val)
+
+        var val = $('.shipping_method:checked').next('label').find('.h6').text();
+        $('.shipping_method_text').html(val)
+
+
+
+
+    }
+
+    update_details()
+
+
+
+
+
 
 
     /**
@@ -477,7 +516,12 @@ jQuery(document).ready(function ($) {
 
         var product_id = $(this).attr('data-product_id');
         var variation_id = $(this).attr('data-variation_id');
-        var qty = $(this).closest('.buy').find('input').val();
+        var qty1 = $(this).closest('.buy').find('input').val();
+        var qty2 = $(this).closest('.cost-wrap').find('input').val();
+        var qty = qty1 ? qty1 : qty2
+
+
+
         $('#add-product-cart').block({
             message: null,
             overlayCSS: {
@@ -496,6 +540,12 @@ jQuery(document).ready(function ($) {
             success: function (data) {
                 $( document.body ).trigger( 'wc_fragment_refresh' );
                 $('#add-product-cart').unblock()
+
+                $.fancybox.open( $('#add-product-cart'), {
+                    touch:false,
+                    autoFocus:false,
+                });
+
             },
         });
     });

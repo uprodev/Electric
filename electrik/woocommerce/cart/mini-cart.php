@@ -63,9 +63,9 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                     <div class="product-item">
                         <div class="line-info">
                             <ul>
-                                <li class="hot">
-                                    <img src="<?= get_template_directory_uri() ?>/img/icon-10.svg" alt="">
-                                </li>
+<!--                                <li class="hot">-->
+<!--                                    <img src="--><?//= get_template_directory_uri() ?><!--/img/icon-10.svg" alt="">-->
+<!--                                </li>-->
                                 <?= ask_percentage_sale(  $product ) ?>
 
                             </ul>

@@ -158,6 +158,12 @@ function my_custom_checkout_field_update_order_meta( $order_id ) {
     if ( ! empty( $_POST['select-city'] ) )
         update_post_meta( $order_id, 'select_city', sanitize_text_field( $_POST['select-city'] ) );
 
+    if ( ! empty( $_POST['shipping-date'] ) )
+        update_post_meta( $order_id, 'shipping-date', sanitize_text_field( $_POST['shipping-date'] ) );
+
+    if ( ! empty( $_POST['shipping-time'] ) )
+        update_post_meta( $order_id, 'shipping-time', sanitize_text_field( $_POST['shipping-time'] ) );
+
 
 }
 
@@ -171,6 +177,9 @@ function my_custom_checkout_field_display_admin_order_meta($order){
     }
 
     echo '<p><strong>Самовывоз:</strong> ' . get_post_meta($order->id, 'select_city', true) . '</p>';
+    echo '<p><strong>Время доставки:</strong> ' . get_post_meta($order->id, 'shipping-date', true) . '</p>';
+    echo '<p><strong>Дата доставки:</strong> ' . get_post_meta($order->id, 'shipping-time', true) . '</p>';
+
 }
 
 

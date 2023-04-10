@@ -51,7 +51,7 @@ $cat = $pcats[0]->term_id;
             <?php if($product->is_in_stock() ): ?>
                 <p><img src="<?= get_template_directory_uri();?>/img/icon-12.svg" alt=""><i><?= __('В наличии ', 'electrik');?> </i>
                     <?php if($product->get_stock_quantity() != 0): ?>
-                    <?= ' >' . $product->get_stock_quantity(); ?> <?= $cat==17? __('м/п', 'electrik'): __('шт.', 'electrik');?> </p>
+                     > <?= $unit ? $unit : __('шт.', 'electrik');?> </p>
                     <?php endif;?>
             <?php else:?>
                 <p><?= __('Нет в наличии', 'electrik');?></p>

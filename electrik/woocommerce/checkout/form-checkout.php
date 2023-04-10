@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
+setlocale(LC_ALL, 'ru_RU.UTF-8  ');
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
@@ -123,20 +123,24 @@ get_template_part('parts/breadcrumbs');
                                             <div class="date-wrap">
                                                 <div class="select-block ">
                                                     <label class="form-label" for="select-date-1"></label>
-                                                    <select id="select-date-1" name="select-date-1" class="select-list">
-                                                        <option value="0">Среда, 8 февраля</option>
-                                                        <option value="1">Среда, 9 февраля</option>
-                                                        <option value="2">Среда, 10 февраля</option>
-                                                        <option value="3">Среда, 11 февраля</option>
+                                                    <select id="select-date-1" name="shipping-date" class="select-list">
+                                                        <?php foreach (range(1,4) as $day) {
+                                                            $date = strftime('%A, %d %h', strtotime("+$day day"));
+
+                                                            ?>
+
+                                                            <option <?php selected(1, $day) ?> value="<?= $date ?>"><?= $date ?></option>
+                                                        <?php } ?>
+
+
                                                     </select>
                                                 </div>
                                                 <div class="select-block ">
                                                     <label class="form-label" for="select-date-2"></label>
-                                                    <select id="select-date-2" name="select-date-2" class="select-list">
-                                                        <option value="0">09:00-19:00</option>
-                                                        <option value="1">09:00-19:00</option>
-                                                        <option value="2">09:00-19:00</option>
-                                                        <option value="3">09:00-19:00</option>
+                                                    <select id="select-date-2" name="shipping-time" class="select-list">
+                                                        <option value="09:00-12:00" selected>09:00-12:00</option>
+                                                        <option value="12:00-19:00">12:00-19:00</option>
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -244,16 +248,16 @@ get_template_part('parts/breadcrumbs');
 
                             <ul class="delivery-info">
                                 <li>
-                                    <p>Самовывоз</p>
-                                    <h6 class="shipping-point"></h6>
+                                    <p class="shipping_method_text"></p>
+                                    <h6 class="shipping-point_text"></h6>
                                 </li>
                                 <li>
                                     <p>Дата</p>
-                                    <h6>Среда, 8 февраля  09:00-19:00</h6>
+                                    <h6 class="shipping-date_text"></h6>
                                 </li>
                                 <li>
                                     <p>Оплата</p>
-                                    <h6>...</h6>
+                                    <h6 class="payment_method_text"></h6>
                                 </li>
                             </ul>
 
@@ -266,7 +270,7 @@ get_template_part('parts/breadcrumbs');
 
                             <div class="btn-wrap">
                                 <button type="submit" class="btn-big btn-red  "><img src="<?= get_template_directory_uri() ?>/img/icon-71.svg" alt="">Подтвердить заказ</button>
-                                <a href="#" class="btn-big btn-border-black">Изменить заказ</a>
+                                <a href="<?= wc_get_cart_url() ?>" class="btn-big btn-border-black">Изменить заказ</a>
                             </div>
 
                         </div>

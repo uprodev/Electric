@@ -120,9 +120,7 @@ get_template_part('parts/breadcrumbs');
                                 <div class="data data-2">
                                     <p>Название товара</p>
                                 </div>
-                                <div class="data data-3">
-                                    <p>Цена без НДС</p>
-                                </div>
+
                                 <div class="data data-4">
                                     <p>Цена с НДС</p>
                                 </div>

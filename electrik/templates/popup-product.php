@@ -16,11 +16,7 @@
 </div>
 
 
-<div id="add-product-cart" style="display:none;" class="popup-login popup-product-cart width-820 ">
 
-    <?php woocommerce_mini_cart() ?>
-
-</div>
 
 <div id="fast-shop" style="display:none;" class="popup-login popup-product-cart width-820 popup-fast-shop">
     <div class="popup-main catalog">
