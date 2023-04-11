@@ -16,31 +16,20 @@ $fp = get_field('forma_podpiski', 'options');
         <div class="content">
             <div class="item item-1">
                 <h6><?php the_field('zagolovok_menyu_1', 'options');?></h6>
-                <ul>
-                    <li><a href="#">Кабель/провод</a></li>
-                    <li><a href="#">Электромонтажные изделия</a></li>
-                    <li><a href="#">Арматура для СИП</a></li>
-                    <li><a href="#">Кабеленесущие системы</a></li>
-                    <li><a href="#">Модульная автоматика</a></li>
-                    <li><a href="#">Счетчики и трансформаторы</a></li>
-                    <li><a href="#">Силовое оборудование</a></li>
-                    <li><a href="#">Управление освещением</a></li>
-                    <li><a href="#">Управление и коммутация</a></li>
-                    <li><a href="#">Светильники и лампы</a></li>
-                    <li><a href="#">Корпуса и аксессуары</a></li>
-                </ul>
+                <?php wp_nav_menu([
+
+                    'container' => '',
+                    'menu' => 'Footer 1',
+                ]);?>
             </div>
             <div class="item item-2">
                 <div class="sub-item">
                     <h6><?php the_field('zagolovok_menyu_2', 'options');?></h6>
-                    <ul>
-                        <li><a href="#">Кабель/провод</a></li>
-                        <li><a href="#">Электромонтажные изделия</a></li>
-                        <li><a href="#">Арматура для СИП</a></li>
-                        <li><a href="#">Кабеленесущие системы</a></li>
-                        <li><a href="#">Модульная автоматика</a></li>
-                        <li><a href="#">Счетчики и трансформаторы</a></li>
-                    </ul>
+                    <?php wp_nav_menu([
+
+                        'container' => '',
+                        'menu' => 'Footer 2',
+                    ]);?>
                 </div>
                 <div class="sub-item">
                     <h6><?php the_field('zagolovok_menyu_3', 'options');?></h6>

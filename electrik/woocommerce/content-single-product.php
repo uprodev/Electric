@@ -139,13 +139,18 @@ $unit = get_field('_woo_uom_input');
             <div class="text-wrap">
                 <div class="product-info">
 
-                    <?php if (!empty($variations_attr['pa_sechenie'])) { ?>
 
-                        <h2>Сечение жилы</h2>
+
+
+                    <?php if (!empty($variations_attr )) { ?>
+
+                        <?php foreach ($variations_attr as $key=>$variation_attr) {
+                            $tax = get_taxonomy($key)?>
+                            <h2><?= str_replace('Товар ', '', $tax->label) ?></h2>
                             <ul class="sort">
 
                                 <?php foreach ($variations as  $variation) {
-                                    $sizes[] = $variation['attributes']['attribute_pa_sechenie'];
+                                    $sizes[] = $variation['attributes']['attribute_' . $key];
                                 }
 
                                 $size = array_unique($sizes);
@@ -165,8 +170,11 @@ $unit = get_field('_woo_uom_input');
                                 }?>
 
                             </ul>
+                        <?php }?>
 
                     <?php }?>
+
+
                     <ul class="characteristics">
                         <?php foreach ( $attributes as $attribute ) :
                             if ( empty( $attribute['is_visible'] ) || ( $attribute['is_taxonomy'] && ! taxonomy_exists( $attribute['name'] ) ) )
@@ -284,6 +292,7 @@ $unit = get_field('_woo_uom_input');
                             <?php endforeach; ?>
                         </ul>
                     </div>
+
                     <div class="item">
                         <h2><?= __('Описание', 'electrik');?></h2>
                         <?= $product->get_description();?>

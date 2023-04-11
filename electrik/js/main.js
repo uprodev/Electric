@@ -551,5 +551,27 @@ jQuery(document).ready(function ($) {
     });
 
 
+    $(document).on('click', '.bapf_update', function (e) {
+        $.fancybox.close();
+    })
+
+
+    document.addEventListener( 'wpcf7mailsent', function( event ) {
+        if ( '448' == event.detail.contactFormId ) {
+            $.fancybox.close();
+            $.fancybox.open( $('#fast-shop-ok'), {
+                touch:false,
+                autoFocus:false,
+            });
+
+        }
+    }, false );
+
+
+
+
+
+
+
 
 });

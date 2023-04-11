@@ -699,15 +699,6 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  /* fast buy*/
-  $(document).on('click', '.fast-shop-ok', function (e){
-    console.log('fast-shop-ok')
-    $.fancybox.close();
-    $.fancybox.open( $('#fast-shop-ok'), {
-      touch:false,
-      autoFocus:false,
-    });
-  });
 
 
 

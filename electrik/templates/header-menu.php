@@ -127,7 +127,7 @@
     <nav class="content">
         <ul>
             <li class="is-active">
-                <a href="#">
+                <a href="/">
                     <figure>
                         <img src="<?= get_template_directory_uri() ?>/img/icon-25-1.svg" alt="">
                     </figure>
@@ -135,26 +135,33 @@
                 </a>
 
             </li>
-            <li><a href="#">
+            <li><a href="/shop">
                     <figure>
                         <img src="<?= get_template_directory_uri() ?>/img/icon-25-2.svg" alt="">
                     </figure>
                     Каталог
                 </a></li>
-            <li><a href="#">
+            <li><a href="<?= wc_get_cart_url() ?>">
                     <figure>
                         <img src="<?= get_template_directory_uri() ?>/img/icon-25-3.svg" alt="">
-                        <span>1</span>
+                        <span><?= WC()->cart->get_cart_contents_count() ?></span>
+                        <span><?= WC()->cart->get_cart_contents_count() ?></span>
                     </figure>
                     Корзина
                 </a></li>
-            <li><a href="#">
+            <li><a href="<?php the_permalink(429) ?>">
                     <figure>
                         <img src="<?= get_template_directory_uri() ?>/img/icon-25-4.svg" alt="">
                     </figure>
                     Избранное
                 </a></li>
-            <li><a href="#login" class="fancybox">
+            <li><a
+                    <?php if (is_user_logged_in()) { ?>
+                        href="<?= get_permalink(11) ?>"
+                    <?php } else { ?>
+                        href="#login" class="fancybox"
+                    <?php } ?>
+                >
                     <figure>
                         <img src="<?= get_template_directory_uri() ?>/img/icon-25-5.svg" alt="">
                     </figure>

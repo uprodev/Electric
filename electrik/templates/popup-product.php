@@ -1,9 +1,11 @@
+<?php
 
+$product = new WC_Product(get_the_id())?>
 
 <div id="send-reviews" style="display:none;" class="popup-send width-820">
     <div class="popup-main">
         <figure>
-            <img src="img/icon-29.svg" alt="">
+            <img src="<?= get_template_directory_uri() ?>/img/icon-29.svg" alt="">
         </figure>
         <div class="text-wrap">
             <h3>Ваш отзыв отправлен, спасибо</h3>
@@ -26,63 +28,49 @@
                 <div class="line-info">
                     <ul>
                         <li class="hot">
-                            <img src="img/icon-10.svg" alt="">
+                            <img src="<?= get_template_directory_uri() ?>/img/icon-10.svg" alt="">
                         </li>
-                        <li class="sale">-10%</li>
+                        <?= ask_percentage_sale(  $product ) ?>
                     </ul>
                 </div>
                 <div class="like">
-                    <a href="#">
-                        <img src="img/icon-11-1.svg" alt="">
+                    <a class="add_to_fav <?= is_favorite($product->get_id()) ?>" data-liked="<?= is_favorite($product->get_id()) ?>" data-user_id="<?= get_current_user_id() ?>" data-product_id="<?= $product->get_id() ?>"  href="#">
+                        <img src="<?= get_template_directory_uri() ?>/img/icon-11-1.svg" alt="">
                     </a>
                 </div>
                 <figure>
-                    <a href="#">
-                        <img src="img/img-1.jpg" alt="">
+                    <a href="<?= $product->get_permalink() ?>">
+                        <?= $product->get_image() ?>
                     </a>
                 </figure>
                 <div class="text-wrap">
                     <div class="wrap-title">
-                        <h6><a href="#">Светодиодная лампа REXANT груша, A60, 11,5 Вт, E27, 1093 лм, 2700 K, теплый свет 604-003</a></h6>
-                        <p>Силовой кабель 3 х 2.5 мм2</p>
+                        <h6><a href="<?= $product->get_permalink() ?>"><?= $product->get_title() ?></a></h6>
+
                     </div>
 
                     <div class="cost-wrap">
                         <div class="cost">
-                            <p class="new">70₽</p>
+                            <p class="new"><?= $product->get_price_html() ?></p>
                         </div>
 
                         <div class="buy">
                             <div class="input-number ">
-                                <div class="btn-count btn-count-minus"><img src="img/minus.svg" alt=""></div>
+                                <div class="btn-count btn-count-minus"><img src="<?= get_template_directory_uri() ?>/img/minus.svg" alt=""></div>
                                 <input type="text" name="count" value="1" class="form-control"/>
-                                <div class="btn-count btn-count-plus"><img src="img/plus.svg" alt=""></div>
+                                <div class="btn-count btn-count-plus"><img src="<?= get_template_directory_uri() ?>/img/plus.svg" alt=""></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <form action="#" class="form-icon">
 
-
-            <h3>Заполните форму, и мы свяжемся с вами</h3>
-            <div class="input-wrap input-wrap-50">
-                <label for="name-popup1"><img src="img/icon-46.svg" alt=""></label>
-                <input type="text" name="name-popup" id="name-popup1" placeholder="Имя">
-            </div>
-            <div class="input-wrap input-wrap-50">
-                <label for="tel1"><img src="img/icon-49.svg" alt=""></label>
-                <input type="text" name="tel-popup" id="tel1" placeholder="Телефон" class="tel">
-            </div>
-            <div class="input-wrap-submit">
-                <button type="submit" class=" btn-big btn-red fast-shop-ok"><img src="img/icon-39.svg" alt="">Отправить заказ</button>
-            </div>
-        </form>
+        <?=   do_shortcode('[contact-form-7 id="448" title="Быстрый заказ"]') ?>
 
 
         <div class="btn-wrap-full">
-            <a href="#" class="btn-border-black btn-big"><img src="img/icon-48.svg" alt="">Продолжить покупки</a>
+            <a href="#" class="btn-border-black btn-big"><img src="<?= get_template_directory_uri() ?>/img/icon-48.svg" alt="">Продолжить покупки</a>
         </div>
         <div class="info">
             <p>Нажимая кнопку «Отправить заказ», я соглашаюсь с условиями <a href="#">политики конфиденциальности</a> и <a href="#">пользовательского соглашения</a>.</p>
@@ -94,7 +82,7 @@
 <div id="fast-shop-ok" style="display:none;" class="popup-send width-820">
     <div class="popup-main">
         <figure>
-            <img src="img/icon-29.svg" alt="">
+            <img src="<?= get_template_directory_uri() ?>/img/icon-29.svg" alt="">
         </figure>
         <div class="text-wrap">
             <h3>Ваша заявка отправлена, спасибо</h3>
