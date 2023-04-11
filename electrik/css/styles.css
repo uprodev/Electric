@@ -2588,7 +2588,6 @@ header .sub-menu {
 .product-inner .sort {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-bottom: 25px;
   border-bottom: 1px solid #EEEEEE;
   padding-bottom: 30px;
@@ -2596,7 +2595,11 @@ header .sub-menu {
 .product-inner .sort li {
   display: inline-block;
   position: relative;
-  width: calc(25% - 8px);
+  min-width: calc(25% - 8px);
+  margin-right: 5px;
+}
+.product-inner .sort li:last-child{
+  margin-right: 0;
 }
 .product-inner .sort li label {
   display: inline-block;
@@ -5270,6 +5273,12 @@ main {
   padding-bottom: 0;
   border-bottom: 0;
 }
+.cabinet .cart-block .aside .item:last-child{
+  padding-bottom: 22px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #EEEEEE;
+  width: 100%;
+}
 .cabinet .aside .is-current h6 a {
   color: #c71e27;
 }
@@ -6698,5 +6707,174 @@ body .lmp_load_more_button.br_lmp_button_settings .lmp_button:hover {
   line-height: 19px;
   color: #AAAAAA;
 }
+/*--------EDIT---------*/
+.berocket_aapf_widget_selected_filter{
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  display: -webkit-box;display: -ms-flexbox;display: flex;
+}
 
+.bapf_sfa_taxonomy{
+  display: -webkit-box;display: -ms-flexbox;display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  margin-right: 10px;
+  color: #292929;
+  height: 44px;
+  line-height: 42px;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  -webkit-box-align: center;-ms-flex-align: center;align-items: center;
+}
+
+.sort-line .sort-1 .bapf_sfa_taxonomy ul{
+  padding: 0;
+}
+
+.sort-line .sort-1 .bapf_sfa_taxonomy ul li{
+  margin: 0!important;
+
+}
+
+.sort-line .sort-1 .bapf_sfa_taxonomy ul li a{
+  display: inline-block;
+  color: #292929;
+  padding: 0 15px!important;
+  height: 44px;
+  line-height: 42px;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  border: 1px solid #DADADA;
+}
+
+.sort-line .sort-1 .bapf_sfa_taxonomy ul li a:hover{
+  color: #EF7446;
+  border: 1px solid #EF7446;
+}
+.sort-line .sort-1 ul.bapf_sfa_unall{
+  padding: 0!important;
+}
+.sort-line .sort-1 ul.bapf_sfa_unall li{
+  margin-bottom: 0!important;
+}
+.sort-line .sort-1 ul.bapf_sfa_unall li a{
+  margin-bottom: 0!important;
+  display: inline-block;
+  color: #292929;
+  padding: 0 15px!important;
+  height: 44px;
+  line-height: 42px;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  border: 1px solid #DADADA;
+}
+
+.sort-line .sort-1 ul.bapf_sfa_unall li a:hover{
+  color: #EF7446;
+  border: 1px solid #EF7446;
+}
+
+.bapf_sfa_taxonomy span{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.sort-line .sort-1 ul.bapf_sfa_unall li a i{
+  margin-right: 3px;
+}
+.sort-line .sort-1 .bapf_sfa_taxonomy ul li a i{
+  margin-right: 5px;
+}
+
+.catalog .btn-wrap .btn-red .bapf_body button{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: #c71e27;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  border: none !important;
+  height: 46px;
+  line-height: 42px;
+  justify-content: center;
+  padding: 0!important;
+}
+.catalog .btn-wrap .btn-red .bapf_body button:hover{
+  background: #AA0D16;
+}
+
+.catalog .btn-wrap .btn-red .bapf_body button:active{
+  background: #DADADA;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.cart-block .aside .item .btn-red img{
+  margin-right: 5px;
+}
+.cart-block .aside .input-wrap input{
+  margin-bottom: 10px;
+}
+
+.checkout-block .delivery-wrap>input{
+  position: absolute;
+  z-index: -1;
+}
+
+
+.personal-data .input-wrap-password .wrap-info .info{
+  white-space: nowrap;
+}
+
+.catalog-line .left .form-search input{
+  border-radius: 0;
+}
+
+.dgwt-wcas-search-wrapp{
+  min-width: 100px!important;
+}
+
+.popup-login{
+  max-height: calc(100vh - 12px);
+}
+
+.product .product-item .cost .price>.amount{
+  font-size: 22px;
+  line-height: 26px;
+  text-decoration: none;
+  color: #292929;
+  font-weight: 400 !important;
+}
+
+.cabinet-cart .cart-block .top{
+  display: none;
+}
+.cabinet-cart .cart-block .aside{
+  max-width: 240px;
+}
+.cart_totals{
+  width: 100%;
+}
+
+.cabinet .aside .item ul li.active a {
+  color: #c71e27;
+}
+.product-inner .cost-wrap .cost{
+  min-height: 47px;
+}
+.product-inner .cost-wrap .cost>.amount{
+  font-size: 40px;
+  line-height: 47px;
+}
 /*# sourceMappingURL=styles.css.map */

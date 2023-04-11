@@ -106,8 +106,8 @@
   .cabinet .product .product-item .info-product {
     flex-wrap: wrap;
   }
-  .cabinet .info-company .characteristics li {
-    width: 100%;
+  .cabinet-cart .cart-block .aside{
+    max-width: 100%;
   }
 }
 @media (max-width: 1199px) {
@@ -1831,11 +1831,11 @@
   .personal-data .input-wrap-tel {
     position: relative;
   }
-  .personal-data .input-wrap-tel .info {
+/*  .personal-data .input-wrap-tel .info {
     position: absolute;
     bottom: 60px;
     left: 81px;
-  }
+  }*/
   .personal-data .input-wrap-tel.new .info {
     position: relative;
     bottom: 0;
@@ -4130,6 +4130,13 @@
   }
   .checkout-block .aside .item .wrap {
     padding-top: 0;
+  }
+  .product-inner .cost-wrap .cost>.amount{
+    font-size: 26px;
+    line-height: 30px;
+  }
+  .product-inner .cost-wrap .cost {
+    min-height: 30px;
   }
 }
 @media (max-width: 359px) {
