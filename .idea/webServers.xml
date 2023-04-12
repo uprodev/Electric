@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c3547bb3-dcfb-4129-9d3c-7c5e98f14103" name="electro" url="http://168.119.234.7">
+        <fileTransfer rootFolder="/electric.uprodev.site/wp-content/themes/" host="168.119.234.7" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

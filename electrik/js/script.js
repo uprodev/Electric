@@ -76,16 +76,19 @@ jQuery(document).ready(function ($) {
     $(document).on('click', '.catalog-line .left a', function (e){
       e.preventDefault();
       $('body').toggleClass('is-open');
+
     });
-    $(document).on('click', ' main, .top-line, .top-info', function (e){
+    $(document).on('click', '.top-line, .top-info', function (e){
       e.preventDefault();
       $('body').removeClass('is-open');
       $('.site-menu > ul > li > a').removeClass('is-open');
+
     });
 
     $(document).on('click','.site-menu > ul > li > a', function (e){
       $('.site-menu > ul > li > a').removeClass('is-open');
       $(this).toggleClass('is-open');
+
     })
   }
 
@@ -221,6 +224,11 @@ jQuery(document).ready(function ($) {
     $.fancybox.open( $('#filter'), {
       touch:false,
       autoFocus:false,
+      afterClose : function(e){
+        $('body').removeClass('is-active');
+        $('html').removeClass('is-menu');
+        $('header').removeClass('is-active');
+      },
     });
     setTimeout(function() {
       $('body').addClass('is-active');
