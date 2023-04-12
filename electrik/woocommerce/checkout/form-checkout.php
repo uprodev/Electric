@@ -37,6 +37,7 @@ $method = explode(':', WC()->session->get('chosen_shipping_methods')[0])[0];
 get_template_part('parts/breadcrumbs');
 
 
+
 ?>
 
 <section class="cart-block checkout-block">
@@ -51,9 +52,9 @@ get_template_part('parts/breadcrumbs');
                 <div class="title">
                     <h1>Оформление заказа</h1>
                 </div>
-                <div class="btn-wrap">
-                    <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-68.svg" alt=""></a>
-                </div>
+<!--                <div class="btn-wrap">-->
+<!--                    <a href="#"><img src="--><?//= get_template_directory_uri() ?><!--/img/icon-68.svg" alt=""></a>-->
+<!--                </div>-->
             </div>
             <div class="content">
                     <div class="cart-content">

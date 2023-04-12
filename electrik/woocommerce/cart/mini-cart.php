@@ -19,6 +19,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
+if (is_cart() || is_account_page())
+    return;
+
 
 
 
@@ -92,7 +95,9 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
                             <div class="cost-wrap">
                                 <div class="cost">
-                                    <p class="new"><?= $product->get_price() ?>₽</p>
+                                    <p class="new">
+                                        <?=  WC()->cart->get_product_price( $_product ) ?>
+                                    </p>
                                 </div>
 
                                 <div class="buy">
@@ -180,9 +185,9 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                     <div class="product-item">
                     <div class="line-info">
                         <ul>
-                            <li class="hot">
-                                <img src="<?= get_template_directory_uri() ?>/img/icon-10.svg" alt="">
-                            </li>
+<!--                            <li class="hot">-->
+<!--                                <img src="--><?//= get_template_directory_uri() ?><!--/img/icon-10.svg" alt="">-->
+<!--                            </li>-->
                             <?= ask_percentage_sale(  $product ) ?>
                         </ul>
                     </div>
@@ -235,8 +240,6 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
 
     </div>
-
-
 
 
 

@@ -306,11 +306,11 @@ jQuery(document).ready(function ($) {
 
   $(document).on('click', '.btn-send-password', function (e){
     console.log('send-password-ok')
-    $.fancybox.close();
-    $.fancybox.open( $('#send-ok-password'), {
-      touch:false,
-      autoFocus:false,
-    });
+    // $.fancybox.close();
+    // $.fancybox.open( $('#send-ok-password'), {
+    //   touch:false,
+    //   autoFocus:false,
+    // });
   });
 
   //RANGE

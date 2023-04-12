@@ -5,12 +5,8 @@
       <paths name="electric">
         <serverdata>
           <mappings>
-            <mapping deploy="/electric.uprodev.site/wp-content/themes/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/electric.uprodev.site/wp-content/themes" local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/woocommerce" />
-            <excludedPath local="true" path="$PROJECT_DIR$/woocommerce-ajax-filters" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

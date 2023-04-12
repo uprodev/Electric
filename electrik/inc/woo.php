@@ -21,7 +21,12 @@ function add_percentage_to_sale_badge( $html, $post, $product ) {
 
         $percentage    = round(100 - ($sale_price / $regular_price * 100)) . '%';
     }
-    return '<div class="line-info"><ul><li class="sale">-' . $percentage . '</li></ul></div>';
+
+    if ($product->is_featured())
+        $hot = '<li class="hot">
+            <img src="'. get_template_directory_uri().'/img/icon-10.svg" alt="">
+        </li>';
+    return '<div class="line-info"><ul>'.$hot.'<li class="sale">-' . $percentage . '</li></ul></div>';
 }
 
 
@@ -208,6 +213,8 @@ add_action('init', function() {
     add_rewrite_endpoint('repair-active', EP_ROOT | EP_PAGES);
     add_rewrite_endpoint('service', EP_ROOT | EP_PAGES);
     add_rewrite_endpoint('favorites', EP_ROOT | EP_PAGES);
+    add_rewrite_endpoint('reviews', EP_ROOT | EP_PAGES);
+
 
 });
 add_action('woocommerce_account_viewed_endpoint', function() {
@@ -259,6 +266,15 @@ add_action('woocommerce_account_favorites_endpoint', function() {
         'favorites' => $endpoint
     ]);
 });
+
+add_action('woocommerce_account_reviews_endpoint', function() {
+    $endpoint = [];  // Replace with function to return licenses for current logged in user
+
+    wc_get_template('myaccount/reviews.php', [
+        'reviews' => $endpoint
+    ]);
+});
+
 
 
 
@@ -354,18 +370,54 @@ function wpf_wc_add_cart_fees_by_product_meta( $cart ) {
         }
     }
 
+//    $city = WC()->session->get('shipping_city');
+//    $city = WC()->session->get_session_data();
+//    $city = json_encode($city);
+//    $cart->add_fee( $city . $discount['percent'] . '%', $fee  );
+
+
 
 
 }
 
 
 
-add_filter( 'woocommerce_package_rates', 'custom_shipping_costs', 20, 2 );
+add_filter( 'woocommerce_package_rates', 'custom_shipping_costs', 10, 2 );
 function custom_shipping_costs( $rates, $package ) {
     // New shipping cost (can be calculated)
 
     $free_shipping = get_field('free_shipping', 'options');
     $total = WC()->cart->get_cart_contents_total();
+
+
+//    $city = WC()->session->get('sdd');
+//    if ($city === 'Минск') {
+//        $new_cost = 9000;
+//
+//        foreach( $rates as $rate_key => $rate ){
+//
+//            $rates[$rate_key]->cost = $new_cost;
+//
+//
+//
+//        }
+//
+//        return $rates;
+//
+//    }
+
+//
+//    foreach( $rates as $rate_key => $rate ){
+//
+//        $rates[$rate_key]->cost = rand(1000,80000);
+//
+//
+//        WC()->session->set( 'shipping_calculated_cost', $rates[$rate_key]->cost );
+//
+//    }
+//
+//
+//    return $rates;
 
     if ($free_shipping <= $total) {
         $new_cost = 0;
@@ -378,6 +430,62 @@ function custom_shipping_costs( $rates, $package ) {
         }
     }
 
+
+
     return $rates;
 }
+//
+//function name_of_your_function( $posted_data) {
+//
+//
+//
+//    WC()->cart->calculate_shipping();
+//    WC()->cart->calculate_totals();
+//
+//
+//    $rates = get_pack
+//
+//    ob_start();
+//    woocommerce_order_review();
+//    $woocommerce_order_review = ob_get_clean();
+//
+//    ob_start();
+//    woocommerce_checkout_payment();
+//    $woocommerce_checkout_payment = ob_get_clean();
+//
+//
+//
+//    wp_send_json(
+//        array(
+//            'result'    => empty( $messages ) ? 'success' : 'failure',
+//            'messages'  => $messages,
+//            'reload'    => 1,
+//            'fragments' => apply_filters(
+//                'woocommerce_update_order_review_fragments',
+//                array(
+//                    '.woocommerce-checkout-review-order-table' => $woocommerce_order_review,
+//                    '.woocommerce-checkout-payment' => $woocommerce_checkout_payment,
+//                )
+//
+//            ),
+//        )
+//    );
+//
+//
+//
+//
+//}
+//
+//add_action('woocommerce_checkout_update_order_review', 'name_of_your_function', 213123);
 
+
+
+
+
+
+
+add_action('template_redirect', function(){
+    if (is_account_page() && !is_user_logged_in()) {
+        wp_redirect('/');
+    }
+});

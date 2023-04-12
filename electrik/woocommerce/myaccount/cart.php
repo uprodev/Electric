@@ -9,7 +9,9 @@
             <h2 class="tab-h1">Корзина</h2>
             <?php do_action( 'woocommerce_account_navigation' ); ?>
             <div class="cabinet-content">
-                <h1>Корзина</h1>
+
+
+
                 <section class="cart-block">
 
                     <form class="form-icon woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">

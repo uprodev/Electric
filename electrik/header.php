@@ -17,7 +17,9 @@
 $banner = get_field('banner', 'options');
 $show = $banner['pokazat_banner'];
 
-if($show):
+
+
+if($show && !$_COOKIE['top']):
 ?>
 
 <div class="top-info">

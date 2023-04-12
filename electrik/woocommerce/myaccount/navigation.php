@@ -87,8 +87,8 @@ $var = array_keys($wp->query_vars);
     <div class="item">
         <h6><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-1.svg" alt="">Профиль</a></h6>
         <ul>
-            <li><a href="/my-account/edit-account/">Личные данные</a></li>
-            <li><a href="#">Отзывы <span>2</span></a></li>
+            <li class="<?= in_array('edit-account', $var)   ? 'active' : '' ?>"><a href="/my-account/edit-account/">Личные данные</a></li>
+            <li class="<?= in_array('reviews', $var)   ? 'active' : '' ?>"><a href="/my-account/reviews/">Отзывы <span>2</span></a></li>
             <li class="out"><a href="<?= wc_logout_url() ?>">Выход</a></li>
         </ul>
     </div>

@@ -147,27 +147,28 @@ $unit = get_field('_woo_uom_input');
                         <?php foreach ($variations_attr as $key=>$variation_attr) {
                             $tax = get_taxonomy($key)?>
                             <h2><?= str_replace('Товар ', '', $tax->label) ?></h2>
-                            <ul class="sort">
+                            <ul class="sort sort-<?= $tax->name ?>">
 
-                                <?php foreach ($variations as  $variation) {
-                                    $sizes[] = $variation['attributes']['attribute_' . $key];
-                                }
+                                <?php
+                                $sizes = [];
 
-                                $size = array_unique($sizes);
+//
 
-                                if ($size){
+                                    foreach ($variation_attr as  $variation) {
 
-                                    foreach ($size as  $variation) {
 
-                                        $size = get_term_by('slug', $variation , 'pa_sechenie');?>
+
+                                        $size = get_term_by('slug', $variation , $tax->name);
+
+                                        ?>
                                             <li>
-                                                <input type="radio" name="cross" id="cross-<?= $size->slug;?>" value="<?= $size->slug;?>" <?= $default_attributes['pa_sechenie'] == $size->slug ? 'checked' : '' ?>>
-                                                <label for="cross-<?= $size->slug;?>"><?= $size->name;?></label>
+                                                <input type="radio" data-name="<?= $tax->name ?>" name="<?= $tax->name;?>" id="cross-<?= $size->slug;?>" value="<?= $size->slug;?>" <?= $default_attributes[$tax->name] == $size->slug ? 'checked' : '' ?>>
+                                                <label for="cross-<?= $size->slug;?>"><?= $size->name ?></label>
                                             </li>
 
                                     <?php }
 
-                                }?>
+                                 ?>
 
                             </ul>
                         <?php }?>
@@ -175,34 +176,36 @@ $unit = get_field('_woo_uom_input');
                     <?php }?>
 
 
-                    <ul class="characteristics">
-                        <?php foreach ( $attributes as $attribute ) :
-                            if ( empty( $attribute['is_visible'] ) || ( $attribute['is_taxonomy'] && ! taxonomy_exists( $attribute['name'] ) ) )
-                                continue;
+                    <?php if ($attributes) { ?>
+                        <ul class="characteristics">
+                            <?php foreach ( $attributes as $attribute ) :
+                                if ( empty( $attribute['is_visible'] ) || ( $attribute['is_taxonomy'] && ! taxonomy_exists( $attribute['name'] ) ) )
+                                    continue;
 
-                            $values = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
-                            $att_val = apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
+                                $values = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
+                                $att_val = apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
 
-                            if( empty( $att_val ) )
-                                continue;
+                                if( empty( $att_val ) )
+                                    continue;
 
-                            ?>
+                                ?>
+                                <li>
+                                    <p><i><?= wc_attribute_label( $attribute['name'] ); ?></b></i></p>
+                                    <?= $att_val; ?>
+                                </li>
+
+
+                            <?php endforeach; ?>
+
                             <li>
-                                <p><i><?= wc_attribute_label( $attribute['name'] ); ?></b></i></p>
-                                <?= $att_val; ?>
+                                <a href="#">
+                                    <span><?= __('Все характеристики', 'electrik');?></span>
+                                    <span><?= __('Свернуть', 'electrik');?></span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </a>
                             </li>
-
-
-                        <?php endforeach; ?>
-
-                        <li>
-                            <a href="#">
-                                <span><?= __('Все характеристики', 'electrik');?></span>
-                                <span><?= __('Свернуть', 'electrik');?></span>
-                                <i class="fas fa-chevron-down"></i>
-                            </a>
-                        </li>
-                    </ul>
+                        </ul>
+                    <?php } ?>
 
                 </div>
                 <div class="product-cart">
@@ -222,7 +225,7 @@ $unit = get_field('_woo_uom_input');
                         <p><img src="<?= get_template_directory_uri();?>/img/icon-38.svg" alt=""><?= $product->get_stock_quantity(); ?> <?= $cat==17? __('м/п', 'electrik'): __('шт.', 'electrik');?> <?= __('на складе', 'electrik');?></p>
                     </div>
                     <div class="btn-wrap">
-                        <a href="#add-product-cart" data-variation_id=""  data-product_id="<?= the_id() ?>" class="btn-border-red fancybox add-to-cart"><img src="<?= get_template_directory_uri();?>/img/icon-25-3.svg" alt=""><?= __('В корзину', 'electrik');?></a>
+                        <a href="#" data-variation_id=""  data-product_id="<?= the_id() ?>" class="btn-border-red   add-to-cart"><img src="<?= get_template_directory_uri();?>/img/icon-25-3.svg" alt=""><?= __('В корзину', 'electrik');?></a>
                         <a href="#fast-shop" class="btn-red fancybox"><img src="<?= get_template_directory_uri();?>/img/icon-39.svg" alt=""><?= __('Быстрый заказ', 'electrik');?></a>
                     </div>
                     <div class="delivery">

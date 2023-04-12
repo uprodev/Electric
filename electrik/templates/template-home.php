@@ -10,6 +10,8 @@ get_header();
 $slider = get_field('slider');
 $cats = get_field('cats');
 $brands = get_field('brands');
+
+
 $args = [
     'post_type' => 'product',
     'posts_per_page' => 20,
@@ -81,28 +83,9 @@ $q2 = new WP_query($args);
                             </div>
                         </div>
                         <div class="item-wrap">
-                            <div class="item item-white">
-                                <div class="bg">
-                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-1.jpg" alt="">
-                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-1-1.jpg" alt="" class="mob">
-                                </div>
-                                <h6>Поможем Вам собрать щиток</h6>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-border">Подробнее</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="bg">
-                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-2.jpg" alt="">
-                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-2-1.jpg" alt="" class="mob">
-                                </div>
-                                <h6>Товар дня</h6>
-                                <p>Инструмент обжимной АСКО-УКРЕМ SN-06WF</p>
-                                <p class="cost">6 300₽</p>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-border-black">Купить</a>
-                                </div>
-                            </div>
+
+                            <?php get_template_part( 'parts/banners' ); ?>
+
                         </div>
                         <div class="info-wrap">
                             <ul>
@@ -180,7 +163,7 @@ $q2 = new WP_query($args);
                 <div class="top">
                     <h2>Популярные разделы <img src="<?= get_template_directory_uri() ?>/img/icon-15.svg" alt=""></h2>
                     <div class="btn-wrap">
-                        <a href="#" class="btn-border-black">Перейти в каталог <i class="fas fa-chevron-right"></i></a>
+                        <a href="/shop" class="btn-border-black">Перейти в каталог <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="content">

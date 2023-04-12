@@ -40,9 +40,9 @@ get_template_part('parts/breadcrumbs');
                     <h1>Корзина</h1>
  
                 </div>
-                <div class="btn-wrap">
-                    <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-68.svg" alt=""></a>
-                </div>
+<!--                <div class="btn-wrap">-->
+<!--                    <a href="#"><img src="--><?//= get_template_directory_uri() ?><!--/img/icon-68.svg" alt=""></a>-->
+<!--                </div>-->
             </div>
 
             <?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -191,7 +191,7 @@ get_template_part('parts/breadcrumbs');
                         <a href="/shop" class="btn-border-black btn-medium">Продолжить покупки</a>
                     </div>
                 </div>
-                <div class="aside">
+                <div class="aside aside-cart">
                     <div class="item">
 
                         <?php woocommerce_cart_totals() ?>
@@ -200,8 +200,6 @@ get_template_part('parts/breadcrumbs');
 
 
                             <?php if ( wc_coupons_enabled() ) { ?>
-
-
 
                                 <div class="coupon">
                                     <div class="input-wrap">

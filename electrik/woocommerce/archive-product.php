@@ -35,7 +35,6 @@ get_header( 'shop' );
 get_template_part('parts/breadcrumbs');
 ?>
 
-
     <section class="catalog">
         <div action="#" class="filter-form" >
             <div class="content-width">
@@ -56,8 +55,6 @@ get_template_part('parts/breadcrumbs');
 
                             <?= do_shortcode('[br_filters_group group_id=270]') ?>
 
-
-
                             <div class="btn-wrap">
 
                                 <?= do_shortcode('[br_filter_single filter_id=358]') ?>
@@ -65,28 +62,7 @@ get_template_part('parts/breadcrumbs');
                             </div>
                         </div>
                         <div class="item-wrap">
-                            <div class="item item-white">
-                                <div class="bg">
-                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-1.jpg" alt="">
-                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-1-1.jpg" alt="" class="mob">
-                                </div>
-                                <h6>Поможем Вам собрать щиток</h6>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-border">Подробнее</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="bg">
-                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-2.jpg" alt="">
-                                    <img src="<?= get_template_directory_uri() ?>/img/bg-3-2-1.jpg" alt="" class="mob">
-                                </div>
-                                <h6>Товар дня</h6>
-                                <p>Инструмент обжимной АСКО-УКРЕМ SN-06WF</p>
-                                <p class="cost">6 300₽</p>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-border-black">Купить</a>
-                                </div>
-                            </div>
+                            <?php get_template_part( 'parts/banners' ); ?>
                         </div>
                     </div>
                     <div class="right-content">
@@ -101,11 +77,7 @@ get_template_part('parts/breadcrumbs');
                         </div>
                         <div class="sort-line-2">
 
-
-
                                 <?php woocommerce_catalog_ordering() ?>
-
-
 
                             <ul class="view-item">
                                 <li class="in-grid is-active"><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-35-1.svg" alt=""></a></li>
@@ -167,12 +139,20 @@ get_template_part('parts/breadcrumbs');
 
 
 
+    <?php
+
+    $info =   is_product_category() ? get_queried_object()->description : get_post(8)->post_content ;
+
+
+    if ($info) {   ?>
+
+
     <section class="info-section">
         <div class="content-width">
             <h2>Полезная информация <img src="<?= get_template_directory_uri() ?>/img/icon-36.svg" alt=""></h2>
             <div class="text-wrap">
 
-                <?= get_post(8)->post_content ?>
+                <?= $info ?>
                <div class="show-text">
                     <a href="#">
                         <span>Показать весь текст</span>
@@ -184,6 +164,8 @@ get_template_part('parts/breadcrumbs');
         </div>
     </section>
 
+
+    <?php } ?>
 
 
 <?php

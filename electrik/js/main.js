@@ -25,9 +25,10 @@ jQuery(document).ready(function ($) {
     $(document).on('change', '.sort li input', function (e) {
         e.preventDefault();
         var size = $(this).val();
-        $('#pa_sechenie').val(size).change();
+        var tax = $(this).attr('data-name')
+        $('#' + tax).val(size).change();
 
-        $('.sort li input').removeClass('active');
+        $(this).closest('.sort').find('li input').removeClass('active');
         $(this).addClass('active');
     })
 
@@ -49,6 +50,12 @@ jQuery(document).ready(function ($) {
 
     if ($('.loginform').length)
         $('.loginform').validate({
+
+            errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                var pl = $(element).closest('div')
+                error.prependTo(pl);
+            },
 
             submitHandler: function (form) {
 
@@ -75,6 +82,12 @@ jQuery(document).ready(function ($) {
 
     if ($('.registerform').length)
         $('.registerform').validate({
+
+            errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                var pl = $(element).closest('div')
+                error.prependTo(pl);
+            },
 
             submitHandler: function (form) {
 
@@ -109,6 +122,11 @@ jQuery(document).ready(function ($) {
 
     if ($('.lostpasswordform').length)
         $('.lostpasswordform').validate({
+            errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                var pl = $(element).closest('div')
+                error.prependTo(pl);
+            },
 
             submitHandler: function (form) {
 
@@ -540,7 +558,7 @@ jQuery(document).ready(function ($) {
             success: function (data) {
                 $( document.body ).trigger( 'wc_fragment_refresh' );
                 $('#add-product-cart').unblock()
-
+                $.fancybox.close();
                 $.fancybox.open( $('#add-product-cart'), {
                     touch:false,
                     autoFocus:false,
@@ -566,6 +584,15 @@ jQuery(document).ready(function ($) {
 
         }
     }, false );
+
+
+
+    // top banner
+
+    $(document).on('click', '.close-top-info', function (e) {
+        Cookies.set('top', 1);
+    })
+
 
 
 

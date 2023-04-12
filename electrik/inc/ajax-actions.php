@@ -481,7 +481,7 @@ function add_to_cart()
     $qty = $_GET['qty'] > 0 ? (int)$_GET['qty'] : 1;
     $added = WC()->cart->add_to_cart($product_id, $qty, $variation_id);
 
-    WC()->cart->calculate_totals();
+
 
     $count = WC()->cart->get_cart_contents_count();
 

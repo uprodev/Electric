@@ -140,10 +140,10 @@ $post__in = array_filter($post__in);
                             <h2>Избранные товары <img src="<?= get_template_directory_uri() ?>/img/icon-88.svg" alt=""></h2>
                         </div>
 
-                        <?php if (WC()->cart->get_cart_contents_count() > 0) {?>
+                        <?php if (count($post__in) > 0) {?>
                             <ul class="bg-list">
                                 <li>
-                                    <p><?= _n( 'товар', 'товаров', count($post__in)  ); ?>  </p>
+                                    <p><?= count($post__in) ?> <?= _n( 'товар', 'товаров', count($post__in)  ); ?>  </p>
 
                                 </li>
 

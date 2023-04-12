@@ -26,12 +26,19 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 $pcats = get_the_terms(get_the_ID(), 'product_cat');
 $cat = $pcats[0]->term_id;
 
-
+$unit = get_field('_woo_uom_input');
 
 ?>
+
+
+
+
+
 <div class="product-item">
 
     <?php woocommerce_show_product_loop_sale_flash();?>
+
+
 
     <div class="like">
         <a class="add_to_fav <?= is_favorite($product->get_id()) ?>" data-liked="<?= is_favorite($product->get_id()) ?>" data-user_id="<?= get_current_user_id() ?>" data-product_id="<?= $product->get_id() ?>" href="#">
@@ -46,12 +53,14 @@ $cat = $pcats[0]->term_id;
         </a>
     </figure>
     <div class="text-wrap">
-        <h6><a href="<?php the_permalink();?>"><?php the_title();?></a></h6>
+        <div class="wrap-title">
+            <h6><a href="<?php the_permalink();?>"><?php the_title();?></a></h6>
+        </div>
         <div class="info-product">
             <?php if($product->is_in_stock() ): ?>
                 <p><img src="<?= get_template_directory_uri();?>/img/icon-12.svg" alt=""><i><?= __('В наличии ', 'electrik');?> </i>
                     <?php if($product->get_stock_quantity() != 0): ?>
-                     > <?= $unit ? $unit : __('шт.', 'electrik');?> </p>
+                     > <?= $product->get_stock_quantity() ?> <?= $unit ? $unit : __('шт.', 'electrik');?> </p>
                     <?php endif;?>
             <?php else:?>
                 <p><?= __('Нет в наличии', 'electrik');?></p>
@@ -60,18 +69,37 @@ $cat = $pcats[0]->term_id;
                 <p><span><?= __('арт.', 'electrik');?></span><?= $product->get_sku(); ?></p>
             <?php endif;?>
         </div>
+
+
+
         <div class="cost-wrap">
             <div class="cost">
                 <?php woocommerce_template_loop_price();?>
             </div>
-            <div class="input-number ">
-                <div class="btn-count btn-count-minus"><img src="<?= get_template_directory_uri();?>/img/minus.svg" alt=""></div>
-                <input type="text" name="count" value="1" class="form-control"/>
-                <div class="btn-count btn-count-plus"><img src="<?= get_template_directory_uri();?>/img/plus.svg" alt=""></div>
+            <div class="line-cost">
+                <p class="quantity">
+                    <?php if($product->is_in_stock() ) { ?>
+                    <span>На складе</span>  <?= $product->get_stock_quantity() ?>
+                    <?php } else { ?>
+                        <?= __('Нет в наличии', 'electrik');?>
+                    <?php } ?>
+                </p>
+                <?php if($product->is_in_stock() ) { ?>
+                    <p class="package"> <?= $unit ? $unit : __('шт.', 'electrik');?></p>
+                <?php } ?>
             </div>
-            <div class="card-product">
-                <?php woocommerce_template_loop_add_to_cart();?>
+            <div class="buy">
+                <div class="input-number ">
+                    <div class="btn-count btn-count-minus"><img src="<?= get_template_directory_uri();?>/img/minus.svg" alt=""></div>
+                    <input type="text" name="count" value="1" class="form-control"/>
+                    <div class="btn-count btn-count-plus"><img src="<?= get_template_directory_uri();?>/img/plus.svg" alt=""></div>
+                </div>
+                <div class="card-product">
+                    <?php woocommerce_template_loop_add_to_cart();?>
+                </div>
+
             </div>
+
         </div>
     </div>
 </div>
