@@ -175,9 +175,9 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  $(document).on('click', 'main', function (e){
+/*  $(document).on('click', 'main', function (e){
     $('.top-line .center').removeClass('is-active').slideUp();
-  })
+  })*/
 
 
   /* mob-menu*/
@@ -236,6 +236,11 @@ jQuery(document).ready(function ($) {
     $.fancybox.open( $('#filter-favorites'), {
       touch:false,
       autoFocus:false,
+      afterClose : function(e){
+        $('body').removeClass('is-active');
+        $('html').removeClass('is-menu');
+        $('header').removeClass('is-active');
+      },
     });
     setTimeout(function() {
       $('body').addClass('is-active');
@@ -879,7 +884,7 @@ jQuery(document).ready(function ($) {
     }
   });
   /* cabinet edit name*/
-  if(window.innerWidth > 575){
+  if(window.innerWidth > 300){
     $(document).on('click', '.personal-data .input-wrap .btn-wrap a', function (e){
       e.preventDefault();
       let item = $(this).closest('.input-wrap');
