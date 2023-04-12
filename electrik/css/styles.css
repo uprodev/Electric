@@ -6877,4 +6877,64 @@ input[type=number] {
   font-size: 40px;
   line-height: 47px;
 }
+.product-inner .cost-wrap .cost .price>.amount{
+  font-size: 40px;
+  line-height: 47px;
+}
+.product-inner .cost-wrap .cost .price{
+  display: flex;
+  flex-direction: column;
+}
+
+.woocommerce .star-rating span::before{
+  color: #EF7446;
+}
+
+.product .product-item .cost p.new>span.amount{
+  display: inline-block;
+  font-size: 18px;
+  line-height: 21px;
+  color: #292929;
+}
+.product .product-item .cost p.new>span.amount span{
+  display: inline-block;
+  font-size: 18px;
+  line-height: 21px;
+  color: #292929;
+}
+
+.cabinet .wrap-content .bg-list li .paid p{
+  width: 100%;
+  font-size: 14px;
+}
+.form-icon .input-wrap label.error{
+  font-size: 14px;
+  top: 53px!important;
+  left: 0!important;
+  color: #c71e27;
+}
+
+.form-icon .input-wrap label.error + label img{
+  filter: invert(113%) sepia(91%) saturate(3671%) hue-rotate(348deg) brightness(103%) contrast(92%);
+}
+
+.irs--flat .irs-from, .irs--flat .irs-single, .irs--flat .irs-to{
+  font-size: 12px;
+}
+
+.product.is-line .product-item .cost>.price{
+  flex-direction: column;
+  display: flex;
+}
+
+.form-icon .input-wrap p>label{
+  min-width: 16px;
+  min-height: 16px;
+  overflow: visible!important;
+  clip-path: inherit!important;
+  clip: inherit;
+}
+.product .title-table .data-4{
+  width: 180px;
+}
 /*# sourceMappingURL=styles.css.map */

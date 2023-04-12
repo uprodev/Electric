@@ -437,7 +437,7 @@
     width: 55px;
   }
   .product .title-table .data-4 {
-    width: 50px;
+    width: 104px;
   }
   .product .title-table .data-3 {
     width: 55px;
@@ -1855,6 +1855,12 @@
   }
   .product .product-item:hover {
     border: 1px solid transparent;
+  }
+  .form-icon .input-wrap input.error{
+    margin-bottom: 13px;
+  }
+  .form-icon .input-wrap label.error{
+    top: 43px!important;
   }
 }
 @media (max-width: 575px) {
@@ -4131,7 +4137,7 @@
   .checkout-block .aside .item .wrap {
     padding-top: 0;
   }
-  .product-inner .cost-wrap .cost>.amount{
+  .product-inner .cost-wrap .cost>.amount, .product-inner .cost-wrap .cost .price>.amount{
     font-size: 26px;
     line-height: 30px;
   }
