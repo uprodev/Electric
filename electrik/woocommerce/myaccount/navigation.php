@@ -37,11 +37,14 @@ $args = array(
 $orders_all = count(wc_get_orders($args));
 
 $cart_count = WC()->cart->get_cart_contents_count();
-
+$post__in = [];
+$post__in = [];
 $fav = get_field('fav', 'user_'.$user_id);
-if ($fav)
+if ($fav) {
     $post__in = explode('|', $fav);
-$post__in = array_filter($post__in);
+    $post__in = array_filter($post__in);
+}
+
 
 
 do_action( 'woocommerce_before_account_navigation' );
