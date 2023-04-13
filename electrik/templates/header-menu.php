@@ -123,7 +123,26 @@
     </div>
 </div>
 
-<div class="fix-menu">
+<div class="fix-menu <?= is_checkout() && !$_GET['key'] ? 'fix-menu-checkbox' : '' ?>">
+
+    <?php if (is_checkout() && !$_GET['key']) { ?>
+        <div class="btn-wrap-step">
+            <a href="#" class="btn-red btn-next is-show ">Далее <img src="<?= get_template_directory_uri();?>/img/icon-119.svg" alt=""></a>
+            <a href="#" class="btn-red btn-next">Далее <img src="<?= get_template_directory_uri();?>/img/icon-119.svg" alt=""></a>
+            <button onclick="jQuery('.woocommerce-checkout ').submit()" type="submit" class="btn-red"><img src="<?= get_template_directory_uri();?>/img/icon-120.svg" alt="">Подтвердить заказ</button>
+        </div>
+
+        <?php } ?>
+    <?php if (is_product()) {
+        $product = new WC_Product(get_the_id());  ?>
+        <div class="btn-wrap">
+
+            <p><?= $product->get_sku() ?></p>
+            <a href="#" class="btn-red add-to-cart" data-variation_id=""  data-product_id="<?= the_id() ?>" ><img src="<?= get_template_directory_uri();?>/img/icon-25-3.svg" alt="">В корзину</a>
+            <a href="<?= wc_get_cart_url() ?>" class="btn-border-red" style="display: none;"><img src="img/icon-45.svg" alt="">Перейти в корзину <span>70BYN</span></a>
+
+        </div>
+    <?php } ?>
     <nav class="content">
         <ul>
             <li class="is-active">

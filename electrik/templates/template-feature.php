@@ -4,7 +4,12 @@
  *
  Template Name: Feature
 */
-
+$user_id = get_current_user_id();
+$fav = get_field('fav', 'user_'.$user_id);
+$post__in = [];
+if ($fav)
+    $post__in = explode('|', $fav);
+$post__in = array_filter($post__in);
 
 
 get_header();
@@ -14,7 +19,7 @@ get_header();
 get_template_part('parts/breadcrumbs');
 
 ?>
-
+<?php if ($post__in) { ?>
     <section class="catalog favorites">
         <div action="#" class="filter-form" >
             <div class="content-width">
@@ -66,8 +71,6 @@ get_template_part('parts/breadcrumbs');
         </div>
 
     </section>
-
-
     <div id="filter-favorites" style="display:none;" class="popup-filter popup-favorites">
 
             <div class="left-filter">
@@ -88,6 +91,26 @@ get_template_part('parts/breadcrumbs');
             </div>
 
     </div>
+<?php } else { ?>
+
+    <section class="empty-block">
+        <div class="content-width">
+            <h1>Избранное</h1>
+            <div class="border-block">
+                <figure>
+                    <img src="<?= get_template_directory_uri() ?>/img/icon-55.svg" alt="">
+                </figure>
+                <h2>Список пуст</h2>
+                <p>Но это никогда не поздно исправить</p>
+                <div class="btn-wrap">
+                    <a href="/shop" class="btn-red btn-big">Перейти в каталог <img src="<?= get_template_directory_uri() ?>/img/icon-56.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<?php } ?>
+
 
 
 <?php get_footer();

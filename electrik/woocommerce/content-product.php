@@ -72,9 +72,13 @@ $unit = get_field('_woo_uom_input');
 
 
 
+
+
         <div class="cost-wrap">
             <div class="cost">
+                <p class="new"><span>Цена с НДС</span>
                 <?php woocommerce_template_loop_price();?>
+                </p>
             </div>
             <div class="line-cost">
                 <p class="quantity">

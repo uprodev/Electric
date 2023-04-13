@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
-
+setlocale(LC_ALL, 'ru_RU.UTF-8  ');
 /**
  * Hook: woocommerce_before_single_product.
  *
@@ -232,16 +232,19 @@ $unit = get_field('_woo_uom_input');
                         <h2><?= __('Доставка', 'electrik');?></h2>
                         <ul>
                             <li>
-                                <p><b><img src="<?= get_template_directory_uri();?>/img/icon-40-1.svg" alt=""><?= __('Самовывоз в Москве', 'electrik');?></b></p>
+                                <p><b><img src="<?= get_template_directory_uri();?>/img/icon-40-1.svg" alt=""><?= __('Самовывоз в Минске', 'electrik');?></b></p>
                                 <p><?= __('сегодня из магазина', 'electrik');?></p>
                             </li>
                             <li>
-                                <p><b><img src="<?= get_template_directory_uri();?>/img/icon-40-2.svg" alt=""><?= __('Курьер по Москве', 'electrik');?></b></p>
+                                <p><b><img src="<?= get_template_directory_uri();?>/img/icon-40-2.svg" alt=""><?= __('Курьер по Минску', 'electrik');?></b></p>
                                 <p><?= __('сегодня', 'electrik');?></p>
                             </li>
                             <li>
                                 <p><b><img src="<?= get_template_directory_uri();?>/img/icon-40-3.svg" alt=""><?= __('Отправка в Ваш город', 'electrik');?></b></p>
-                                <p><?= date('j F', $date);?></p>
+                                <p><?=
+                                     strftime('%A, %d %h', strtotime("+1 day"));
+                                 //   date('j F', $date);?>
+                                </p>
                             </li>
                         </ul>
                         <div class="info">

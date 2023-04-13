@@ -54,31 +54,33 @@ function ajax_registration()
 
         if (empty($user)) {
 
+            $password =  wp_generate_password( 8, false );
 
-            $user_id = register_new_user( $login, $email );
+           // $user_id = register_new_user( $login, $email );
+           // $user_id = wp_create_user( $login, $password, $email );
 
 
+            $userdata = [
+                'user_login' =>$login,
+                'user_pass'  => $password,
+                'user_email' => $login,
+            ];
+
+            /**
+             * Проверять/очищать передаваемые поля не обязательно,
+             * WP сделает это сам.
+             */
+
+            $user_id = wp_insert_user( $userdata ) ;
+            wp_new_user_notification( $user_id, 'both' );
 
             if ($user_id) {
-
-
                 $data = array(
                     'update' => true,
                     'status' => '<p class="success">' . __('Регистрация успешная', 'sage') . '</p>',
                     'redirect' => get_permalink(444),
                     'user_id' => $user_id,
-
                 );
-
-
-                if ($user = get_user_by('id', $user_id)) {
-//                    wp_set_current_user($user->ID);
-//                    wp_set_auth_cookie($user->ID, true);
-//                    do_action('wp_login', $user->user_login, $user);
-                }
-
-                $user_name = get_userdata($user_id)->first_name ?: $login;
-
 
             }
 
@@ -106,6 +108,25 @@ function ajax_registration()
     wp_die();
 }
 
+add_filter('wp_new_user_notification_email', 'change_notification_message', 10, 3);
+
+function change_notification_message( $wp_new_user_notification_email, $user, $blogname ) {
+
+
+    $password =  wp_generate_password( 8, false );
+    wp_update_user([
+        'ID' => $user->ID,
+        'user_pass' => $password
+    ]);
+
+    $message  .= sprintf( __( 'Username: %s' ), $user->user_login ) . "\r\n\r\n";
+    $message = __( 'Пароль: ' ) . $password. "\r\n\r\n";
+
+    // Set the email's message
+    $wp_new_user_notification_email['message'] = $message;
+
+    return $wp_new_user_notification_email;
+}
 
 function ajax_login()
 {

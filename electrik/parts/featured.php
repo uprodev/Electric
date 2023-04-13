@@ -3,9 +3,10 @@
 global $wp_query;
 $user_id = get_current_user_id();
 $fav = get_field('fav', 'user_'.$user_id);
+$post__in = [];
 if ($fav)
     $post__in = explode('|', $fav);
-
+$post__in = array_filter($post__in);
 
 $orderby = $_GET['orderby'];
 if ( 'price' === $orderby ) {
@@ -75,8 +76,11 @@ $wp_query = new WP_query($args);
             <p>Заказ</p>
         </div>
     </div>
-    <div class="wrap products-loop">
+    <?php if ($post__in) { ?>
+        <div class="wrap products-loop">
         <?php
+
+
 
         while ( $wp_query->have_posts() ) {
             $wp_query->the_post();
@@ -87,6 +91,29 @@ $wp_query = new WP_query($args);
 
         ?>
     </div>
+    <?php } else {
+        ?>
+
+        <section class="empty-block">
+            <div class="content-width">
+
+                <div class="border-block">
+                    <figure>
+                        <img src="<?= get_template_directory_uri() ?>/img/icon-55.svg" alt="">
+                    </figure>
+                    <h2>Список пуст</h2>
+                    <p>Но это никогда не поздно исправить</p>
+                    <div class="btn-wrap">
+                        <a href="/shop" class="btn-red btn-big">Перейти в каталог <img src="<?= get_template_directory_uri() ?>/img/icon-56.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    <?php
+    }?>
 </div>
 
 

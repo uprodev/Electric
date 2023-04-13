@@ -90,7 +90,10 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                         <div class="text-wrap">
                             <div class="wrap-title">
                                 <h6><a href="<?php echo esc_url( $product_permalink ); ?>"><?= $product->get_title() ?></a></h6>
-                                <p><?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+                                <p><?php
+
+
+                                    echo wc_get_formatted_cart_item_data2( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
                             </div>
 
                             <div class="cost-wrap">
@@ -172,7 +175,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
             <?php } ?>
         </div>
         <div class="btn-wrap">
-            <a href="<?= wc_get_cart_url();?>" class="btn-border-black btn-big"><img src="<?= get_template_directory_uri() ?>/img/icon-48.svg" alt="">Перейти в корзину</a>
+            <a href="/shop" class="btn-border-black btn-big"><img src="<?= get_template_directory_uri() ?>/img/icon-48.svg" alt="">Продолжить покупки</a>
         </div>
 
         <?php if ( $cross_sells ) { ?>

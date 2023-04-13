@@ -59,7 +59,7 @@ $orderby = isset( $_GET['orderby'] ) ? wc_clean( wp_unslash( $_GET['orderby'] ) 
 
 
     <div class="select-block-mob ">
-        <div class="nice-select0" tabindex="0">
+        <div class=" " tabindex="0">
 
             <select name="orderby" class="orderby" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
                 <?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
