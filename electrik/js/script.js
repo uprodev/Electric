@@ -78,8 +78,8 @@ jQuery(document).ready(function ($) {
       $('body').toggleClass('is-open');
 
     });
-    $(document).on('click', '.top-line, .top-info', function (e){
-      e.preventDefault();
+    $(document).on('click', 'main .top-line, .top-info', function (e){
+
       $('body').removeClass('is-open');
       $('.site-menu > ul > li > a').removeClass('is-open');
 
@@ -841,7 +841,7 @@ jQuery(document).ready(function ($) {
 
 
   /*niceselect*/
-  $('.select-list').niceSelect();
+  $('.select-list, .select-block-mob select').niceSelect();
 
 
   /*next step checkout*/
