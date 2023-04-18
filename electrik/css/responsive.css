@@ -2499,13 +2499,13 @@
   .sort-line:after {
     right: 49px;
   }
-  .popup-filter, .popup-filter-side {
+  .popup-filter, .popup-filter-side.fancybox-content {
     width: 100%;
     right: -600px;
   }
   .catalog .sort-2 {
     position: relative;
-    z-index: 10;
+    z-index: 99;
   }
   /* .catalog .sort-2 ul{
      position: relative;
@@ -2578,7 +2578,7 @@
   }
   .catalog .sort-line-2 .select-block-mob .nice-select .list {
     width: auto;
-    min-width: 100%;
+    min-width: 165px;
   }
   .catalog .sort-line-2 .select-block-mob .nice-select .list li {
     padding: 0 15px;
@@ -3249,16 +3249,16 @@
   .product.is-line .product-item {
     border-bottom: 0 !important;
   }
-  .popup-filter .item-list ul li, .popup-filter-side .item-list ul li {
+  .popup-filter .item-list ul li, .popup-filter-side.fancybox-content .item-list ul li {
     width: 100%;
   }
-  .catalog .left-filter .wrap .item-list ul li label, .popup-filter .item-list ul li label, .popup-filter-side .item-list ul li label{
+  .catalog .left-filter .wrap .item-list ul li label, .popup-filter .item-list ul li label, .popup-filter-side.fancybox-content .item-list ul li label{
     width: 100%;
     display: block;
     position: relative;
     color: #292929 !important;
   }
-  .catalog .left-filter .wrap .item-list ul li label:after, .popup-filter .item-list ul li label:after, .popup-filter-side .item-list ul li label:after{
+  .catalog .left-filter .wrap .item-list ul li label:after, .popup-filter .item-list ul li label:after, .popup-filter-side.fancybox-content .item-list ul li label:after{
     position: absolute;
     top: 0;
     right: 0;
@@ -3268,7 +3268,7 @@
     border: 1px solid #DADADA;
     box-sizing: border-box;
   }
-  .catalog .left-filter .wrap .item-list ul li input:checked + label:before, .popup-filter .item-list ul li input:checked + label:before, .popup-filter-side .item-list ul li input:checked + label:before{
+  .catalog .left-filter .wrap .item-list ul li input:checked + label:before, .popup-filter .item-list ul li input:checked + label:before, .popup-filter-side.fancybox-content .item-list ul li input:checked + label:before{
     position: absolute;
     top: 0;
     right: 0;
@@ -3278,7 +3278,7 @@
     background: url("../img/icon-57.svg") no-repeat center;
     background-size: cover;
   }
-  .catalog .left-filter .wrap .item-list ul li input:checked + label:after, .popup-filter .item-list ul li input:checked + label:after, .popup-filter-side .item-list ul li input:checked + label:after{
+  .catalog .left-filter .wrap .item-list ul li input:checked + label:after, .popup-filter .item-list ul li input:checked + label:after, .popup-filter-side.fancybox-content .item-list ul li input:checked + label:after{
     opacity: 0;
   }
   .about .content .bg img.tab {
@@ -4240,6 +4240,10 @@
   }
   .catalog .view-item{
     top: 0;
+  }
+  .product .product-item .cost p.new .price ins bdi, .product .product-item .cost p.new .price ins bdi span, .product .product-item .cost .price>.amount bdi span {
+    font-size: 18px;
+    line-height: 21px;
   }
 }
 @media (max-width: 359px) {
