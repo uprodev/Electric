@@ -886,7 +886,7 @@
     filter: invert(32%) sepia(55%) saturate(5381%) hue-rotate(340deg) brightness(76%) contrast(108%);
   }
   .product .product-item .info-product{
-    min-height: 56px;
+    min-height: 50px;
   }
   .catalog .product .product-item .cost{
     min-height: 44px;
@@ -900,6 +900,26 @@
   .content-width {
     width: 540px;
   }
+  .product .product-item .cost .price>.amount {
+    font-size: 18px;
+    line-height: 21px;
+    height: 22px;
+  }
+  .catalog .product.is-line .product-item .cost-wrap .line-cost p, .catalog .product.is-line .product-item .cost p.new{
+    border-bottom: 1px dashed #EEEEEE;
+  }
+  .catalog .product.is-line .product-item .cost-wrap .line-cost>p>span, .catalog .product.is-line .product-item .cost p.new>span:first-child{
+    background: #fff;
+    padding-bottom: 5px;
+    margin-bottom: -5px;
+    padding-right: 5px;
+  }
+  .catalog .product.is-line .product-item .cost p.new>span:nth-child(2){
+    background: #fff;
+    padding-bottom: 5px;
+    margin-bottom: -5px;
+    padding-left: 5px;
+  }
   .catalog .product.is-line .product-item .cost p.new>.amount bdi{
     display: flex;
   }
@@ -911,6 +931,12 @@
   }
   .top-line + .sticky-wrapper {
     height: 112px !important;
+  }
+  .catalog .product .product-item .info-product p:first-child img{
+    top: 11px;
+  }
+  .catalog .product .product-item .text-wrap h6 {
+    min-height: 60px;
   }
   .form-icon .input-wrap-50 {
     width: 100%;
@@ -1345,7 +1371,7 @@
   }
   .catalog .product.is-line .product-item .wrap-title {
     width: calc(100% - 50px);
-    padding: 0;
+    padding: 0 0 0 15px;
     margin-bottom: 10px;
   }
   .catalog .product.is-line .product-item .cost-wrap .new-line {
@@ -2608,24 +2634,27 @@
   .catalog .content-product.product.is-line .product-item:after {
     position: absolute;
     bottom: 0;
-    right: 0;
-    left: -20px;
-    content: "";
-    height: 2px;
-    background: #EEEEEE;
-  }
-  .catalog .content-product.product.is-line .product-item:before {
-    position: absolute;
-    top: -2px;
     right: -20px;
     left: -20px;
     content: "";
-    height: 2px;
+    height: 1px;
     background: #EEEEEE;
   }
-  .catalog .content-product .product-item:nth-child(2n) {
-    border-right: 0;
+  .catalog .product.is-line .product-item .text-wrap{
+    padding-left: 0;
   }
+  .catalog .content-product.product.is-line .product-item:before {
+    position: absolute;
+    top: -1px;
+    right: -20px;
+    left: -20px;
+    content: "";
+    height: 1px;
+    background: #EEEEEE;
+  }
+/*  .catalog .content-product .product-item:nth-child(2n) {
+    border-right: 0;
+  }*/
   .catalog .content-product .product-item:nth-child(2n):after, .catalog .content-product .product-item:nth-child(2n):before {
     right: -10px;
     left: 0;
@@ -2661,6 +2690,7 @@
     width: 95px;
     display: flex;
     align-items: center;
+    height: 40px;
   }
   .catalog .product .product-item .cost-wrap .card-product a span {
     display: inline-block;
@@ -2695,8 +2725,11 @@
     transition: all 0.4s ease;
   }
   .catalog .product .product-item {
+    margin-bottom: 10px !important;
+  }
+  .catalog .product.is-line .product-item{
+    margin-bottom: 0!important;
     border-bottom: 0;
-    margin-bottom: 0 !important;
   }
   .catalog .btn-full-wrap {
     margin-top: 20px;
@@ -3460,7 +3493,7 @@
     width: calc(100% - 85px);
   }
   .cart-block .content-product.product .product-item .total-item {
-    width: 50px;
+    width: 70px;
   }
   .cart-block .content-product.product .product-item .buy {
     width: 80px;
@@ -4242,6 +4275,13 @@
     top: 0;
   }
   .product .product-item .cost p.new .price ins bdi, .product .product-item .cost p.new .price ins bdi span, .product .product-item .cost .price>.amount bdi span {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .product .product-item figure a{
+    padding: 0;
+  }
+  .product .product-item .cost .price>.amount bdi span, .cart-block .content-product.product .product-item .cost .amount, .cart-block .content-product.product .product-item .total-item .amount{
     font-size: 18px;
     line-height: 21px;
   }
