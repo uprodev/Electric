@@ -787,6 +787,7 @@ jQuery(document).ready(function ($) {
 
   /*tel mask*/
   $('.tel').mask('+0(000) 000-00-00');
+  $('.number-9').mask('000 000 000');
 
   /*delete item cart*/
   $(document).on('click', '.delete-item a', function (e) {

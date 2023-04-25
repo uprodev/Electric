@@ -7127,4 +7127,23 @@ input[type=number] {
 .product-inner .characteristics li p:first-child{
   padding-left: 0;
 }
+
+.product .product-item .cost del bdi{
+  text-decoration: line-through;
+}
+
+.info-product-full .tab-item-2, .info-product-full .tab-item-3{
+  display: block!important;
+  margin-bottom: 50px;
+}
+
+.info-product-full .tab-item-1{
+  margin-bottom: 50px;
+}
+.info-product-full .tabs-menu{
+  display: none;
+}
+.info-product-full .tab-item-3{
+  margin-bottom: 0;
+}
 /*# sourceMappingURL=styles.css.map */

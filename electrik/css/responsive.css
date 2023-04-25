@@ -3169,7 +3169,7 @@
     top: 5px;
   }
   .breadcrumb {
-    flex-wrap: nowrap;
+    /*flex-wrap: nowrap;*/
     min-width: fit-content;
   }
   .breadcrumb li {
