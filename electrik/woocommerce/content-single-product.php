@@ -178,12 +178,19 @@ $unit = get_field('_woo_uom_input');
 
                     <?php if ($attributes) { ?>
                         <ul class="characteristics">
-                            <?php foreach ( $attributes as $attribute ) :
-                                if ( empty( $attribute['is_visible'] ) || ( $attribute['is_taxonomy'] && ! taxonomy_exists( $attribute['name'] ) ) )
-                                    continue;
+                            <?php
 
-                                $values = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
-                                $att_val = apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
+                            //print_r($attributes);
+
+                            foreach ( $attributes as $attribute ) :
+                                if (  ( $attribute['is_taxonomy'] && taxonomy_exists( $attribute['name'] ) ) ) {
+                                    $values = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
+                                    $att_val = apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
+
+
+                                } else {
+                                    $att_val = $attribute['value'];
+                                }
 
                                 if( empty( $att_val ) )
                                     continue;
@@ -191,7 +198,7 @@ $unit = get_field('_woo_uom_input');
                                 ?>
                                 <li>
                                     <p><i><?= wc_attribute_label( $attribute['name'] ); ?></b></i></p>
-                                    <?= $att_val; ?>
+                                    <?= $att_val ?>
                                 </li>
 
 
@@ -290,7 +297,7 @@ $unit = get_field('_woo_uom_input');
 
                                 ?>
                                 <li>
-                                    <p><i><?= wc_attribute_label( $attribute['name'] ); ?></b></i></p>
+                                    <p><i><?= wc_attribute_label( $attribute['name'] ); ?></i></p>
                                     <?= $att_val; ?>
                                 </li>
 
@@ -298,7 +305,6 @@ $unit = get_field('_woo_uom_input');
                             <?php endforeach; ?>
                         </ul>
                     </div>
-
                     <div class="item">
                         <h2><?= __('Описание', 'electrik');?></h2>
                         <?= $product->get_description();?>

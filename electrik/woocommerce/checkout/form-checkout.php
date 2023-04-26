@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 setlocale(LC_ALL, 'ru_RU.UTF-8  ');
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
@@ -120,7 +121,7 @@ get_template_part('parts/breadcrumbs');
 
                                         </div>
                                         <div class="select-date">
-                                            <h2><img src="<?= get_template_directory_uri() ?>/img/icon-77.svg" alt="">Желаемое время доставки</h2>
+                                            <h2><img src="<?= get_template_directory_uri() ?>/img/icon-77.svg" alt="">Выберите время доставки</h2>
                                             <div class="date-wrap">
                                                 <div class="select-block ">
                                                     <label class="form-label" for="select-date-1"></label>
@@ -170,7 +171,7 @@ get_template_part('parts/breadcrumbs');
                                         <div class="props-wrap">
                                             <div class="input-wrap input-wrap-50">
                                                 <label for="bank-1"><img src="<?= get_template_directory_uri() ?>/img/icon-80.svg" alt=""></label>
-                                                <input type="text" name="bank-1" id="bank-1" placeholder="УНП">
+                                                <input type="text" name="bank-1" class="number-9" id="bank-1" placeholder="УНП">
                                             </div>
                                             <div class="input-wrap input-wrap-50">
                                                 <label for="bank-2"><img src="<?= get_template_directory_uri() ?>/img/icon-80.svg" alt=""></label>
@@ -203,7 +204,7 @@ get_template_part('parts/breadcrumbs');
                         </div>
                         <div class="step step-3">
                             <div class="head-mod">
-                                <a href="#" class="prev-step-2"><i class="fas fa-chevron-left"></i>Шаг 2 из 3</a>
+                                <a href="#" class="prev-step-2"><i class="fas fa-chevron-left"></i>Шаг 3 из 3</a>
                             </div>
                             <h2><b>3</b>Укажите данные получателя заказа</h2>
                             <div class="wrap-step">

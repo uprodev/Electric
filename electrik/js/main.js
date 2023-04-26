@@ -314,7 +314,7 @@ jQuery(document).ready(function ($) {
      */
 
 
-    $(document).on('change', '.filter-form-viewed input', function (e) {
+    $(document).on('change', '.filter-form-viewed [name]', function (e) {
 
         var data = $('.filter-form-viewed').serialize()
 

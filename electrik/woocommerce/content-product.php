@@ -83,7 +83,7 @@ $unit = get_field('_woo_uom_input');
             <div class="line-cost">
                 <p class="quantity">
                     <?php if($product->is_in_stock() ) { ?>
-                    <span>На складе</span>  <?= $product->get_stock_quantity() ?>
+                    <span>На складе</span>  <span><?= $product->get_stock_quantity() ?></span>
                     <?php } else { ?>
                         <?= __('Нет в наличии', 'electrik');?>
                     <?php } ?>

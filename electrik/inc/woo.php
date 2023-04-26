@@ -366,7 +366,7 @@ function wpf_wc_add_cart_fees_by_product_meta( $cart ) {
     if ($discount) {
         if ($discount['min'] <= $total) {
             $fee = -round($total * ($discount['percent'] / 100));
-            $cart->add_fee( 'Скидка ' . $discount['percent'] . '%', $fee  );
+            $cart->add_fee( 'Скидка' , $fee  );
         }
     }
 
