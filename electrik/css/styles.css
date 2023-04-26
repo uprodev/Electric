@@ -7146,4 +7146,13 @@ input[type=number] {
 .product.is-line .product-item{
   padding-bottom: 20px;
 }
+
+.product.is-line .product-item .cost p>span:nth-child(2){
+  margin-left: 10px;
+  font-size: 14px;
+  color: #AAAAAA;
+}
+.cart-block .product.is-line .product-item .cost p{
+  width: 105px;
+}
 /*# sourceMappingURL=styles.css.map */
