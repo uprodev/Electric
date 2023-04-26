@@ -180,16 +180,14 @@ get_template_part('parts/breadcrumbs');
                                  <?php
                             }
                         }
-                        ?>
+                        ?> 
 
                         <?php do_action( 'woocommerce_after_cart_contents' ); ?>
 
 
 
                     </div>
-                    <div class="btn-wrap-full">
-                        <a href="/shop" class="btn-border-black btn-medium">Продолжить покупки</a>
-                    </div>
+
                 </div>
                 <div class="aside aside-cart">
                     <div class="item">

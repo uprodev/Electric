@@ -156,7 +156,13 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
             <?php if ($free_shipping) { ?>
             <div class="progress-item">
-                <p>вам осталось <span><?= $free_shipping_left > 0 ? $free_shipping_left : 0 ?>₽</span> до бесплатной доставки</p>
+
+                <?php if ($free_shipping_left <= 0) { ?>
+                    <p>Теперь у вас есть бесплатная доставка!</p>
+                <?php } else { ?>
+                    <p>вам осталось <span><?= $free_shipping_left > 0 ? $free_shipping_left : 0 ?>₽</span> до бесплатной доставки</p>
+                <?php } ?>
+
                 <div class="wrap">
                     <div class="progress-bg"></div>
                     <div class="progress-line" style="width: <?= $free_shipping_left_percent <= 100 ? $free_shipping_left_percent : 100 ?>%;"></div>

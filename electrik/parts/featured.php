@@ -4,9 +4,11 @@ global $wp_query;
 $user_id = get_current_user_id();
 $fav = get_field('fav', 'user_'.$user_id);
 $post__in = [];
-if ($fav)
+if ($fav) {
     $post__in = explode('|', $fav);
-$post__in = array_filter($post__in);
+    $post__in = array_filter($post__in);
+}
+
 
 $orderby = $_GET['orderby'];
 if ( 'price' === $orderby ) {
@@ -118,24 +120,5 @@ $wp_query = new WP_query($args);
 
 
 
-<div id="filter-favorites" style="display:none;" class="popup-filter popup-favorites">
-
-    <div class="left-filter">
-        <div class="title-wrap">
-            <h3>Категория</h3>
-        </div>
-        <div class="close-filter">
-            <a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-28.svg" alt=""></a>
-        </div>
-        <div class="wrap">
-            <div class="item item-0 item-list ">
-                <div class="filter filter-0">
-                    <?= do_shortcode('[br_filter_single filter_id=433]') ?>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</div>
+<?php get_template_part('parts/filter-fav') ?>
 

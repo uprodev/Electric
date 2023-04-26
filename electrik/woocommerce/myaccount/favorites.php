@@ -3,10 +3,13 @@
 $user_id = get_current_user_id();
 
 $fav = get_field('fav', 'user_'.$user_id);
-if ($fav)
+if ($fav) {
     $post__in = explode('|', $fav);
+    $post__in = array_filter($post__in);
+}
 
-$post__in = array_filter($post__in)
+
+
 ?>
 
 <section class="cabinet cabinet-breadcrumb">
