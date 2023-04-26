@@ -602,22 +602,36 @@ jQuery(document).ready(function ($) {
   };
 
   /*slider*/
-  var swiperSmall = new Swiper(".slider-small", {
-    spaceBetween: 0,
-    slidesPerView: 'auto',
-    watchSlidesProgress: true,
-  });
-  var swiperBig = new Swiper(".slider-big", {
-    spaceBetween: 0,
-    pagination: {
-      el: ".pagination-big",
-      clickable: true
-    },
-    thumbs: {
-      swiper: swiperSmall,
-    },
 
-  });
+  if($('.slider-small').length >0 ){
+    var swiperSmall = new Swiper(".slider-small", {
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      watchSlidesProgress: true,
+    });
+    var swiperBig1 = new Swiper(".slider-big", {
+      spaceBetween: 0,
+      pagination: {
+        el: ".pagination-big",
+        clickable: true
+      },
+      thumbs: {
+        swiper: swiperSmall,
+      },
+
+    });
+  }else{
+    var swiperBig2 = new Swiper(".slider-big", {
+      spaceBetween: 0,
+      pagination: {
+        el: ".pagination-big",
+        clickable: true
+      },
+
+
+    });
+  }
+
 
   if(window.innerWidth > 767){
     /*zoom img*/

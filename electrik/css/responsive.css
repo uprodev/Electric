@@ -1626,6 +1626,7 @@
   }
   .fix-menu .btn-wrap .btn-border-red {
     width: 100%;
+    justify-content: center;
   }
   .fix-menu .btn-wrap a + a {
     margin-top: 10px;
@@ -1972,7 +1973,15 @@
     font-size: 22px;
     line-height: 26px;
   }
-
+  .product .product-item .text-wrap{
+    padding: 10px;
+  }
+  .product .product-item figure {
+    padding: 10px 10px 0;
+  }
+  .catalog .product .product-item figure{
+    height: 159px;
+  }
 }
 @media (max-width: 575px) {
   .content-width {
@@ -2671,9 +2680,7 @@
   .catalog .view-item li a img {
     width: 16px;
   }
-  .catalog .product .product-item figure {
-    height: 149px;
-  }
+
   .product .product-item .text-wrap h6 {
     font-weight: 400;
     margin-bottom: 0;
@@ -2699,7 +2706,7 @@
     width: 95px;
     display: flex;
     align-items: center;
-    height: 40px;
+    height: 34px;
   }
   .catalog .product .product-item .cost-wrap .card-product a span {
     display: inline-block;
@@ -2724,7 +2731,7 @@
   .catalog .product .product-item .input-number {
     margin: 0;
     position: absolute;
-    top: 0;
+    top:2px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -2913,8 +2920,8 @@
     padding-top: 10px;
   }
   .info-product-full .reviews {
-    border: 1px solid #eeeeee;
-    padding: 20px;
+   /* border: 1px solid #eeeeee;
+    padding: 20px;*/
   }
   .info-product-full .reviews-form .reviews-body .text {
     padding: 10px;
@@ -4297,7 +4304,32 @@
     font-size: 18px;
     line-height: 21px;
   }
+  .info-product-full .tab-item-2, .info-product-full .tab-item-3{
+    display: block!important;
+    margin-bottom: 50px;
+  }
 
+  .info-product-full .tab-item-1{
+    margin-bottom: 50px;
+  }
+  .info-product-full .tabs-menu{
+    display: none;
+  }
+  .site-menu > ul > li > .sub-menu{
+    min-height: calc(100% - 60px);
+  }
+  .sort-line .sort-1 .bapf_sfa_taxonomy ul li a, .sort-line .sort-1 ul.bapf_sfa_unall li a{
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+  }
+  .bapf_sfa_taxonomy{
+    height: 30px;
+    line-height: 30px;
+  }
+  .product.is-line .product-item{
+    padding-bottom: 0;
+  }
 }
 @media (max-width: 359px) {
   .content-width {

@@ -7088,14 +7088,21 @@ input[type=number] {
 }
 
 .product .product-item figure{
-  padding: 10px;
+  padding: 20px 20px 0;
+  height: 232px;
 }
 .product .product-item figure a{
   overflow: hidden;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+
 }
-.product .product-item .text-wrap{
-  padding: 10px;
+.product .product-item figure img{
+  max-height: 212px;
+  object-fit: contain;
 }
+
 
 .fancybox-content .catalog .product.is-line .product-item .cost p.new{
   border-bottom: 0;
@@ -7132,18 +7139,11 @@ input[type=number] {
   text-decoration: line-through;
 }
 
-.info-product-full .tab-item-2, .info-product-full .tab-item-3{
-  display: block!important;
-  margin-bottom: 50px;
-}
 
-.info-product-full .tab-item-1{
-  margin-bottom: 50px;
-}
-.info-product-full .tabs-menu{
-  display: none;
-}
 .info-product-full .tab-item-3{
   margin-bottom: 0;
+}
+.product.is-line .product-item{
+  padding-bottom: 20px;
 }
 /*# sourceMappingURL=styles.css.map */
