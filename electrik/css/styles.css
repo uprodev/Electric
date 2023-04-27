@@ -2569,17 +2569,17 @@ header .sub-menu {
   flex-wrap: wrap;
 }
 .product-inner .slider-wrap {
-  width: 505px;
+  width: 500px;
 }
 .product-inner .text-wrap {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: calc(100% - 525px);
+  width: calc(100% - 515px);
 }
 .product-inner .product-info {
   border: 1px solid transparent;
-  width: 315px;
+  width: 325px;
   margin-right: -1px;
   padding: 30px;
 }
@@ -2728,7 +2728,7 @@ header .sub-menu {
   opacity: 1;
 }
 .product-inner .product-cart {
-  width: calc(100% - 314px);
+  width: calc(100% - 325px);
   border: 1px solid #EEEEEE;
   padding: 30px;
 }
@@ -7154,5 +7154,8 @@ input[type=number] {
 }
 .cart-block .product.is-line .product-item .cost p{
   width: 105px;
+}
+.product .product-item .cost ins{
+  white-space: nowrap;
 }
 /*# sourceMappingURL=styles.css.map */

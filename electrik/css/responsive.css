@@ -509,6 +509,7 @@
   }
   .product .product-item .buy {
     display: flex;
+    justify-content: flex-end;
     width: 100%;
   }
   .product.is-line .product-item .buy {
@@ -1969,10 +1970,7 @@
     font-size: 18px;
     line-height: 21px;
   }
-  .catalog .product.is-line .product-item .cost p.new span.price>span>bdi span{
-    font-size: 22px;
-    line-height: 26px;
-  }
+
   .product .product-item .text-wrap{
     padding: 10px;
   }
