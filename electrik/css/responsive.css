@@ -1309,7 +1309,7 @@
   footer {
     padding-bottom: 170px;
   }
-  .popup-send, .popup-login, .width-820 {
+  .popup-send, .popup-login, .width-820, .popup-product-cart{
     width: 500px;
   }
   .catalog .content-product .wrap {
@@ -2351,7 +2351,7 @@
   .product .product-item .cost-wrap {
     min-height: 38px;
   }
-  .popup-send, .popup-login, .width-820 {
+  .popup-send, .popup-login, .width-820, .popup-product-cart {
     width: 100%;
     padding: 30px 20px;
   }
