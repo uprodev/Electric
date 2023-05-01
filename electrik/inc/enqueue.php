@@ -48,11 +48,28 @@ function add_scripts() {
 
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array('jquery'), false, true);
 
+    $biks =  get_field('bik','option');
+    $biks = explode("\r\n", $biks);
+
+    $cities =  get_field('sities','option');
+    $cities = explode("\r\n", $cities);
+
+//    preg_split('/\r\n|[\r\n]/', $biks);
+//    preg_split('/\r\n|[\r\n]/', $cities);
+
+    foreach ($biks as $item) {
+        $bik[] = trim(explode('|', $item)[0]);
+        $bank[] = trim(explode('|', $item)[1]);
+    }
+
      wp_localize_script('main', 'globals',
         array(
             'url' => admin_url('admin-ajax.php'),
             'template' => get_template_directory_uri(),
-            'fav' => get_field('fav', 'user_'. get_current_user_id())
+            'fav' => get_field('fav', 'user_'. get_current_user_id()),
+            'bik' => $bik,
+            'bank' =>   $bank ,
+            'cities' => json_encode($cities, JSON_UNESCAPED_UNICODE)
         )
      );
 

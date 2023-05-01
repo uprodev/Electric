@@ -369,7 +369,6 @@ function ask_percentage_sale(  $product ) {
 
 
 add_action( 'woocommerce_cart_calculate_fees', 'wpf_wc_add_cart_fees_by_product_meta' );
-
 function wpf_wc_add_cart_fees_by_product_meta( $cart ) {
 
     $discount = get_field('discount', 'options');
@@ -380,7 +379,6 @@ function wpf_wc_add_cart_fees_by_product_meta( $cart ) {
             $cart->add_fee( 'Скидка' , $fee  );
         }
     }
-
 
 }
 
@@ -393,54 +391,30 @@ function custom_shipping_costs( $rates, $package ) {
     $free_shipping = get_field('free_shipping', 'options');
     $total = WC()->cart->get_cart_contents_total();
 
-
-
     $post_data = [];
     parse_str( $_POST['post_data'], $post_data );
-
-
     $city = $post_data['shipping_city'];
-
-
-    $address = $package["destination"];
-
-
-    if ($city === 'asasas') {
-        $new_cost = 9000;
-
-        foreach( $rates as $rate_key => $rate ){
-
-            $rates[$rate_key]->cost = $new_cost;
-
-            WC()->session->set( 'shipping_calculated_cost', $rates[$rate_key]->cost );
+    $costs = get_field('shipping', 'options');
+    foreach ($costs as $item) {
+        if ($city === $item['city'])  {
+            $new_cost = $item['price'];
+            foreach( $rates as $rate_key => $rate ){
+                $rates[$rate_key]->cost = $new_cost;
+                WC()->session->set( 'shipping_calculated_cost', $rates[$rate_key]->cost );
+            }
+            return $rates;
         }
-
-
-        return $rates;
-
     }
-
-
 
     if ($free_shipping <= $total) {
         $new_cost = 0;
         foreach( $rates as $rate_key => $rate ){
-
             $rates[$rate_key]->cost = $new_cost;
-
-
-
         }
     }
 
-
-
     return $rates;
 }
-
-
-
-
 
 
 
@@ -449,7 +423,6 @@ add_action('template_redirect', function(){
         wp_redirect('/');
     }
 });
-
 
 
 function wc_get_formatted_cart_item_data2( $cart_item, $flat = false ) {

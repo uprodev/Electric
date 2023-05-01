@@ -20,47 +20,36 @@ jQuery(document).ready(function ($) {
 
 
   $( function() {
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
 
-    $(".top-search").autocomplete({
-      source: availableTags
-    });
 
-    $('input[name=shipping_city]').autocomplete({
+    $('input[name="shipping_city"]').autocomplete({
       source: JSON.parse(globals.cities)
     });
 
 
-    $('input[name=bank-3]').autocomplete({
-      source: JSON.parse(globals.bik)
-    });
-    $('input[name=bank-4]').autocomplete({
-      source: JSON.parse(globals.bik)
+    $('input[name="bank-4"]').autocomplete({
+      source: globals.bik,
+      select: function( event, ui ) {
+
+        var selected_val = ui.item.value;
+        var key = getKeyByValue(globals.bik, selected_val);
+        $('input[name="bank-3"]').val(globals.bank[key]);
+      }
+      });
+    $('input[name="bank-3"]').autocomplete({
+      source: globals.bank,
+      select: function( event, ui ) {
+
+        var selected_val = ui.item.value;
+        var key = getKeyByValue(globals.bank, selected_val);
+        $('input[name="bank-4"]').val(globals.bik[key]);
+      }
     });
   });
+
+  function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+  }
 
   var swiperBanner = new Swiper(".slider-banner", {
     pagination: {

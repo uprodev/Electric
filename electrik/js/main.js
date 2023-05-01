@@ -14,10 +14,7 @@ jQuery(document).ready(function ($) {
         console.log(variation);
 
         $('.add-to-cart').attr('data-variation_id', variation.variation_id);
-
-
         $('.cost').html(variation.price_html);
-
 
     });
 
@@ -287,16 +284,14 @@ jQuery(document).ready(function ($) {
         $('.shipping-point_text').html(val)
 
         var val = $('[name="shipping-date"] option:selected').val();
-        var val2 = $('[name="shipping-time"] option:selected').val();
-        $('.shipping-date_text').html(val + ", " + val2)
+
+        $('.shipping-date_text').html(val )
 
         var val = $('[name="payment_method"]:checked').next('label').find('.h6').text();
         $('.payment_method_text').html(val)
 
         var val = $('.shipping_method:checked').next('label').find('.h6').text();
         $('.shipping_method_text').html(val)
-
-
 
 
     }
@@ -413,8 +408,6 @@ jQuery(document).ready(function ($) {
                 action: 'save_personal_data',
                 user_id: user_id,
                 bank: bank
-
-
             },
             success: function (data) {
                 console.log(data)
@@ -430,9 +423,7 @@ jQuery(document).ready(function ($) {
 
     if ($('#add-repair form').length)
         $('#add-repair form').validate({
-
             submitHandler: function (form) {
-
                 var data = $('#add-repair form').serialize()
                 $.ajax({
                     url: wc_add_to_cart_params.ajax_url,
@@ -441,19 +432,14 @@ jQuery(document).ready(function ($) {
                     dataType: 'json',
                     success: function (data) {
                         if (data) {
-
-
                             $.fancybox.close();
                             $.fancybox.open( $('#repair-ok'), {
                                 touch:false,
                                 autoFocus:false,
                             });
-
-
                         }
                     }
                 });
-
             }
         });
 
@@ -503,8 +489,6 @@ jQuery(document).ready(function ($) {
         fav = fav.join('|');
 
         Cookies.set('fav', fav);
-
-
         globalFav = fav
         if (user_id > 0) {
 
@@ -516,8 +500,6 @@ jQuery(document).ready(function ($) {
                     action: 'add_to_fav',
                     user_id: user_id,
                     fav: fav
-
-
                 },
                 success: function (data) {
 
@@ -580,7 +562,6 @@ jQuery(document).ready(function ($) {
         $.fancybox.close();
     })
 
-
     document.addEventListener( 'wpcf7mailsent', function( event ) {
         if ( '448' == event.detail.contactFormId ) {
             $.fancybox.close();
@@ -593,17 +574,11 @@ jQuery(document).ready(function ($) {
     }, false );
 
 
-
     // top banner
 
     $(document).on('click', '.close-top-info', function (e) {
         Cookies.set('top', 1);
     })
-
-
-
-
-
 
 
 
