@@ -223,10 +223,10 @@ input, textarea, button {
 }
 .top-line .center {
   padding: 0 5px 0 25px;
-  width: calc(100% - 290px - 450px);
+  width: calc(100% - 290px - 480px);
 }
 .top-line .right {
-  width: 450px;
+  width: 480px;
   display: flex;
   justify-content: flex-end;
 }
@@ -2318,7 +2318,7 @@ header .sub-menu {
   width: 90px;
 }
 .product .title-table .data-2 {
-  width: calc(100% - 85px - 105px - 90px - 90px - 90px - 120px);
+  width: calc(100% - 85px - 75px - 90px - 90px - 90px - 120px);
 }
 .product .title-table .data-1 {
   width: 85px;
@@ -2347,7 +2347,7 @@ header .sub-menu {
   line-height: 21px;
 }
 .product.is-line .product-item .cost-wrap {
-  width: 495px;
+  width: 460px;
   justify-content: flex-start;
 }
 .product.is-line .product-item .cost-wrap .line-cost {
@@ -2375,7 +2375,7 @@ header .sub-menu {
   display: block;
 }
 .product.is-line .product-item .cost {
-  width: 144px;
+  width: 90px;
   height: 44px;
   flex-direction: row;
   justify-content: flex-start;
@@ -6980,9 +6980,7 @@ input[type=number] {
   clip-path: inherit!important;
   clip: inherit;
 }
-.product .title-table .data-4{
-  width: 140px;
-}
+
 .product .product-item .cost>.price{
   flex-direction: column;
   display: flex;
@@ -7246,5 +7244,25 @@ input[type=number] {
 
 .popup-product-cart .product.is-line .product-item .cost span{
   text-transform: lowercase;
+}
+
+.cart-block .product.is-line .product-item .wrap-title h6 + p{
+  display: none;
+}
+.checkout-block .step{
+  overflow: hidden;
+}
+
+.fix-menu .btn-wrap p .amount bdi{
+  color: #292929;
+  font-size: 22px;
+  line-height: 1;
+}
+.fix-menu .btn-wrap p del .amount bdi{
+  color: #aaaaaa;
+  font-size: 14px;
+}
+.fix-menu .mob-sku del{
+  text-decoration: none;
 }
 /*# sourceMappingURL=styles.css.map */

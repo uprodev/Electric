@@ -443,7 +443,7 @@
     width: 55px;
   }
   .product .title-table .data-2 {
-    width: calc(100% - 500px);
+    width: calc(100% - 465px);
   }
   .product .title-table .data {
     padding-right: 5px;
@@ -895,7 +895,9 @@
   .catalog .sort-2 li {
     margin-right: 10px;
   }
-
+  .top-line .logo-wrap{
+    width: 275px;
+  }
 }
 @media (max-width: 767px) {
   .content-width {
@@ -3511,6 +3513,7 @@
   }
   .cart-block .content-product.product .product-item .total-item {
     width: 70px;
+    padding-left: 10px;
   }
   .cart-block .content-product.product .product-item .buy {
     width: 80px;
