@@ -47,17 +47,17 @@ if ( $comments ) : ?>
             </div>
             <div class="btn-wrap">
                 <h2><?= __('Средняя оценка', 'electrik');?></h2>
-                <p><?= $count ?> <?= _n( 'отзыв', 'отзыва', $count  ); ?></p>
+                <p><?= plural(   $count  ); ?></p>
                 <div class="stars-wrap">
                     <div class="wrap">
 
                         <?php
                         foreach (range(1, 5) as $star) {
                             $icon = '1';
-                            if ($star - $average_rating > 1)
-                                continue;
+//                            if ($star - $average_rating > 1)
+//                                continue;
 
-                            if ($star - $average_rating < 1 && $star - $average_rating >= 0.5)
+                            if ($average_rating - $star  < 0  || $star - $average_rating >= 0.5)
                                 $icon = '2';
 
                             ?>

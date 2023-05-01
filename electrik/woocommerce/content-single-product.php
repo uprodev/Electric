@@ -83,17 +83,17 @@ $unit = get_field('_woo_uom_input');
                         <?php
                         foreach (range(1, 5) as $star) {
                             $icon = '1';
-                            if ($star - $average_rating > 1)
-                                continue;
+//                            if ($star - $average_rating > 1)
+//                                continue;
 
-                            if ($star - $average_rating < 1 && $star - $average_rating >= 0.5)
+                            if ($average_rating - $star  < 0  || $star - $average_rating >= 0.5)
                                 $icon = '2';
 
                             ?>
                             <img src="<?= get_template_directory_uri(); ?>/img/icon-37-<?= $icon ?>.svg" alt="">
                         <?php } ?>
                     </div>
-                    <p><a href="#reviews"><?php printf( _n( '%s отзыв', '%s отзыва', $review_count, 'electrik' ), esc_html( $review_count )); ?></a></p>
+                    <p><a href="#reviews"><?= plural($review_count); ?></a></p>
                 </div>
             </div>
             <div class="right">
@@ -256,7 +256,7 @@ $unit = get_field('_woo_uom_input');
                             </li>
                         </ul>
                         <div class="info">
-                            <a href="#"><?= __('Подробнее о самовывозе и доставке', 'electrik');?><i class="fas fa-chevron-right"></i></a>
+                            <a target="_blank" href="<?= get_permalink(45) ?>"><?= __('Подробнее о самовывозе и доставке', 'electrik');?><i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>

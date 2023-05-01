@@ -14,3 +14,7 @@ Description: Theme WP for Electrik
 .variations_form{
     display: none;
 }
+
+.woocommerce-NoticeGroup.woocommerce-NoticeGroup-updateOrderReview {
+  display: none;
+}

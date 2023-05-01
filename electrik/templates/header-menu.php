@@ -163,8 +163,8 @@
             <li><a href="<?= wc_get_cart_url() ?>">
                     <figure>
                         <img src="<?= get_template_directory_uri() ?>/img/icon-25-3.svg" alt="">
-                        <span><?= WC()->cart->get_cart_contents_count() ?></span>
-                        <span><?= WC()->cart->get_cart_contents_count() ?></span>
+                        <span><?= count(WC()->cart->get_cart_contents()) ?></span>
+
                     </figure>
                     Корзина
                 </a></li>

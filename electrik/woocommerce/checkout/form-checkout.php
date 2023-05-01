@@ -131,20 +131,13 @@ get_template_part('parts/breadcrumbs');
 
                                                             ?>
 
-                                                            <option <?php selected(1, $day) ?> value="<?= $date ?>"><?= $date ?></option>
+                                                            <option <?php selected(1, $day) ?> value="<?= $date ?>"><?= $date ?>, после 11-00</option>
                                                         <?php } ?>
 
 
                                                     </select>
                                                 </div>
-                                                <div class="select-block ">
-                                                    <label class="form-label" for="select-date-2"></label>
-                                                    <select id="select-date-2" name="shipping-time" class="select-list">
-                                                        <option value="09:00-12:00" selected>09:00-12:00</option>
-                                                        <option value="12:00-19:00">12:00-19:00</option>
 
-                                                    </select>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

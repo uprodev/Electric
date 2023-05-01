@@ -568,7 +568,7 @@ jQuery(document).ready(function ($) {
                 } else {
                   that.addClass('btn-border-red');
                   that.find('span').text('В корзине');
-                  $('.mob-sku').hide()
+                  that.closest('.fix-menu').find('.mob-sku').hide()
                 }
 
             },

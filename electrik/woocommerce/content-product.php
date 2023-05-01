@@ -71,9 +71,6 @@ $unit = get_field('_woo_uom_input');
         </div>
 
 
-
-
-
         <div class="cost-wrap">
             <div class="cost">
                 <p class="new"><span>Цена с НДС</span>

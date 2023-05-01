@@ -19,8 +19,8 @@
 defined( 'ABSPATH' ) || exit;
 
 $icons = [
-    'shipping_city' => 1,
-    'shipping_address_1' => 2,
+    'shipping_city' => 2,
+    'shipping_address_1' => 1,
     'shipping_address_2' => 3,
     'shipping_postcode' => 4,
 ];

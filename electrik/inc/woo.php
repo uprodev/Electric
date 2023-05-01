@@ -68,6 +68,17 @@ function custom_override_checkout_fields($fields)
     $fields['shipping']['shipping_address_1']['required'] = false;
     $fields['shipping']['shipping_postcode']['required'] = false;
 
+    $fields['shipping']['shipping_city']['label'] = "Город";
+
+    $fields['shipping']['shipping_postcode']['label'] = "Этаж";
+    $fields['shipping']['shipping_address_1']['label'] = "Квартира";
+    $fields['shipping']['shipping_address_2']['label'] = "Улица, дом";
+
+
+
+
+
+
     unset($fields['shipping']['shipping_first_name']);
     unset($fields['shipping']['shipping_last_name']);
     unset($fields['shipping']['shipping_state']);
@@ -370,13 +381,6 @@ function wpf_wc_add_cart_fees_by_product_meta( $cart ) {
         }
     }
 
-//    $city = WC()->session->get('shipping_city');
-//    $city = WC()->session->get_session_data();
-//    $city = json_encode($city);
-//    $cart->add_fee( $city . $discount['percent'] . '%', $fee  );
-
-
-
 
 }
 
@@ -390,34 +394,33 @@ function custom_shipping_costs( $rates, $package ) {
     $total = WC()->cart->get_cart_contents_total();
 
 
-//    $city = WC()->session->get('sdd');
-//    if ($city === 'Минск') {
-//        $new_cost = 9000;
-//
-//        foreach( $rates as $rate_key => $rate ){
-//
-//            $rates[$rate_key]->cost = $new_cost;
-//
-//
-//
-//        }
-//
-//        return $rates;
-//
-//    }
 
-//
-//    foreach( $rates as $rate_key => $rate ){
-//
-//        $rates[$rate_key]->cost = rand(1000,80000);
-//
-//
-//        WC()->session->set( 'shipping_calculated_cost', $rates[$rate_key]->cost );
-//
-//    }
-//
-//
-//    return $rates;
+    $post_data = [];
+    parse_str( $_POST['post_data'], $post_data );
+
+
+    $city = $post_data['shipping_city'];
+
+
+    $address = $package["destination"];
+
+
+    if ($city === 'asasas') {
+        $new_cost = 9000;
+
+        foreach( $rates as $rate_key => $rate ){
+
+            $rates[$rate_key]->cost = $new_cost;
+
+            WC()->session->set( 'shipping_calculated_cost', $rates[$rate_key]->cost );
+        }
+
+
+        return $rates;
+
+    }
+
+
 
     if ($free_shipping <= $total) {
         $new_cost = 0;
@@ -434,49 +437,6 @@ function custom_shipping_costs( $rates, $package ) {
 
     return $rates;
 }
-//
-//function name_of_your_function( $posted_data) {
-//
-//
-//
-//    WC()->cart->calculate_shipping();
-//    WC()->cart->calculate_totals();
-//
-//
-//    $rates = get_pack
-//
-//    ob_start();
-//    woocommerce_order_review();
-//    $woocommerce_order_review = ob_get_clean();
-//
-//    ob_start();
-//    woocommerce_checkout_payment();
-//    $woocommerce_checkout_payment = ob_get_clean();
-//
-//
-//
-//    wp_send_json(
-//        array(
-//            'result'    => empty( $messages ) ? 'success' : 'failure',
-//            'messages'  => $messages,
-//            'reload'    => 1,
-//            'fragments' => apply_filters(
-//                'woocommerce_update_order_review_fragments',
-//                array(
-//                    '.woocommerce-checkout-review-order-table' => $woocommerce_order_review,
-//                    '.woocommerce-checkout-payment' => $woocommerce_checkout_payment,
-//                )
-//
-//            ),
-//        )
-//    );
-//
-//
-//
-//
-//}
-//
-//add_action('woocommerce_checkout_update_order_review', 'name_of_your_function', 213123);
 
 
 
