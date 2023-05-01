@@ -38,6 +38,29 @@ if ( $comments ) : ?>
     <div class="reviews ">
         <h2><?= __('Отзывы', 'electrik');?></h2>
         <div class="reviews-form">
+          <div class="btn-wrap btn-wrap-mob">
+            <h2><?= __('Средняя оценка', 'electrik');?></h2>
+            <p><?= $count ?> <?= _n( 'отзыв', 'отзыва', $count  ); ?></p>
+            <div class="stars-wrap">
+              <div class="wrap">
+
+                <?php
+                foreach (range(1, 5) as $star) {
+                  $icon = '1';
+                  if ($star - $average_rating > 1)
+                    continue;
+
+                  if ($star - $average_rating < 1 && $star - $average_rating >= 0.5)
+                    $icon = '2';
+
+                  ?>
+                  <img src="<?= get_template_directory_uri(); ?>/img/icon-37-<?= $icon ?>.svg" alt="">
+                <?php } ?>
+
+              </div>
+            </div>
+            <a href="#popup-review" class="fancybox btn-border-red btn-big"><img src="<?= get_template_directory_uri();?>/img/icon-41.svg" alt=""><?= __('Оставить отзыв', 'electrik');?></a>
+          </div>
             <div class="reviews-left commentlist">
 
 

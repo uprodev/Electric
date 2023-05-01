@@ -4338,6 +4338,25 @@
   .catalog .product.is-line.product-cart .product-item .cost-wrap .cost{
     padding-right: 10px;
   }
+  .info-product-full .reviews .btn-wrap>*{
+    display: none;
+  }
+  .info-product-full .reviews .btn-wrap>a{
+    display: block;
+  }
+  .info-product-full .reviews-form .btn-wrap-mob{
+    display: block;
+    margin-bottom: 30px;
+  }
+  .info-product-full .reviews-form .btn-wrap-mob>h2{
+    font-size: 16px;
+  }
+  .info-product-full .reviews-form .btn-wrap-mob>*{
+    display: block;
+  }
+  .info-product-full .reviews-form .btn-wrap-mob>a{
+    display: none;
+  }
 }
 @media (max-width: 359px) {
   .content-width {

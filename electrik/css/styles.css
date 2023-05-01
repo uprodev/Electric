@@ -7268,4 +7268,7 @@ input[type=number] {
 .fix-menu .mob-sku del{
   text-decoration: none;
 }
+.info-product-full .reviews-form .btn-wrap-mob{
+  display: none;
+}
 /*# sourceMappingURL=styles.css.map */
