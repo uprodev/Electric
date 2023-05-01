@@ -6,7 +6,11 @@ jQuery(document).ready(function ($) {
     $(this).toggleClass('is-like')
   })
 
-
+ /* catalog list*/
+  if(window.innerWidth > 1199){
+    $('.catalog .view-item>li').toggleClass('is-active');
+    $('.catalog .content-product').addClass('is-line')
+  }
 
   /*hide info line*/
   $(document).on('click', '.close-top-info', function (e){
