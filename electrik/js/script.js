@@ -44,18 +44,21 @@ jQuery(document).ready(function ($) {
       "Scala",
       "Scheme"
     ];
+
     $(".top-search").autocomplete({
       source: availableTags
     });
 
     $('input[name=shipping_city]').autocomplete({
-      source: globals.cities
+      source: JSON.parse(globals.cities)
     });
+
+
     $('input[name=bank-3]').autocomplete({
-      source: globals.bik
+      source: JSON.parse(globals.bik)
     });
     $('input[name=bank-4]').autocomplete({
-      source: globals.bik
+      source: JSON.parse(globals.bik)
     });
   });
 
