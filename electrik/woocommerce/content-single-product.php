@@ -108,12 +108,16 @@ $unit = get_field('_woo_uom_input');
                 <?php woocommerce_show_product_images();?>
 
                 <ul class="characteristics">
-                    <?php foreach ( $attributes as $attribute ) :
-                        if ( empty( $attribute['is_visible'] ) || ( $attribute['is_taxonomy'] && ! taxonomy_exists( $attribute['name'] ) ) )
-                            continue;
+                    <?php
+                    foreach ( $attributes as $attribute ) :
+                        if (  ( $attribute['is_taxonomy'] && taxonomy_exists( $attribute['name'] ) ) ) {
+                            $values = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
+                            $att_val =     implode( ', ', $values ) ;
 
-                        $values = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
-                        $att_val = apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
+
+                        } else {
+                            $att_val = $attribute['value'];
+                        }
 
                         if( empty( $att_val ) )
                             continue;
@@ -121,7 +125,7 @@ $unit = get_field('_woo_uom_input');
                         ?>
                         <li>
                             <p><i><?= wc_attribute_label( $attribute['name'] ); ?></b></i></p>
-                            <?= $att_val; ?>
+                            <p><?= $att_val ?></p>
                         </li>
 
 
@@ -179,13 +183,10 @@ $unit = get_field('_woo_uom_input');
                     <?php if ($attributes) { ?>
                         <ul class="characteristics">
                             <?php
-
-                            //print_r($attributes);
-
                             foreach ( $attributes as $attribute ) :
                                 if (  ( $attribute['is_taxonomy'] && taxonomy_exists( $attribute['name'] ) ) ) {
                                     $values = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
-                                    $att_val = apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );
+                                    $att_val =     implode( ', ', $values ) ;
 
 
                                 } else {
@@ -198,7 +199,7 @@ $unit = get_field('_woo_uom_input');
                                 ?>
                                 <li>
                                     <p><i><?= wc_attribute_label( $attribute['name'] ); ?></b></i></p>
-                                    <?= $att_val ?>
+                                    <p><?= $att_val ?></p>
                                 </li>
 
 
@@ -236,11 +237,11 @@ $unit = get_field('_woo_uom_input');
                         <a href="#fast-shop" class="btn-red fancybox"><img src="<?= get_template_directory_uri();?>/img/icon-39.svg" alt=""><?= __('Быстрый заказ', 'electrik');?></a>
                     </div>
                     <div class="delivery">
-                        <h2><?= __('Доставка', 'electrik');?></h2>
+                        <h2><?= __('Способы получения заказа', 'electrik');?></h2>
                         <ul>
                             <li>
                                 <p><b><img src="<?= get_template_directory_uri();?>/img/icon-40-1.svg" alt=""><?= __('Самовывоз в Минске', 'electrik');?></b></p>
-                                <p><?= __('сегодня из магазина', 'electrik');?></p>
+                                <p><?= __('сегодня со склада', 'electrik');?></p>
                             </li>
                             <li>
                                 <p><b><img src="<?= get_template_directory_uri();?>/img/icon-40-2.svg" alt=""><?= __('Курьер по Минску', 'electrik');?></b></p>

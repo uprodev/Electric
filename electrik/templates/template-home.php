@@ -28,7 +28,7 @@ $args = [
     'posts_per_page' => 20,
     'meta_query'     => [
         'relation' => 'OR',
-        [ // Simple products type
+        [ // yourtemplate products type
             'key'           => '_sale_price',
             'value'         => 0,
             'compare'       => '>',

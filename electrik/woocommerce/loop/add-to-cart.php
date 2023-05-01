@@ -29,7 +29,7 @@ echo apply_filters(
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
 		esc_attr('add-to-cart ' ),
 		isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
-		'<img src="'.get_template_directory_uri().'/img/icon-13.svg" alt="">'
+		'<img src="'.get_template_directory_uri().'/img/icon-13.svg" alt=""> <span>В корзину</span>'
 	),
 	$product,
 	$args

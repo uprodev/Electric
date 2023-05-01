@@ -81,16 +81,17 @@ $unit = get_field('_woo_uom_input');
                 </p>
             </div>
             <div class="line-cost">
+                <?php if($product->is_in_stock() ) { ?>
+                    <p class="package"> <?= $unit ? $unit : __('шт.', 'electrik');?></p>
+                <?php } ?>
                 <p class="quantity">
                     <?php if($product->is_in_stock() ) { ?>
-                    <span>На складе</span>  <span><?= $product->get_stock_quantity() ?></span>
+                    <span>На складе</span>  <span><?= $product->get_stock_quantity() ?> <?= $unit ? $unit : __('шт.', 'electrik');?></span>
                     <?php } else { ?>
                         <?= __('Нет в наличии', 'electrik');?>
                     <?php } ?>
                 </p>
-                <?php if($product->is_in_stock() ) { ?>
-                    <p class="package"> <?= $unit ? $unit : __('шт.', 'electrik');?></p>
-                <?php } ?>
+
             </div>
             <div class="buy">
                 <div class="input-number ">

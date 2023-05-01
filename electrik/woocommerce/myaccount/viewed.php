@@ -111,14 +111,14 @@ $orderby = isset( $_GET['orderby'] ) ? wc_clean( wp_unslash( $_GET['orderby'] ) 
                                         <div class="data data-4">
                                             <p>Цена с НДС</p>
                                         </div>
+                                        <div class="data data-6">
+                                            <p>Ед. измерения</p>
+                                        </div>
                                         <div class="data data-5">
                                             <p>На складе</p>
                                         </div>
-                                        <div class="data data-6">
-                                            <p>Упаковка</p>
-                                        </div>
                                         <div class="data data-7">
-                                            <p>Заказ</p>
+                                            <p>Количество</p>
                                         </div>
                                     </div>
                                     <div class="wrap viewed-result products-loop">

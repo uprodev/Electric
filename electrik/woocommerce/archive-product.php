@@ -56,8 +56,6 @@ get_template_part('parts/breadcrumbs');
                             <?= do_shortcode('[br_filters_group group_id=270]') ?>
 
                             <div class="btn-wrap">
-
-
                                 <?= do_shortcode('[br_filter_single filter_id=358]') ?>
 
                             </div>
@@ -97,14 +95,14 @@ get_template_part('parts/breadcrumbs');
                                 <div class="data data-4">
                                     <p>Цена с НДС</p>
                                 </div>
+                                <div class="data data-6">
+                                    <p>Ед. измерения</p>
+                                </div>
                                 <div class="data data-5">
                                     <p>На складе</p>
                                 </div>
-                                <div class="data data-6">
-                                    <p>Упаковка</p>
-                                </div>
                                 <div class="data data-7">
-                                    <p>Заказ</p>
+                                    <p>Количество</p>
                                 </div>
                             </div>
                             <div class="wrap products-loop">

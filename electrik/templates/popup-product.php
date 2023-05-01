@@ -1,6 +1,9 @@
 <?php
 
-$product = new WC_Product(get_the_id())?>
+$product = new WC_Product(get_the_id());
+
+$unit = get_field('_woo_uom_input', $product->get_id());
+?>
 
 <div id="send-reviews" style="display:none;" class="popup-send width-820">
     <div class="popup-main">
@@ -52,6 +55,7 @@ $product = new WC_Product(get_the_id())?>
                     <div class="cost-wrap">
                         <div class="cost">
                             <p class="new"><?= $product->get_price_html() ?></p>
+                            <span><?= $unit ?></span>
                         </div>
 
                         <div class="buy">

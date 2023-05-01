@@ -39,7 +39,7 @@ $calculator_text          = '';
                     $class = $method->id == 'flat_rate' ? 'when' : 'shipping-point';
 
                     $pickups = get_field('pickup', 'options');
-                    $when = $method->id == 'flat_rate' ? 'завтра, после 11:00' : $pickups[0]['places'][0]['address'];
+                    $when = $method->id == 'flat_rate:3' ? 'Завтра, после 11:00' : 'Завтра, в течении дня';
 
 
                     if ( 1 < count( $available_methods ) ) {

@@ -61,7 +61,7 @@ get_template_part('parts/breadcrumbs');
                     <div class="cart-content">
                         <div class="step step-1 is-open">
                             <div class="head-mod">
-                                <a href="#"><i class="fas fa-chevron-left"></i>Шаг 1 из 3</a>
+                                <a href="<?= wc_get_cart_url() ?>"><i class="fas fa-chevron-left"></i>Шаг 1 из 3</a>
                             </div>
                             <h2><b>1</b>Где и как Вы хотите получить заказ?</h2>
                             <div class="wrap-step">

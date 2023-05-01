@@ -99,16 +99,16 @@
     </div>
     <div class="wrap">
 
-        <nav class="mob-menu">
-            <ul>
-                <li><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-24-1.svg" alt="">О нас</a></li>
-                <li><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-24-2.svg" alt="">Контакты</a></li>
-                <li><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-24-3.svg" alt="">Доставка</a></li>
-                <li><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-24-4.svg" alt="">Оплата</a></li>
-                <li class="last"><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-5.svg" alt="">Специальные предложения</a></li>
 
-            </ul>
-        </nav>
+
+            <?php wp_nav_menu([
+                'menu' => 'mob',
+                'container' => 'nav',
+                'container_class' => 'mob-menu',
+                'menu_class' => '',
+            ]);?>
+
+
         <div class="contact-wrap">
             <div class="tel-wrap">
                 <a href="tel:+<?= phone_clear(get_field('telefon', 'options'));?>"><?php the_field('telefon', 'options');?></a>
@@ -137,8 +137,8 @@
         $product = new WC_Product(get_the_id());  ?>
         <div class="btn-wrap">
 
-            <p><?= $product->get_sku() ?></p>
-            <a href="#" class="btn-red add-to-cart" data-variation_id=""  data-product_id="<?= the_id() ?>" ><img src="<?= get_template_directory_uri();?>/img/icon-25-3.svg" alt="">В корзину</a>
+            <p class="mob-sku"><?= $product->get_price_html() ?></p>
+            <a href="#" class="btn-red add-to-cart" data-variation_id=""  data-product_id="<?= the_id() ?>" ><img src="<?= get_template_directory_uri();?>/img/icon-25-3.svg" alt=""><span>В корзину</span></a>
             <a href="<?= wc_get_cart_url() ?>" class="btn-border-red" style="display: none;"><img src="img/icon-45.svg" alt="">Перейти в корзину <span>70BYN</span></a>
 
         </div>

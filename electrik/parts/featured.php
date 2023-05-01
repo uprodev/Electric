@@ -68,14 +68,14 @@ $wp_query = new WP_query($args);
         <div class="data data-4">
             <p>Цена с НДС</p>
         </div>
+        <div class="data data-6">
+            <p>Ед. измерения</p>
+        </div>
         <div class="data data-5">
             <p>На складе</p>
         </div>
-        <div class="data data-6">
-            <p>Упаковка</p>
-        </div>
         <div class="data data-7">
-            <p>Заказ</p>
+            <p>Количество</p>
         </div>
     </div>
     <?php if ($post__in) { ?>
@@ -111,9 +111,6 @@ $wp_query = new WP_query($args);
                 </div>
             </div>
         </section>
-
-
-
     <?php
     }?>
 </div>

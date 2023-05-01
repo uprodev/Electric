@@ -59,7 +59,8 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 				$thumbnail         = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 				$product_price     = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 				$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
-				?>
+                $unit = get_field('_woo_uom_input', $product_id);
+                ?>
 
 
                 <div class="product is-line product-cart woocommerce-cart-form">
@@ -100,7 +101,9 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                                 <div class="cost">
                                     <p class="new">
                                         <?=  WC()->cart->get_product_price( $_product ) ?>
+                                        <span><?= $unit ?></span>
                                     </p>
+
                                 </div>
 
                                 <div class="buy">
@@ -172,7 +175,13 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
             <?php if ($discount['min']) { ?>
             <div class="progress-item">
-                <p>вам осталось <span><?= $discount_left > 0 ? $discount_left : 0 ?>₽</span> до скидки <?= $discount['percent'] ?>%</p>
+
+                <?php if ($discount_left <= 0) { ?>
+                    <p>Теперь у вас есть скидка <?= $discount['percent'] ?>%!</p>
+                <?php } else { ?>
+                    <p>вам осталось <span><?= $discount_left > 0 ? $discount_left : 0 ?>₽</span> до скидки <?= $discount['percent'] ?>%</p>
+                <?php } ?>
+
                 <div class="wrap">
                     <div class="progress-bg"></div>
                     <div class="progress-line" style="width: <?= $discount_left_percent <= 100 ? $discount_left_percent : 100 ?>%;"></div>

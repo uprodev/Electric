@@ -560,3 +560,9 @@ function wc_get_formatted_cart_item_data2( $cart_item, $flat = false ) {
 
     return '';
 }
+
+
+/**
+ * Trim zeros in price decimals
+ **/
+add_filter( 'woocommerce_price_trim_zeros', '__return_true' );

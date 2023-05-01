@@ -532,13 +532,13 @@ jQuery(document).ready(function ($) {
     $(document).on('click', '.add-to-cart', function (e) {
         e.preventDefault();
 
+        var width = $(window).width();
         var product_id = $(this).attr('data-product_id');
         var variation_id = $(this).attr('data-variation_id');
         var qty1 = $(this).closest('.buy').find('input').val();
         var qty2 = $(this).closest('.cost-wrap').find('input').val();
         var qty = qty1 ? qty1 : qty2
-
-
+        var that = $(this)
 
         $('#add-product-cart').block({
             message: null,
@@ -559,10 +559,17 @@ jQuery(document).ready(function ($) {
                 $( document.body ).trigger( 'wc_fragment_refresh' );
                 $('#add-product-cart').unblock()
                 $.fancybox.close();
-                $.fancybox.open( $('#add-product-cart'), {
-                    touch:false,
-                    autoFocus:false,
-                });
+
+                if (width > 768) {
+                  $.fancybox.open( $('#add-product-cart'), {
+                      touch:false,
+                      autoFocus:false,
+                  });
+                } else {
+                  that.addClass('btn-border-red');
+                  that.find('span').text('В корзине');
+                  $('.mob-sku').hide()
+                }
 
             },
         });
