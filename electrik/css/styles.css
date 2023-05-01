@@ -2270,10 +2270,13 @@ header .sub-menu {
 
 .product .product-item .line-cost {
   display: flex;
-  max-width: 0;
-  opacity: 0;
+  max-width: calc(100% - 135px - 77px);
+
   overflow: hidden;
   transition: all 0.4s ease;
+}
+.product .product-item .line-cost p{
+  white-space: nowrap;
 }
 .product .product-item .line-cost p {
   width: 90px;
