@@ -47,6 +47,16 @@ jQuery(document).ready(function ($) {
     $(".top-search").autocomplete({
       source: availableTags
     });
+
+    $('input[name=shipping_city]').autocomplete({
+      source: globals.cities
+    });
+    $('input[name=bank-3]').autocomplete({
+      source: globals.bik
+    });
+    $('input[name=bank-4]').autocomplete({
+      source: globals.bik
+    });
   });
 
   var swiperBanner = new Swiper(".slider-banner", {
