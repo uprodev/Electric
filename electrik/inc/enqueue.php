@@ -54,8 +54,16 @@ function add_scripts() {
     $cities =  get_field('sities','option');
     $cities = explode("\r\n", $cities);
 
-//    preg_split('/\r\n|[\r\n]/', $biks);
-//    preg_split('/\r\n|[\r\n]/', $cities);
+
+    foreach ($cities as $city) {
+        $c = explode(',', $city);
+
+        $city_list[] = [
+            'value' => trim($c[0]),
+            'label' => $city,
+        ];
+
+    }
 
     foreach ($biks as $item) {
         $bik[] = trim(explode('|', $item)[0]);
@@ -69,7 +77,7 @@ function add_scripts() {
             'fav' => get_field('fav', 'user_'. get_current_user_id()),
             'bik' => $bik,
             'bank' =>   $bank ,
-            'cities' => json_encode($cities, JSON_UNESCAPED_UNICODE)
+            'cities' => json_encode($city_list, JSON_UNESCAPED_UNICODE)
         )
      );
 

@@ -23,7 +23,27 @@ jQuery(document).ready(function ($) {
 
 
     $('input[name="shipping_city"]').autocomplete({
-      source: JSON.parse(globals.cities)
+      source:  function (request, response) {
+        response($.map(JSON.parse(globals.cities), function (obj, key) {
+
+          var name = obj.value.toUpperCase();
+
+          if (name.indexOf(request.term.toUpperCase()) != -1) {
+            return {
+              label: obj.label  , // Label for Display
+              value: obj.label // Value
+            }
+          } else {
+            return null;
+          }
+        }));
+      },
+
+      select: function( event, ui ) {
+        $(document.body).trigger('update_checkout')
+      }
+
+
     });
 
 
