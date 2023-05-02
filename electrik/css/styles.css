@@ -348,6 +348,7 @@ input, textarea, button {
 .ui-menu .ui-menu-item-wrapper {
   border: 1px solid #DADADA;
   border-top-color: #fff !important;
+  font-size: 14px;
 }
 
 .ui-menu .ui-menu-item-wrapper {
@@ -2584,7 +2585,7 @@ header .sub-menu {
   border: 1px solid transparent;
   width: 325px;
   margin-right: -1px;
-  padding: 30px;
+  padding: 30px 20px;
 }
 .product-inner .product-info h2 {
   margin-bottom: 19px;
@@ -6603,7 +6604,7 @@ main {
   border-top-color: #C71E27;
 }
 
-.bapf_sfilter .bapf_hascolarr, .bapf_sfilter .bapf_hasdesc {
+.bapf_sfilter .bapf_hascolarr, .bapf_sfilter .bapf_hasdesc, .bapf_sfilter  .bapf_head h3 {
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
@@ -7270,5 +7271,20 @@ input[type=number] {
 }
 .info-product-full .reviews-form .btn-wrap-mob{
   display: none;
+}
+
+.popup-product-cart .product.is-line .product-item .cost span{
+  white-space: nowrap;
+}
+.fancybox-content .catalog .product.is-line .product-item .cost p.new{
+  width: fit-content;
+  padding-right: 15px;
+}
+.ui-widget.ui-widget-content{
+  max-height: 300px;
+  overflow: hidden auto;
+}
+.product.is-line .product-item .wrap-title h6{
+  font-weight: 400;
 }
 /*# sourceMappingURL=styles.css.map */

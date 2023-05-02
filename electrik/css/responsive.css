@@ -1982,6 +1982,9 @@
   .catalog .product .product-item figure{
     height: 159px;
   }
+  .cabinet .order-detail .detail-item figure{
+    height: 50px;
+  }
 }
 @media (max-width: 575px) {
   .content-width {
@@ -2827,7 +2830,7 @@
     margin-bottom: 11px;
   }
   .slider-big .swiper-slide .zoom-img {
-    height: 270px;
+    height: calc(100vw - 40px);
     border: none;
   }
   .product-inner .product-info {
@@ -3582,8 +3585,8 @@
     line-height: 14px;
     margin-right: 10px;
   }
-  .checkout-block .step > h2 {
-    font-size: 16px;
+  .checkout-block .step > h2, .checkout-block .select-delivery h2, .checkout-block .wrap-hide-show-2 .select-item h2 {
+    font-size: 18px;
     line-height: 19px;
   }
   /*  .checkout-block .select-step .select{
