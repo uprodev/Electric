@@ -7091,7 +7091,7 @@ input[type=number] {
 
 .product .product-item figure{
   padding: 20px 20px 0;
-  height: 232px;
+  height: 272px;
 }
 .product .product-item figure a{
   overflow: hidden;
@@ -7101,7 +7101,7 @@ input[type=number] {
 
 }
 .product .product-item figure img{
-  max-height: 212px;
+  max-height: 252px;
   object-fit: contain;
 }
 

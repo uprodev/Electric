@@ -1985,6 +1985,9 @@
   .cabinet .order-detail .detail-item figure{
     height: 50px;
   }
+  .catalog  .product .product-item figure img {
+    max-height: 149px;
+  }
 }
 @media (max-width: 575px) {
   .content-width {
@@ -2186,7 +2189,7 @@
     width: 10px;
   }
   .product .product-item figure {
-    height: 235px;
+    height: 225px;
   }
   .product .product-item .text-wrap {
     padding: 10px 10px 6px;
@@ -3299,8 +3302,9 @@
     width: 100%;
   }
   .product .product-item figure img {
-    max-height: 149px;
+    max-height: 213px;
   }
+
   .product.is-line .product-item {
     border-bottom: 0 !important;
   }
