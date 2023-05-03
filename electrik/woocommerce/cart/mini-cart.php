@@ -163,7 +163,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                 <?php if ($free_shipping_left <= 0) { ?>
                     <p>Теперь у вас есть бесплатная доставка!</p>
                 <?php } else { ?>
-                    <p>вам осталось <span><?= $free_shipping_left > 0 ? $free_shipping_left : 0 ?>₽</span> до бесплатной доставки</p>
+                    <p>вам осталось <span><?= $free_shipping_left > 0 ? $free_shipping_left : 0 ?>р.</span> до бесплатной доставки</p>
                 <?php } ?>
 
                 <div class="wrap">
@@ -179,7 +179,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                 <?php if ($discount_left <= 0) { ?>
                     <p>Теперь у вас есть скидка <?= $discount['percent'] ?>%!</p>
                 <?php } else { ?>
-                    <p>вам осталось <span><?= $discount_left > 0 ? $discount_left : 0 ?>₽</span> до скидки <?= $discount['percent'] ?>%</p>
+                    <p>вам осталось <span><?= $discount_left > 0 ? $discount_left : 0 ?>р.</span> до скидки <?= $discount['percent'] ?>%</p>
                 <?php } ?>
 
                 <div class="wrap">

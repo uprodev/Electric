@@ -131,7 +131,7 @@ get_template_part('parts/breadcrumbs');
 
                                                             ?>
 
-                                                            <option <?php selected(1, $day) ?> value="<?= $date ?>"><?= $date ?>, после 11-00</option>
+                                                            <option <?php selected(1, $day) ?> value="<?= $date ?>"><?= $date ?>, после 11:00</option>
                                                         <?php } ?>
 
 

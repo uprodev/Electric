@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 
     <ul class="characteristics">
         <li>
-            <p><?= WC()->cart->get_cart_contents_count() ?> <?= _n( 'товар', 'товаров', WC()->cart->get_cart_contents_count()  ); ?></p>
+            <p><?= count(WC()->cart->get_cart_contents()) ?> <?= _n( 'товар', 'товаров', count(WC()->cart->get_cart_contents()) ); ?></p>
             <p><?php wc_cart_totals_subtotal_html(); ?></p>
         </li>
         <?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>

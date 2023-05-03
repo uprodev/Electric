@@ -40,7 +40,7 @@ if ( $comments ) : ?>
         <div class="reviews-form">
           <div class="btn-wrap btn-wrap-mob">
             <h2><?= __('Средняя оценка', 'electrik');?></h2>
-            <p><?= $count ?> <?= _n( 'отзыв', 'отзыва', $count  ); ?></p>
+            <p><?= plural(   $count  ); ?></p>
             <div class="stars-wrap">
               <div class="wrap">
 

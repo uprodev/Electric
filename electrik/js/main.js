@@ -281,6 +281,9 @@ jQuery(document).ready(function ($) {
     function update_details() {
 
         var val = $('[name="select-city"]:checked').val();
+        if ($('.shipping_method:checked').val() === 'flat_rate:3')
+          val = $('#shipping_city').val();
+
         $('.shipping-point_text').html(val)
 
         var val = $('[name="shipping-date"] option:selected').val();

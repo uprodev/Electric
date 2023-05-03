@@ -29,6 +29,9 @@ jQuery(document).ready(function ($) {
           var name = obj.value.toUpperCase();
 
           if (name.indexOf(request.term.toUpperCase()) != -1) {
+
+
+
             return {
               label: obj.label  , // Label for Display
               value: obj.label // Value
@@ -40,7 +43,15 @@ jQuery(document).ready(function ($) {
       },
 
       select: function( event, ui ) {
-        $(document.body).trigger('update_checkout')
+
+
+        $('#shipping_city').val(ui.item.value)
+
+        setTimeout(function(){
+          $(document.body).trigger('update_checkout')
+          $( document.body ).trigger( 'wc_fragment_refresh' );
+        }, 400)
+
       }
 
 

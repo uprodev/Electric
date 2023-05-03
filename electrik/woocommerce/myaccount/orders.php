@@ -47,7 +47,7 @@ $orders = wc_get_orders($args);
             <h2 class="tab-h1">Активные заказы</h2>
 
             <?php do_action( 'woocommerce_account_navigation' ); ?>
-            
+
             <div class="cabinet-content">
                 <h1>Все заказы</h1>
 
@@ -64,7 +64,7 @@ $orders = wc_get_orders($args);
                             <p><?= wc_get_order_status_name($order->get_status());  ?></p>
                         </div>
                         <div class="data data-2">
-                            <p><span>Дата заказа/получения:</span> <?= $order->get_date_completed() ?></p>
+                            <p><span>Дата заказа/получения:</span> <span><?= $order->get_date_created( )->date("m.d.Y") ?> <?= $order->get_date_completed("m.d.Y") ?></span></p>
                             <p><?= $order->get_shipping_method() ?></p>
                         </div>
                         <div class="data data-3">

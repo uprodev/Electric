@@ -75,6 +75,9 @@ function custom_override_checkout_fields($fields)
     $fields['shipping']['shipping_address_2']['label'] = "Улица, дом";
 
 
+    $fields['shipping']['shipping_city']['priority'] = 1;
+    $fields['shipping']['shipping_address_2']['priority'] = 2;
+
 
 
 
@@ -308,6 +311,8 @@ function add_points_widget_to_fragment( $fragments ) {
     woocommerce_mini_cart();
     $fragments['.mini-cart'] = ob_get_clean();
 
+
+
     return $fragments;
 }
 add_filter('add_to_cart_fragments', 'add_points_widget_to_fragment');
@@ -383,7 +388,9 @@ function wpf_wc_add_cart_fees_by_product_meta( $cart ) {
 }
 
 
-
+add_action( 'after_setup_theme', function() {
+    WC_Cache_Helper::get_transient_version( 'shipping', true );
+} );
 add_filter( 'woocommerce_package_rates', 'custom_shipping_costs', 10, 2 );
 function custom_shipping_costs( $rates, $package ) {
     // New shipping cost (can be calculated)
@@ -395,16 +402,27 @@ function custom_shipping_costs( $rates, $package ) {
     parse_str( $_POST['post_data'], $post_data );
     $city = $post_data['shipping_city'];
     $costs = get_field('shipping', 'options');
+
     foreach ($costs as $item) {
         if ($city === $item['city'])  {
             $new_cost = $item['price'];
             foreach( $rates as $rate_key => $rate ){
-                $rates[$rate_key]->cost = $new_cost;
-                WC()->session->set( 'shipping_calculated_cost', $rates[$rate_key]->cost );
+                if ($rate_key === 'flat_rate:3')
+                    $rates[$rate_key]->cost = $new_cost;
+
             }
+
+
+          //  WC()->cart->calculate_shipping();
+//            WC()->session->set( 'shipping_calculated_cost', $rates[$rate_key]->cost );
+
             return $rates;
         }
     }
+
+    if ($new_cost > 0)
+        $free_shipping = $free_shipping/2;
+
 
     if ($free_shipping <= $total) {
         $new_cost = 0;

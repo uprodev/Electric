@@ -42,6 +42,7 @@ $calculator_text          = '';
                     $when = $method->id == 'flat_rate:3' ? 'Завтра, после 11:00' : 'Завтра, в течении дня';
 
 
+                    $from =  $method->id == 'flat_rate:3' ? ' от 6р.' : '';
                     if ( 1 < count( $available_methods ) ) {
                         printf( '<input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />', $index, esc_attr( sanitize_title( $method->id ) ), esc_attr( $method->id ), checked( $method->id, $chosen_method, false ) ); // WPCS: XSS ok.
                     } else {
@@ -55,7 +56,7 @@ $calculator_text          = '';
                     <span class="icon-wrap">
                         <img src="<?= get_template_directory_uri() ?>/img/icon-7<?= $icon ?>.svg" alt="">
                     </span>
-                    <span class="h6"><?= wc_cart_totals_shipping_method_label( $method ) ?></span>
+                    <span class="h6"><?= $method->get_label() ?><?= $from ?></span>
                     <span class="p <?= $class ?>"><?= $when ?></span>
                 </label>
             </div>
