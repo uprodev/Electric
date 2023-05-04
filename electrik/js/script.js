@@ -970,7 +970,7 @@ jQuery(document).ready(function ($) {
   });
 
   /*edit-company*/
-  if(window.innerWidth > 575){
+  if(window.innerWidth > 300){
     $(document).on('click', '.btn-edit-company', function (e){
       e.preventDefault();
       $(this).closest('.info-company').addClass('is-edit-company')

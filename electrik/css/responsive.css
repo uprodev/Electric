@@ -1153,8 +1153,8 @@
     width: 50%;
   }
   .catalog-line .left .form-search input {
-    line-height: 50px;
-    height: 54px;
+    line-height: 26px;
+    height: 48px;
   }
   .catalog-line .left {
     display: flex;
@@ -1164,8 +1164,8 @@
   }
   .catalog-line .left a {
     width: 50%;
-    height: 54px;
-    line-height: 54px;
+    height: 48px;
+    line-height: 48px;
   }
   .form-search input {
     border-width: 2px;
@@ -2924,6 +2924,7 @@
   .info-product-full .reviews .btn-wrap {
     width: 100%;
     padding-top: 10px;
+    display: none;
   }
   .info-product-full .reviews {
    /* border: 1px solid #eeeeee;
@@ -3432,8 +3433,12 @@
     padding: 10px;
   }
   .contact-block .content h6 a {
-    font-size: 20px;
-    line-height: 23px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .contact-block .content h6, .contact-block .full-item .wrap h6{
+    font-size: 16px;
+    line-height: 20px;
   }
   .contact-block .content h6 {
     margin: 0 5px 0 0;
@@ -3929,6 +3934,7 @@
   }
   .personal-data .input-wrap label {
     left: 10px;
+    top: 50%!important;
   }
   .personal-data .input-wrap label img {
     transform: scale(0.8);
@@ -4033,7 +4039,6 @@
   .cabinet .info-company .characteristics {
     padding: 0 0 0 15px;
     border-right: 0;
-    display: block !important;
   }
   .cabinet .info-company .characteristics li p {
     width: 100%;
@@ -4053,12 +4058,7 @@
   .cabinet .info-company .characteristics li:last-child {
     margin-bottom: 0;
   }
-  .cabinet .info-company.is-edit-company .edit-company, .cabinet .info-company.is-edit-company .btn-company .btn-save-company {
-    display: none !important;
-  }
-  .cabinet .info-company .btn-company a.btn-edit-company {
-    display: inline-block !important;
-  }
+
   .breadcrumb-hide-mob {
     display: none !important;
   }
@@ -4362,7 +4362,7 @@
     display: block;
   }
   .info-product-full .reviews-form .btn-wrap-mob>a{
-    display: none;
+    display: block;
   }
 }
 @media (max-width: 359px) {
