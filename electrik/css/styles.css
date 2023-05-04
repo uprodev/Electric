@@ -7317,4 +7317,27 @@ input[type=number] {
   height: 48px;
   padding: 0;
 }
+.popup-fast-shop, .popup-review{
+  width: 600px;
+}
+
+.cart-block .content-product.product .product-item .cost .amount, .cart-block .content-product.product .product-item .total-item .amount, .product.is-line .product-item .cost p.new .price ins bdi{
+  font-size: 18px;
+  line-height: 22px;
+}
+.product-inner .delivery h2, .tabs-menu li, .info-product-full .tab-item h2, .hot-product h2{
+  font-size: 20px;
+  line-height: 24px;
+}
+.product .product-item .line-cost p.package{
+  align-items: flex-end;
+  padding-bottom: 3px;
+}
+.product .product-item .cost{
+  justify-content: flex-end;
+}
+.product.is-line .product-item .line-cost p.package{
+  align-items: center;
+  padding: 0;
+}
 /*# sourceMappingURL=styles.css.map */
