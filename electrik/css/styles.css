@@ -5344,6 +5344,8 @@ main {
 .cabinet .wrap-content .item h2 {
   margin-bottom: 24px;
   padding-bottom: 18px;
+  font-size: 20px;
+  line-height: 24px;
   border-bottom: 1px solid #eeeeee;
 }
 .cabinet .wrap-content .characteristics {
