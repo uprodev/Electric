@@ -2541,6 +2541,7 @@ header .sub-menu {
 .product-inner .top .left {
   display: flex;
   align-items: center;
+  max-width: calc(100% - 200px);
 }
 .product-inner .top .stars-wrap {
   display: flex;
@@ -2573,17 +2574,17 @@ header .sub-menu {
   flex-wrap: wrap;
 }
 .product-inner .slider-wrap {
-  width: 500px;
+  width: 440px;
 }
 .product-inner .text-wrap {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: calc(100% - 515px);
+  width: calc(100% - 440px);
 }
 .product-inner .product-info {
   border: 1px solid transparent;
-  width: 325px;
+  width: 50%;
   margin-right: -1px;
   padding: 30px 20px;
 }
@@ -2732,7 +2733,7 @@ header .sub-menu {
   opacity: 1;
 }
 .product-inner .product-cart {
-  width: calc(100% - 325px);
+  width: 50%;
   border: 1px solid #EEEEEE;
   padding: 30px;
 }
@@ -2895,7 +2896,7 @@ header .sub-menu {
 }
 
 .slider-big .swiper-slide .zoom-img {
-  height: 565px;
+  height: 440px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -2914,7 +2915,8 @@ header .sub-menu {
 .slider-small {
   position: relative;
   z-index: 2;
-  margin-top: -80px;
+  /*margin-top: -80px;*/
+  margin-top: 0;
 }
 .slider-small .swiper-slide {
   width: 80px;
@@ -5106,7 +5108,7 @@ main {
   display: flex;
 }
 .checkout-block .select-date .date-wrap .select-block {
-  width: 220px;
+  min-width: 220px;
 }
 .checkout-block .select-date .date-wrap .select-block + .select-block {
   margin-left: 10px;
@@ -5727,6 +5729,11 @@ main {
 .cabinet .order-detail .detail-item figure {
   width: 100%;
   height: 85px;
+  padding: 10px;
+  overflow: hidden;
+}
+.cabinet .item-order .data-4 figure{
+  padding: 10px;
 }
 .cabinet .order-detail .detail-item figure img {
   width: 100%;
@@ -7013,8 +7020,8 @@ input[type=number] {
   display: inline-block;
 }
 .product .product-item .cost p.new .price ins bdi, .product .product-item .cost p.new .price ins bdi span{
-  font-size: 22px;
-  line-height: 26px;
+  font-size: 18px;
+  line-height: 22px;
   color: #292929;
   font-weight: 600;
 }
@@ -7260,7 +7267,7 @@ input[type=number] {
   display: none;
 }
 .checkout-block .step{
-  overflow: hidden;
+ /* overflow: hidden;*/
 }
 
 .fix-menu .btn-wrap p .amount bdi{
