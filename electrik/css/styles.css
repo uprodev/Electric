@@ -2541,6 +2541,7 @@ header .sub-menu {
 .product-inner .top .left {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   max-width: calc(100% - 200px);
 }
 .product-inner .top .stars-wrap {
@@ -2908,6 +2909,9 @@ header .sub-menu {
 .slider-big .swiper-slide .zoom-img img {
   max-width: 100%;
   max-height: 100%;
+  width: 100%;
+  object-fit: contain;
+  height: 100%;
 }
 .slider-big .pagination-big {
   display: none;
