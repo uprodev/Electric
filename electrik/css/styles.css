@@ -2725,6 +2725,7 @@ header .sub-menu {
   max-height: 40px;
   opacity: 1;
   margin-bottom: 18px;
+  overflow: visible;
 }
 .product-inner .characteristics li:last-child {
   display: block !important;
