@@ -68,7 +68,7 @@ $orders = wc_get_orders($args);
                             <p><?= $order->get_shipping_method() ?></p>
                         </div>
                         <div class="data data-3">
-                            <p><span>Сумма заказа:</span> <?= $order->get_formatted_order_total() ?></p>
+                            <p><span>Сумма заказа: </span> <?=   $order->get_formatted_order_total() ?></p>
 
                             <?php if ( $order->get_status() !== 'cancelled'   ) { ?>
                                 <?php if ( $order->is_paid()   ) { ?>

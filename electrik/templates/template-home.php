@@ -171,14 +171,25 @@ $q2 = new WP_query($args);
 
                         <?php foreach($cats as $term_id):
                             $term = get_term($term_id);
-                            $ic = get_field('icon', 'product_cat_'.$term_id);?>
+                            $ic = get_field('icon', 'product_cat_'.$term_id);
+
+                            $args = [
+                                'post_type' => 'product',
+                                'posts_per_page' => -1,
+                                'product_cat' => $term->slug,
+
+                            ];
+
+                            $products = new WP_query($args);
+
+                            ?>
                             <li>
                                 <a href="<?= get_term_link($term_id);?>">
                                     <figure>
                                         <img src="<?= $ic['url'];?>" alt="<?= $ic['alt'];?>">
                                     </figure>
                                     <h6><?= $term->name;?></h6>
-                                    <p><?= $term->count;?> товаров</p>
+                                    <p><?= $products->found_posts ?> товаров</p>
                                 </a>
                             </li>
                         <?php endforeach;?>

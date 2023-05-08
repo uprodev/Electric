@@ -122,7 +122,7 @@ if ($fav) {
                         <?php if (WC()->cart->get_cart_contents_count() > 0) {?>
                             <ul class="bg-list">
                                 <li>
-                                    <p><?= WC()->cart->get_cart_contents_count() ?> <?= _n( 'товар', 'товаров', WC()->cart->get_cart_contents_count()  ); ?></p>
+                                    <p><?= count(WC()->cart->get_cart_contents()) ?> <?= _n( 'товар', 'товаров', count(WC()->cart->get_cart_contents())  ); ?></p>
                                     <p><?php wc_cart_totals_order_total_html(); ?></p>
                                 </li>
 

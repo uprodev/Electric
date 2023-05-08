@@ -79,8 +79,8 @@ get_template_part('parts/breadcrumbs');
                                 <?php woocommerce_catalog_ordering() ?>
 
                             <ul class="view-item">
-                                <li class="in-grid <?= wp_is_mobile() ? '' : 'is-active'  ?>"><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-35-1.svg" alt=""></a></li>
-                                <li class="in-line <?= wp_is_mobile() ? 'is-active' : ''  ?>"><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-35-2.svg" alt=""></a></li>
+                                <li class="in-grid <?= wp_is_mobile() ? 'is-active' : ''  ?>"><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-35-1.svg" alt=""></a></li>
+                                <li class="in-line <?= wp_is_mobile() ? '' : 'is-active'  ?>"><a href="#"><img src="<?= get_template_directory_uri() ?>/img/icon-35-2.svg" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="content-product product <?= wp_is_mobile() ? '' : 'is-line'  ?>">

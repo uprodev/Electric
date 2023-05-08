@@ -308,7 +308,7 @@ $unit = get_field('_woo_uom_input');
                     </div>
                     <div class="item">
                         <h2><?= __('Описание', 'electrik');?></h2>
-                        <?= $product->get_description();?>
+                        <?= apply_filters('the_content', $product->get_description());?>
                     </div>
                 </div>
                 <div class="tab-item tab-item-2">

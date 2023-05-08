@@ -416,7 +416,7 @@ function custom_shipping_costs( $rates, $package ) {
           //  WC()->cart->calculate_shipping();
 //            WC()->session->set( 'shipping_calculated_cost', $rates[$rate_key]->cost );
 
-            return $rates;
+        //    return $rates;
         }
     }
 
@@ -517,3 +517,38 @@ function wc_get_formatted_cart_item_data2( $cart_item, $flat = false ) {
  * Trim zeros in price decimals
  **/
 add_filter( 'woocommerce_price_trim_zeros', '__return_true' );
+
+
+/**
+ * Set a minimum order amount for checkout
+ */
+add_action( 'woocommerce_checkout_process', 'wc_minimum_order_amount' );
+add_action( 'woocommerce_before_cart' , 'wc_minimum_order_amount' );
+
+function wc_minimum_order_amount() {
+    // Set this variable to specify a minimum order value
+    $minimum = get_field('minimum', 'options');
+
+    if ( $minimum > 0 && WC()->cart->total < $minimum ) {
+
+        if( is_cart() ) {
+
+            wc_print_notice(
+                sprintf( 'Ваш текущий заказ на %s — минимальная сумма заказа составляет %s' ,
+                    wc_price( WC()->cart->total ),
+                    wc_price( $minimum )
+                ), 'error'
+            );
+
+        } else {
+
+            wc_add_notice(
+                sprintf( 'Ваш текущий заказ на %s — минимальная сумма заказа составляет %s' ,
+                    wc_price( WC()->cart->total ),
+                    wc_price( $minimum )
+                ), 'error'
+            );
+
+        }
+    }
+}

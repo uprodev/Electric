@@ -76,18 +76,29 @@ get_template_part('parts/breadcrumbs');
                 <div class="content">
                     <ul>
                         <?php foreach($cats as $term):
-                            $ic = get_field('icon', 'product_cat_'.$term->term_id);?>
+                            $ic = get_field('icon', 'product_cat_'.$term->term_id);
+
+                            $args = [
+                                'post_type' => 'product',
+                                'posts_per_page' => -1,
+                                'product_cat' => $term->slug,
+
+                            ];
+
+                            $products = new WP_query($args);
+
+                            ?>
                             <li>
                             <a href="<?= get_term_link($term->term_id);?>">
                                 <figure>
                                     <img src="<?= $ic['url'];?>" alt="<?= $ic['alt'];?>">
                                 </figure>
                                 <h6><?= $term->name;?></h6>
-                                <p><?= $term->count;?> товаров</p>
+                                <p><?= $products->found_posts ?> товаров</p>
                             </a>
                         </li>
                         <?php endforeach;?>
-                        
+
                     </ul>
                 </div>
             </div>

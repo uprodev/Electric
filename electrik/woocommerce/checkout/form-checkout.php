@@ -43,7 +43,7 @@ get_template_part('parts/breadcrumbs');
 
 <section class="cart-block checkout-block">
     <div class="content-width">
-        <form action="#"  name="checkout" method="post" class="checkout woocommerce-checkout form-icon" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+        <form action="#" autocomplete="off"   name="checkout" method="post" class="checkout woocommerce-checkout form-icon" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
 
             <?php // do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
@@ -121,7 +121,7 @@ get_template_part('parts/breadcrumbs');
 
                                         </div>
                                         <div class="select-date">
-                                            <h2><img src="<?= get_template_directory_uri() ?>/img/icon-77.svg" alt="">Выберите время доставки</h2>
+                                            <h2><img src="<?= get_template_directory_uri() ?>/img/icon-77.svg" alt="">Выберите дату доставки</h2>
                                             <div class="date-wrap">
                                                 <div class="select-block ">
                                                     <label class="form-label" for="select-date-1"></label>

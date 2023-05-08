@@ -51,6 +51,7 @@ $icons = [
 
                         $field['placeholder'] =  $field['label'];
                         $field['optional'] =  '';
+
                         $field['label'] = '<img src="'.get_template_directory_uri().'/img/icon-76-'.$icons[$key].'.svg" alt="">';
                         woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
                     </div>

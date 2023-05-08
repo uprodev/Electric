@@ -87,7 +87,7 @@ function ajax_registration()
         } else {
             $data = array(
                 'update' => false,
-                'status' => '<p class="error">' . __('<br>Un compte existe déjà pour cette adresse email. Identifiez-vous ou utilisez un mot de passe oublié', 'sage') . '</p>',
+                'status' => '<p class="error">' . __('Пользователь с таким E-mail уже существует<br><br>', 'sage') . '</p>',
             );
         }
     } else {

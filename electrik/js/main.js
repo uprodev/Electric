@@ -98,12 +98,16 @@ jQuery(document).ready(function ($) {
                         if (data) {
                             console.log(data)
 
+
+
                             if (data.update) {
                                 $.fancybox.close();
                                 $.fancybox.open($('#send-ok'), {
                                     touch: false,
                                     autoFocus: false,
                                 });
+                            } else {
+                              $('.result-register').html(data.status)
                             }
 
                             // $('.result-register').html(data.status)

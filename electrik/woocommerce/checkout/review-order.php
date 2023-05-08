@@ -42,12 +42,12 @@ defined( 'ABSPATH' ) || exit;
             </li>
         <?php endforeach; ?>
 
-        <?php if (WC()->cart->shipping_total > 0) { ?>
+        <?php //if (WC()->cart->shipping_total > 0) { ?>
             <li class="">
                 <p>Доставка</p>
-                <p><?= WC()->cart->get_cart_shipping_total(); ?></p>
+                <p><?= WC()->cart->shipping_total > 0 ? WC()->cart->get_cart_shipping_total() : 'Бесплатно'; ?></p>
             </li>
-        <?php } ?>
+        <?php //} ?>
 
         <li class="total">
             <p>Итого</p>
