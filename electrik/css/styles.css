@@ -2541,6 +2541,7 @@ header .sub-menu {
 .product-inner .top .left {
   display: flex;
   align-items: center;
+  max-width: calc(100% - 200px);
 }
 .product-inner .top .stars-wrap {
   display: flex;
@@ -2573,17 +2574,17 @@ header .sub-menu {
   flex-wrap: wrap;
 }
 .product-inner .slider-wrap {
-  width: 500px;
+  width: 440px;
 }
 .product-inner .text-wrap {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: calc(100% - 515px);
+  width: calc(100% - 440px);
 }
 .product-inner .product-info {
   border: 1px solid transparent;
-  width: 325px;
+  width: 50%;
   margin-right: -1px;
   padding: 30px 20px;
 }
@@ -2724,6 +2725,7 @@ header .sub-menu {
   max-height: 40px;
   opacity: 1;
   margin-bottom: 18px;
+  overflow: visible;
 }
 .product-inner .characteristics li:last-child {
   display: block !important;
@@ -2732,7 +2734,7 @@ header .sub-menu {
   opacity: 1;
 }
 .product-inner .product-cart {
-  width: calc(100% - 325px);
+  width: 50%;
   border: 1px solid #EEEEEE;
   padding: 30px;
 }
@@ -2895,7 +2897,7 @@ header .sub-menu {
 }
 
 .slider-big .swiper-slide .zoom-img {
-  height: 565px;
+  height: 440px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -2914,7 +2916,8 @@ header .sub-menu {
 .slider-small {
   position: relative;
   z-index: 2;
-  margin-top: -80px;
+  /*margin-top: -80px;*/
+  margin-top: 0;
 }
 .slider-small .swiper-slide {
   width: 80px;
@@ -5106,7 +5109,7 @@ main {
   display: flex;
 }
 .checkout-block .select-date .date-wrap .select-block {
-  width: 220px;
+  min-width: 220px;
 }
 .checkout-block .select-date .date-wrap .select-block + .select-block {
   margin-left: 10px;
@@ -5344,6 +5347,8 @@ main {
 .cabinet .wrap-content .item h2 {
   margin-bottom: 24px;
   padding-bottom: 18px;
+  font-size: 20px;
+  line-height: 24px;
   border-bottom: 1px solid #eeeeee;
 }
 .cabinet .wrap-content .characteristics {
@@ -5725,6 +5730,11 @@ main {
 .cabinet .order-detail .detail-item figure {
   width: 100%;
   height: 85px;
+  padding: 10px;
+  overflow: hidden;
+}
+.cabinet .item-order .data-4 figure{
+  padding: 10px;
 }
 .cabinet .order-detail .detail-item figure img {
   width: 100%;
@@ -6903,6 +6913,10 @@ input[type=number] {
   font-weight: 600 !important;
 }
 
+.product.is-line .product-item .cost .price>.amount, .product.is-line .product-item .cost .price>.amount bdi span{
+  font-size: 18px;
+  line-height: 22px;
+}
 .cabinet-cart .cart-block .top{
   display: none;
 }
@@ -7007,8 +7021,8 @@ input[type=number] {
   display: inline-block;
 }
 .product .product-item .cost p.new .price ins bdi, .product .product-item .cost p.new .price ins bdi span{
-  font-size: 22px;
-  line-height: 26px;
+  font-size: 18px;
+  line-height: 22px;
   color: #292929;
   font-weight: 600;
 }
@@ -7254,7 +7268,7 @@ input[type=number] {
   display: none;
 }
 .checkout-block .step{
-  overflow: hidden;
+ /* overflow: hidden;*/
 }
 
 .fix-menu .btn-wrap p .amount bdi{
@@ -7286,5 +7300,54 @@ input[type=number] {
 }
 .product.is-line .product-item .wrap-title h6{
   font-weight: 400;
+}
+.popup-login{
+  padding: 30px;
+}
+
+.popup-fast-shop .form-icon h3{
+  font-size: 22px;
+}
+.popup-fast-shop h3 {
+  font-size: 26px;
+}
+.product .product-item .cost{
+  width: auto;
+}
+
+.popup-filter-side.fancybox-content{
+  padding-bottom: 100px;
+}
+.popup-filter-side.fancybox-content .btn-wrap{
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  width: auto;
+  height: 48px;
+  padding: 0;
+}
+.popup-fast-shop, .popup-review{
+  width: 600px;
+}
+
+.cart-block .content-product.product .product-item .cost .amount, .cart-block .content-product.product .product-item .total-item .amount, .product.is-line .product-item .cost p.new .price ins bdi{
+  font-size: 18px;
+  line-height: 22px;
+}
+.product-inner .delivery h2, .tabs-menu li, .info-product-full .tab-item h2, .hot-product h2{
+  font-size: 20px;
+  line-height: 24px;
+}
+.product .product-item .line-cost p.package{
+  align-items: flex-end;
+  padding-bottom: 3px;
+}
+.product .product-item .cost{
+  justify-content: flex-end;
+}
+.product.is-line .product-item .line-cost p.package{
+  align-items: center;
+  padding: 0;
 }
 /*# sourceMappingURL=styles.css.map */

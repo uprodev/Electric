@@ -840,6 +840,7 @@ jQuery(document).ready(function ($) {
   $('.tel').mask('+375 (00) 000-00-00');
   $('input[type=tel]').mask('+375 (00) 000-00-00');
   $('.number-9').mask('000 000 000');
+  $('.cabinet #bank-1').mask('000000000');
 
   /*delete item cart*/
   $(document).on('click', '.delete-item a', function (e) {
@@ -970,7 +971,7 @@ jQuery(document).ready(function ($) {
   });
 
   /*edit-company*/
-  if(window.innerWidth > 575){
+  if(window.innerWidth > 300){
     $(document).on('click', '.btn-edit-company', function (e){
       e.preventDefault();
       $(this).closest('.info-company').addClass('is-edit-company')
