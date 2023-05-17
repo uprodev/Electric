@@ -1996,6 +1996,9 @@
   .catalog  .product .product-item figure img {
     max-height: 149px;
   }
+  .site-menu > ul > li:hover > .sub-menu{
+    display: none;
+  }
 }
 @media (max-width: 575px) {
   .content-width {
@@ -2019,14 +2022,14 @@
     width: 70px;
   }
   .top-info .right {
-    width: 92px;
+    width: 20px;
   }
   .top-info .right a {
     font-size: 13px;
     line-height: 15px;
   }
   .top-info .center {
-    width: calc(100% - 70px - 92px);
+    width: calc(100% - 30px);
     padding: 0 10px;
   }
   .top-info .center p {
@@ -4336,12 +4339,19 @@
   }
   .sort-line .sort-1 .bapf_sfa_taxonomy ul li a, .sort-line .sort-1 ul.bapf_sfa_unall li a{
     font-size: 14px;
-    height: 30px;
+    height: fit-content;
     line-height: 30px;
   }
   .bapf_sfa_taxonomy{
-    height: 30px;
+    height: fit-content;
     line-height: 30px;
+
+  }
+  .bapf_sfilter {
+    margin-bottom: 10px;
+  }
+  .sort-line .sort-1 ul.bapf_sfa_unall li{
+    margin-left: 0!important;
   }
   .product.is-line .product-item{
     padding-bottom: 0;

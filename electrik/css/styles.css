@@ -134,7 +134,7 @@ input, textarea, button {
 
 /*---------------------------------HEADER----------------------------------*/
 .top-info {
-  background: #C71E27 url("../img/bg-1.jpg") no-repeat center;
+  background: #C71E27!important;
   background-size: cover;
   padding: 9px 0;
 }
@@ -147,7 +147,7 @@ input, textarea, button {
   width: 80px;
 }
 .top-info .center {
-  width: calc(100% - 80px - 130px);
+  width: calc(100% - 40px - 30px);
   padding-right: 20px;
 }
 .top-info .center p {
@@ -155,7 +155,7 @@ input, textarea, button {
   line-height: 16px;
 }
 .top-info .right {
-  width: 130px;
+  width: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -513,13 +513,15 @@ header {
 .is-open .site-menu-wrap .content-width {
   opacity: 1;
 }
-
+.sub-menu ul li a{
+  padding-right: 10px;
+}
 .sub-menu {
   opacity: 1;
   position: absolute;
   top: -1px;
   bottom: -1px;
-  left: 294px;
+  left: 293px;
   background: #fff;
   padding: 30px 10px 30px 30px;
   transition: all 0.4s ease;
@@ -2541,12 +2543,13 @@ header .sub-menu {
 .product-inner .top .left {
   display: flex;
   align-items: center;
+  max-width: calc(100% - 230px);
   flex-wrap: wrap;
-  max-width: calc(100% - 200px);
 }
 .product-inner .top .stars-wrap {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 .product-inner .top .stars-wrap .wrap {
   margin-right: 10px;
@@ -2558,7 +2561,7 @@ header .sub-menu {
   top: 1px;
 }
 .product-inner .top h1 {
-  margin: 0 25px 0 0;
+  margin: 0 25px 10px 0;
 }
 .product-inner .top .info p {
   margin: 0;
