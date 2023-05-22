@@ -38,7 +38,7 @@ $orderby = isset( $_GET['orderby'] ) ? wc_clean( wp_unslash( $_GET['orderby'] ) 
 
 <form class="woocommerce-ordering" method="get">
     <div class="sort-2">
-    <p >Сортировать по:</p>
+    <!--<p >Сортировать по:</p>-->
     <ul class="desk-filter">
 
         <?php foreach ( $catalog_orderby_options as $id => $name ) :
@@ -62,6 +62,7 @@ $orderby = isset( $_GET['orderby'] ) ? wc_clean( wp_unslash( $_GET['orderby'] ) 
         <div class=" " tabindex="0">
 
             <select name="orderby" class="orderby" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
+                <option>Сортировать по</option>
                 <?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
                     <option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
                 <?php endforeach; ?>
@@ -69,6 +70,11 @@ $orderby = isset( $_GET['orderby'] ) ? wc_clean( wp_unslash( $_GET['orderby'] ) 
 
         </div>
     </div>
+      <div class="filter-mob-new">
+        <div class="filter-btn">
+          <a href="#"><img src="https://elstore.by/wp-content/themes/electrik/img/icon-34.svg" alt="">Фильтровать</a>
+        </div>
+      </div>
 
     </div>
 </form>
