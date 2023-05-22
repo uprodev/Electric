@@ -147,7 +147,7 @@ if ( $comments ) : ?>
                     'comment_notes_before' => '',
                     'class_form'           => 'form-icon',
                     'submit_button' =>  '<div class="input-wrap-submit">
-                                            <button name="%1$s" type="submit" id="%2$s" class="%3$s btn-red add-reviews0"><img src="'.get_template_directory_uri() .'img/icon-47.svg" alt=""> %4$s </button>
+                                            <button name="%1$s" type="submit" id="%2$s" class="%3$s btn-red add-reviews0"><img src="'.get_template_directory_uri() .'/img/icon-47.svg" alt=""> %4$s </button>
                                         </div> '
                 );
 

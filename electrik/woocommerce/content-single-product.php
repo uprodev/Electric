@@ -276,6 +276,12 @@ $unit = get_field('_woo_uom_input');
             <ul class="tabs-menu">
                 <li><i class="fas fa-chevron-right"></i><?= __('Характеристики', 'electrik');?></li>
                 <li><i class="fas fa-chevron-right"></i><?= __('Отзывы', 'electrik');?> <span><?= $review_count;?></span></li>
+                <li><i class="fas fa-chevron-right"></i><?= __('Похожие товары', 'electrik');?> <img src="<?= get_template_directory_uri();?>/img/icon-44.svg" alt=""></span></li>
+
+                <?php if($product->get_upsell_ids()):?>
+                    <li><i class="fas fa-chevron-right"></i><?= __('Сопутствующие товары', 'electrik');?> <img src="<?= get_template_directory_uri();?>/img/icon-43.svg" alt=""></li>
+                <?php endif;?>
+
                 <?php if($sertifikaty):?>
                     <li><i class="fas fa-chevron-right"></i><?= __('Сертификаты', 'electrik');?></li>
                 <?php endif;?>
@@ -314,6 +320,17 @@ $unit = get_field('_woo_uom_input');
                 <div class="tab-item tab-item-2">
                     <?php wc_get_template_part( 'single-product-reviews' ); ?>
                 </div>
+                <div class="tab-item tab-item-3">
+                    <?php woocommerce_output_related_products(); ?>
+                </div>
+
+                <?php if($product->get_upsell_ids()):?>
+                    <div class="tab-item tab-item-4">
+                        <?php woocommerce_upsell_display(); ?>
+                </div>
+                <?php endif;?>
+
+
                 <?php if($sertifikaty):?>
                     <div class="tab-item tab-item-3">
                         <h2><?= __('Сертификаты', 'electrik');?></h2>
@@ -334,8 +351,8 @@ $unit = get_field('_woo_uom_input');
     </div>
 </section>
 
-<?php woocommerce_upsell_display();
 
-woocommerce_output_related_products();
+
+
 
 

@@ -5,7 +5,7 @@
       <paths name="electro">
         <serverdata>
           <mappings>
-            <mapping deploy="/themes" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/wp-content/themes" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

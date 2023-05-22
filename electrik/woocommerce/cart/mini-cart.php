@@ -149,7 +149,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
 
         <div class="cart-info">
-            <p><span>В корзине:</span><?= WC()->cart->get_cart_contents_count() ?> <?= _n( 'товар', 'товаров', WC()->cart->get_cart_contents_count()  ); ?></p>
+            <p><span>В корзине:</span><?= count(WC()->cart->get_cart_contents()) ?> <?= _n( 'товар', 'товаров', count(WC()->cart->get_cart_contents())  ); ?></p>
             <p><span>На сумму:</span><?= WC()->cart->get_cart_total() ?></p>
         </div>
         <div class="btn-wrap">
@@ -198,7 +198,11 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
             <h3>Вам также может пригодиться</h3>
             <div class="product is-line product-cart product-add-cart">
                 <?php foreach ( $cross_sells as $cross_sell ) {
-                    $product = new WC_Product($cross_sell) ?>
+                    $product = new WC_Product($cross_sell)  ;
+                    $product_id = $product->get_id();
+                    $unit = get_field('_woo_uom_input', $product_id);
+
+                    ?>
 
                     <div class="product-item">
                     <div class="line-info">
@@ -227,7 +231,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
                         <div class="cost-wrap">
                             <div class="cost">
-                                <p class="new"><?= $product->get_price() ?>₽</p>
+                                <p class="new"><?= $product->get_price() ?> р.<?= $unit ?></p>
                             </div>
 
                             <div class="buy">

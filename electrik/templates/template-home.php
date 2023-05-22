@@ -189,7 +189,7 @@ $q2 = new WP_query($args);
                                         <img src="<?= $ic['url'];?>" alt="<?= $ic['alt'];?>">
                                     </figure>
                                     <h6><?= $term->name;?></h6>
-                                    <p><?= $products->found_posts ?> товаров</p>
+                                    <p><?= plural($products->found_posts, [' товар', ' товара', ' товаров'])  ?></p>
                                 </a>
                             </li>
                         <?php endforeach;?>

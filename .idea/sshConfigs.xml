@@ -2,7 +2,8 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="vh78.hoster.by" id="2a9bb9ec-48fb-43fe-8113-f87b2bc94fcb" port="22" nameFormat="DESCRIPTIVE" username="elstoreb" />
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="vh78.hoster.by" id="2a9bb9ec-48fb-43fe-8113-f87b2bc94fcb" port="22" nameFormat="DESCRIPTIVE" username="elstoreb" />
+      <sshConfig host="157.245.165.7" id="8aa099fc-d8cf-4ec8-9b8c-d1be7262db4f" keyPath="$USER_HOME$/.ssh/id_rsa" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

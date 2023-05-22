@@ -47,6 +47,10 @@
         <?php endforeach; ?>
 
 
+        <li class="">
+            <p>Доставка</p>
+            <p><?= WC()->cart->shipping_total > 0 ? WC()->cart->get_cart_shipping_total() : 'Бесплатно'; ?></p>
+        </li>
 
 
         <li class="total">

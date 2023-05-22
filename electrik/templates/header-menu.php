@@ -9,11 +9,7 @@
                 <p><?php the_field('nazvanie', 'options');?></p>
             </div>
             <div class="center">
-<!--                <form action="--><?php //echo home_url( '/' ) ?><!--" class="form-search">-->
-<!--                    <label for="top-search"></label>-->
-<!--                    <input type="text" name="s" id="top-search" class="top-search">-->
-<!--                    <button class="btn" type="submit"><img src="--><?//= get_template_directory_uri();?><!--/img/find.svg" alt=""></button>-->
-<!--                </form>-->
+
                 <?php echo do_shortcode('[fibosearch]'); ?>
 
             </div>
@@ -163,7 +159,7 @@
             <li><a href="<?= wc_get_cart_url() ?>">
                     <figure>
                         <img src="<?= get_template_directory_uri() ?>/img/icon-25-3.svg" alt="">
-                        <span><?= count(WC()->cart->get_cart_contents()) ?></span>
+                        <span class="count-mob"><?= count(WC()->cart->get_cart_contents()) ?></span>
 
                     </figure>
                     Корзина

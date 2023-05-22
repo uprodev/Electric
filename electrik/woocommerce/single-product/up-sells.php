@@ -21,9 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $upsells ) : ?>
 
-    <section class="hot-product product">
+    <section class="hot-product0 product">
         <div class="content-width">
-            <h2><?= __('Сопутствующие товары', 'electrik');?> <img src="<?= get_template_directory_uri();?>/img/icon-43.svg" alt=""></h2>
+
             <div class="slider-wrap">
                 <div class="nav-wrap">
                     <div class="swiper-button-next product-next-1"></div>

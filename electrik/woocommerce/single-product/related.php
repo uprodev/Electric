@@ -21,9 +21,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $related_products ) : ?>
 
-    <section class="hot-product product">
+    <section class="hot-product0 product">
+    <section class="hot-product0 product">
         <div class="content-width">
-            <h2><?= __('Похожие товары', 'electrik');?> <img src="<?= get_template_directory_uri();?>/img/icon-44.svg" alt=""></h2>
+
             <div class="slider-wrap">
                 <div class="nav-wrap">
                     <div class="swiper-button-next product-next-2"></div>

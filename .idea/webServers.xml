@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="c3547bb3-dcfb-4129-9d3c-7c5e98f14103" name="electro" url="http://vh78.hoster.by ">
-        <fileTransfer rootFolder="/home/elstoreb/www/wp-content/themes/electrik" accessType="SFTP" host="vh78.hoster.by" port="22" sshConfigId="2a9bb9ec-48fb-43fe-8113-f87b2bc94fcb" sshConfig="elstoreb@vh78.hoster.by:22 password">
+        <fileTransfer rootFolder="/home/elstoreb/www/" accessType="SFTP" host="vh78.hoster.by" port="22" sshConfigId="2a9bb9ec-48fb-43fe-8113-f87b2bc94fcb" sshConfig="elstoreb@vh78.hoster.by:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

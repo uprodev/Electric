@@ -311,6 +311,8 @@ function add_points_widget_to_fragment( $fragments ) {
     woocommerce_mini_cart();
     $fragments['.mini-cart'] = ob_get_clean();
 
+    $fragments['.count-mob'] = '<span class="count-mob">'. count(WC()->cart->get_cart_contents()) .'</span>';
+
 
 
     return $fragments;

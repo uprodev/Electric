@@ -35,7 +35,7 @@ if ( ! wp_doing_ajax() ) {
 			}
 			?>
 
-            <div class="select select-2">
+            <div class="select select-2"  style="visibility: hidden">
                 <input type="radio" name="select-2-1" id="select-2-2">
                 <label for="select-2-2">
                     <span class="icon-wrap">

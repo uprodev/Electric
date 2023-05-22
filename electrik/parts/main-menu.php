@@ -2,7 +2,7 @@
 
     <?php $terms = get_terms([
         'taxonomy' => 'product_cat',
-        'hide_empty' => 0,
+        'hide_empty' => 1,
         'parent' => 0
     ]); ?>
 
@@ -10,9 +10,12 @@
 
         $child = get_terms([
             'taxonomy' => 'product_cat',
-            'hide_empty' => 0,
+            'hide_empty' => 1,
             'parent' => $term->term_id
         ]);
+
+        if (15 == $term->term_id)
+            continue;
 
         $icon = get_field('icon', 'term_' . $term->term_id);
         $icon_url = $icon['url'];
@@ -32,7 +35,7 @@
                     <h3 class="title"><?= $term->name ?> <img width="20" src="<?= $icon_url ?>" alt=""></h3>
                     <ul>
                         <?php foreach ($child as $child_term) { ?>
-                            <li><a href="<?= get_term_link($child_term->term_id) ?>"><?= $child_term->name ?></a></li>
+                            <li><a href="<?= get_term_link($child_term->term_id) ?>"><?= $child_term->name ?> (<?= $child_term->count ?>)</a></li>
                         <?php } ?>
                     </ul>
                 </div>

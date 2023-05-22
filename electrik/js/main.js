@@ -565,6 +565,12 @@ jQuery(document).ready(function ($) {
     });
 
 
+    $(document).on('change', '#fast-shop [name="count"]', function (e) {
+      var val = $(this).val()
+      $('[name="qty"]').val(val)
+    })
+
+
     $(document).on('click', '.bapf_update', function (e) {
         $.fancybox.close();
     })
@@ -586,6 +592,20 @@ jQuery(document).ready(function ($) {
     $(document).on('click', '.close-top-info', function (e) {
         Cookies.set('top', 1);
     })
+
+
+  $(document).on('submit', '#commentform', function (e) {
+    $('#commentform #submit').prop('disabled', true)
+    $('#commentform #submit').html('<i class="fa fa-spinner fa-spin"></i>')
+
+  })
+
+  $(document).on('click', '#add-product-cart .btn-border-black.btn-big', function (e) {
+    e.preventDefault();
+    $.fancybox.close();
+
+  })
+
 
 
 

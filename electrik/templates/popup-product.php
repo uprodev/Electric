@@ -69,7 +69,7 @@ $unit = get_field('_woo_uom_input', $product->get_id());
                 </div>
             </div>
         </div>
-
+        <?php wp_reset_query() ?>
         <?=   do_shortcode('[contact-form-7 id="448" title="Быстрый заказ"]') ?>
 
 
