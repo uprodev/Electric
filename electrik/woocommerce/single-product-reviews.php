@@ -154,16 +154,18 @@ if ( $comments ) : ?>
                 $name_email_required = (bool) get_option( 'require_name_email', 1 );
                 $fields              = array(
                     'author' => array(
-                        'label'    => __( 'Name', 'woocommerce' ),
+                        'label'    => '<img src="'.get_template_directory_uri().'/img/icon-46.svg" alt="">',
                         'type'     => 'text',
                         'value'    => $commenter['comment_author'],
                         'required' => $name_email_required,
+                        'placeholder' => 'Имя *'
                     ),
                     'email'  => array(
-                        'label'    => __( 'Email', 'woocommerce' ),
+                        'label'    => '<img src="'.get_template_directory_uri().'/img/icon-26-1.svg" alt="">',
                         'type'     => 'email',
                         'value'    => $commenter['comment_author_email'],
                         'required' => $name_email_required,
+                        'placeholder' => 'Электронная почта *'
                     ),
 
                 );
@@ -172,13 +174,13 @@ if ( $comments ) : ?>
 
                 foreach ( $fields as $key => $field ) {
                     $field_html  = '<div class="input-wrap input-wrap-50 comment-form-' . esc_attr( $key ) . '">';
-                    $field_html .= '<label for="' . esc_attr( $key ) . '">' . esc_html( $field['label'] );
+                    $field_html .= '<label for="' . esc_attr( $key ) . '">' .  ( $field['label'] );
 
                     if ( $field['required'] ) {
-                        $field_html .= '&nbsp;<span class="required">*</span>';
+                     //   $field_html .= '&nbsp;<span class="required">*</span>';
                     }
 
-                    $field_html .= '</label><input id="' . esc_attr( $key ) . '" name="' . esc_attr( $key ) . '" type="' . esc_attr( $field['type'] ) . '" value="' . esc_attr( $field['value'] ) . '" size="30" ' . ( $field['required'] ? 'required' : '' ) . ' /></div>';
+                    $field_html .= '</label><input placeholder="' . esc_attr( $field['placeholder'] ) . '" id="' . esc_attr( $key ) . '" name="' . esc_attr( $key ) . '" type="' . esc_attr( $field['type'] ) . '" value="' . esc_attr( $field['value'] ) . '" size="30" ' . ( $field['required'] ? 'required' : '' ) . ' /></div>';
 
                     if ($key == 'cookies')
                         continue;
