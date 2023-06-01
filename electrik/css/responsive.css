@@ -5,6 +5,12 @@
   .home-banner .site-menu-section .sub-menu, header .sub-menu {
     min-width: 805px;
   }
+
+  .mob-wrap{
+    display: block;
+    height: 100%;
+    overflow: auto;
+  }
   .catalog-line .right .loc {
     width: 280px;
   }
