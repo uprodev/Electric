@@ -52,8 +52,11 @@ get_template_part('parts/breadcrumbs');
                 <div class="catalog-content">
                     <div class="left-filter" >
                         <div class="wrap popup-filter-side" id="filter" >
+                            <span class="mob-wrap">
 
-                            <?= do_shortcode('[br_filters_group group_id=270]') ?>
+                              <?= do_shortcode('[br_filters_group group_id=270]') ?>
+                            </span>
+
 
                             <div class="btn-wrap">
                                 <?= do_shortcode('[br_filter_single filter_id=358]') ?>
